@@ -52,10 +52,10 @@ const App = () => {
           <Route path="/blog" element={<Blog />} />
 
 
-          <Route path="/programs/elp" element={<EarlyLearningProgram />} />
-          <Route path="/programs/lte" element={<LittleTechExplorers />} />
-          <Route path="/programs/cac" element={<ComputerAndCoding />} />
-          <Route path="/programs/ctf" element={<CreateTheFeature />} />
+          <Route path="/books/elp" element={<EarlyLearningProgram />} />
+          <Route path="/books/lte" element={<LittleTechExplorers />} />
+          <Route path="/books/cac" element={<ComputerAndCoding />} />
+          <Route path="/books/ctf" element={<CreateTheFeature />} />
 
 
 

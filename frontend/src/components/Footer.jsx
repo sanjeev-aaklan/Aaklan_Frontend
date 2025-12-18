@@ -96,10 +96,10 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-6 border-b-2 border-blue-500 inline-block">Learning Programs</h3>
             <ul className="space-y-3">
               {[
-                { name: "Early Learning Program (Nursery to UKG)", path: "/programs/computer-coding-books-1-8" },
-                { name: "Little Tech Explorers (1 to 5)", path: "/programs/coding-robotics-ai-books-6-8" },
-                { name: "Computer And Coding (1 to 8)", path: "/programs/coding-robotics-ai-python-9-12" },
-                { name: "Create The Future (6 to 12)", path: "/programs/online-coding-classes" },
+                { name: "Early Learning Program (Nursery to UKG)", path: "/books/elp" },
+                { name: "Little Tech Explorers (1 to 5)", path: "/books/lte" },
+                { name: "Computer And Coding (1 to 8)", path: "/books/cac" },
+                { name: "Create The Future (6 to 12)", path: "/books/ctf" },
               ].map((item, index) => (
                 <li key={index} className="group cursor-pointer"
                   onClick={() => navigate(item.path)}>
