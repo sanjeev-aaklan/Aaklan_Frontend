@@ -785,7 +785,7 @@ const BookDemoForm = () => {
   const [errors, setErrors] = useState({});
 
   // API base URL - using axios base instance
-  const API_BASE = 'http://localhost:5000/api';
+  const API_BASE = `${import.meta.env.VITE_BACKEND_URL}/api`;
 
   // Create axios instance with default config
   const api = axios.create({

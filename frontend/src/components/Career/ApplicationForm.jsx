@@ -122,7 +122,7 @@ const ApplicationForm = ({ selectedJob, formData, setFormData, onClose }) => {
     }
     
     // Send to backend
-    const response = await fetch('http://localhost:5000/api/career/apply', {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/career/apply`, {
       method: 'POST',
       body: submitFormData,
     });
@@ -467,7 +467,7 @@ const ApplicationForm = ({ selectedJob, formData, setFormData, onClose }) => {
 
                   <div className="space-y-2">
                     <label className="block text-sm font-semibold text-gray-700">
-                      Upload Salary Slips (PDF only, max 5MB) *
+                      Upload Any Company Document (PDF only, max 5 MB) *
                     </label>
                     <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-orange-400 transition-colors">
                       <input
