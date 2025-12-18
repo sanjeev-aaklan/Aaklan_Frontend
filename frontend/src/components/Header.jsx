@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { assets } from "../assets/assets.js";
-import Login from "../pages/Login.jsx";
+// import Login from "../pages/Login.jsx";
 import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 
 export default function Header() {
@@ -35,6 +35,11 @@ export default function Header() {
     { name: "LMS", path: "/lms" },
     { name: "Books", path: "/books" },
   ];
+
+  const handleLoginRedirect = () => {
+    window.location.href = "https://aaklanfoundation.in/";
+  };
+
 
   return (
     <header className="w-full sticky top-0 z-50 transition-all duration-500">
@@ -71,11 +76,12 @@ export default function Header() {
           {/* Login / Signup */}
           <div className="hidden lg:flex gap-3">
             <button
-              onClick={() => setIsOpen("login")}
+              onClick={handleLoginRedirect}
               className="text-lg px-8 py-0.5 rounded-full border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-[#0b234a] transition-all"
             >
               Login
             </button>
+
 
             {/* <button
               onClick={() => setIsOpen("signup")}
@@ -86,7 +92,7 @@ export default function Header() {
               Signup
             </button> */}
 
-            <Login isOpen={isOpen} setIsOpen={setIsOpen} />
+            {/* <Login isOpen={isOpen} setIsOpen={setIsOpen} /> */}
           </div>
         </div>
       </div>
@@ -109,18 +115,16 @@ export default function Header() {
               <li key={item.name} className="relative group">
                 <Link
                   to={item.path}
-                  className={`transition-colors duration-300 ${
-                    isActivePath(item.path)
+                  className={`transition-colors duration-300 ${isActivePath(item.path)
                       ? "text-yellow-500 font-semibold"
                       : "text-gray-700 hover:text-yellow-500"
-                  }`}
+                    }`}
                 >
                   {item.name}
                 </Link>
                 <span
-                  className={`absolute left-0 -bottom-1 h-[3px] bg-yellow-400 transition-all duration-300 ${
-                    isActivePath(item.path) ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
+                  className={`absolute left-0 -bottom-1 h-[3px] bg-yellow-400 transition-all duration-300 ${isActivePath(item.path) ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
                 ></span>
               </li>
             ))}
@@ -144,11 +148,10 @@ export default function Header() {
                   <Link
                     to={item.path}
                     onClick={() => setMobileOpen(false)}
-                    className={`block px-4 py-3 rounded-lg transition-all duration-200 ${
-                      isActivePath(item.path)
+                    className={`block px-4 py-3 rounded-lg transition-all duration-200 ${isActivePath(item.path)
                         ? "bg-yellow-50 text-yellow-600 font-semibold border-l-4 border-yellow-500"
                         : "text-gray-700 hover:bg-gray-50 hover:text-yellow-500"
-                    }`}
+                      }`}
                   >
                     {item.name}
                   </Link>
@@ -159,13 +162,14 @@ export default function Header() {
               <div className="flex flex-col gap-3 mt-6 px-4 pt-4 border-t">
                 <button
                   onClick={() => {
-                    setIsOpen("login");
                     setMobileOpen(false);
+                    handleLoginRedirect();
                   }}
                   className="w-full px-6 py-3 rounded-full border-2 border-yellow-400 text-yellow-500 font-semibold hover:bg-yellow-400 hover:text-[#0b234a] transition-all"
                 >
                   Login
                 </button>
+
 
                 {/* <button
                   onClick={() => {
@@ -184,7 +188,7 @@ export default function Header() {
         )}
       </nav>
 
-      <Login isOpen={isOpen} setIsOpen={setIsOpen} />
+      {/* <Login isOpen={isOpen} setIsOpen={setIsOpen} /> */}
     </header>
   );
 }
