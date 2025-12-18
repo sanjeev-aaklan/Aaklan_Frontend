@@ -1,0 +1,26 @@
+
+        Certificate of Achievement
+        ==========================
+        
+        This certifies that
+        John Doe
+        
+        has successfully completed the
+        Full Stack Web Development Program
+        
+        Issued on: 02/12/2025
+        Certificate ID: AKL-14632748
+        
+        Skills Mastered:
+        • HTML5
+• CSS3
+• JavaScript
+• React
+• Node.js
+• MongoDB
+• Git
+• Deployment
+        
+        Issued by: Aaklan It Solutions PVT. LTD.
+        Powered by Innovation
+      
