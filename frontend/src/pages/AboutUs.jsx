@@ -11,9 +11,11 @@ import {
   ChevronDown,
   ChevronUp,
   Play,
-  CheckCircle2
+  CheckCircle2,
+  ArrowRight
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function AboutUs() {
   const [activeTab, setActiveTab] = useState("mission");
@@ -512,13 +514,22 @@ export default function AboutUs() {
             Join thousands of students who have discovered the joy of coding with Aaklan
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <button onClick={() => navigate('/book-demo')} className="bg-gradient-to-r from-orange-500 to-[#E22213] text-white px-4 sm:px-8 py-2 sm:py-4 rounded-lg font-semibold hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 transform hover:scale-105 relative overflow-hidden group">
-              <span className="relative z-10">Book a Free Demo</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-[#c2180b] translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+            <button onClick={() => navigate('/book-demo')} className="group relative bg-gradient-to-r from-[#E22213] to-orange-500 hover:from-[#E22213]/90 hover:to-orange-600 text-white px-6 py-2 sm:px-8 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg shadow-xl sm:shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-xl backdrop-blur-sm border-2 border-white/20 overflow-hidden w-full sm:w-auto">
+              <span className="relative z-10 flex items-center justify-center space-x-2">
+                <Target
+                 className="w-5 h-5" />
+                <span>Book Demo</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
-            <button onClick={() => window.open('https://wa.me/919571677609?text=Hi%20I%20want%20to%20know%20more%20about%20your%20curriculum', '_blank')} className="border-2 border-white text-white px-4 sm:px-8 py-2 sm:py-4 rounded-lg font-semibold hover:bg-white hover:text-[#0b234a] transition-all duration-300 relative overflow-hidden group">
-              <span className="relative z-10">Contact Our Team</span>
-              <div className="absolute inset-0 bg-white -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
+
+            <button
+              onClick={() => window.open('https://wa.me/919571677609?text=Hi%20I%20want%20to%20know%20more%20about%20your%20curriculum', '_blank')}
+              className="px-6 py-2 bg-linear-to-r from-[#25D366] to-green-600 text-white font-medium rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+            >
+              <FaWhatsapp className="w-5 h-5" />
+              Chat on WhatsApp
             </button>
           </div>
         </div>

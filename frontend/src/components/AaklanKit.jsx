@@ -374,12 +374,6 @@ export default function AaklanKit() {
                                 <FaWhatsapp className="w-5 h-5" />
                                 WhatsApp
                             </button>
-                            <button
-                                onClick={() => navigate('/book-demo')}
-                                className="px-6 py-3 bg-gradient-to-r from-[#0b234a] via-[#E22213] to-orange-500 text-white font-medium rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-                            >
-                                CONTACT SALES
-                            </button>
                         </div>
                     </div>
                 </div>

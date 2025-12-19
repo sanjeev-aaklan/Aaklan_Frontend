@@ -15,7 +15,8 @@ import {
   FaDesktop,
   FaGamepad,
   FaMobile,
-  FaDatabase
+  FaDatabase,
+  FaWhatsapp
 } from 'react-icons/fa';
 
 const ComputerAndCoding = () => {
@@ -216,7 +217,7 @@ const ComputerAndCoding = () => {
                     onClick={scrollToBookDemo}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="group bg-gradient-to-r from-orange-500 to-orange-800 text-white px-4 py-3 rounded-xl font-semibold text-lg flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transition-all"
+                    className="group bg-gradient-to-r from-orange-500 to-orange-800 text-white px-4 py-2 rounded-xl font-semibold text-lg flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transition-all"
                   >
                     <FaPlay className="group-hover:scale-110 transition-transform" />
                     <span>Book Demo</span>
@@ -226,10 +227,13 @@ const ComputerAndCoding = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="group bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-4 py-3 rounded-xl font-semibold text-lg flex items-center justify-center gap-3 hover:bg-white/20 transition-all"
+                    onClick={() => window.open('https://wa.me/919571677609?text=Hi%20I%20want%20to%20know%20more%20about%20your%20curriculum', '_blank')}
+                    className="px-6 py-2 bg-linear-to-r from-[#25D366] to-green-600 text-white font-medium rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
                   >
-                    <FaDownload className="group-hover:scale-110 transition-transform" />
-                    <span>Download Curriculum</span>
+                    <FaWhatsapp className="w-5 h-5" />
+                    <span>
+                      Chat on WhatsApp
+                    </span>
                   </motion.button>
                 </div>
 

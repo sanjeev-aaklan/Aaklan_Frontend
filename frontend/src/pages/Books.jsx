@@ -24,12 +24,13 @@ import {
   Cpu,
   Zap
 } from 'lucide-react';
-import {  Beaker, Bot, Trophy } from 'lucide-react';
+import { Beaker, Bot, Trophy } from 'lucide-react';
 import OurBelivers from '../components/Home/OurBelivers';
 import HeroHeading from '../components/PageHeading/HeroHeading';
 import BookFreeDemo from '../components/BookFreeDemo';
-import { bookDetails } from '../assets/Books/books.js';
+import { bookDetails, herobook } from '../assets/Books/books.js';
 import { useNavigate } from 'react-router-dom';
+import { FaWhatsapp } from 'react-icons/fa';
 
 const Books = () => {
   const [activeSection, setActiveSection] = useState('overview');
@@ -263,7 +264,7 @@ const Books = () => {
           <section className="flex flex-col lg:flex-row items-center justify-between gap-12 mb-8 py-4">
             {/* Left Content */}
             <div className="flex-1 max-w-2xl" data-aos="fade-right">
-              {/* Badge */}
+              {/* Badge
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-lg mb-6">
                 <span className="w-2 h-2 bg-[#E22213] rounded-full animate-pulse mr-2"></span>
                 <span className="w-2 h-2 bg-[#E22213] rounded-full animate-pulse mr-2"></span>
@@ -271,7 +272,7 @@ const Books = () => {
                 <span className="text-sm font-semibold text-[#0b234a]">
                   Comprehensive Book Series for All Grades
                 </span>
-              </div>
+              </div> */}
 
               <HeroHeading
                 colorHeading='Skillful Minds Program'
@@ -284,26 +285,22 @@ const Books = () => {
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <button className="group relative bg-gradient-to-r from-[#E22213] to-orange-500 hover:from-[#E22213]/90 hover:to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-xl transform hover:scale-105 transition-all duration-300 hover:shadow-2xl backdrop-blur-sm border-2 border-white/20 overflow-hidden">
-                  <span className="relative z-10 flex items-center justify-center space-x-2">
-                    <Download className="w-5 h-5" />
-                    <span>Download Curriculum</span>
-                  </span>
-                </button>
-                {/* CTA Button */}
-                <button
-                  onClick={scrollToBookDemo}
-                  className="group relative bg-gradient-to-r from-[#E22213] to-orange-500 hover:from-[#E22213]/90 hover:to-orange-600 text-white px-6 py-2 sm:px-8 sm:py-3 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg shadow-xl sm:shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-xl backdrop-blur-sm border-2 border-white/20 overflow-hidden w-full sm:w-auto"
-                  data-aos="fade-up"
-                  data-aos-delay="400"
-                >
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 pb-4 mb-4">
+                <button onClick={scrollToBookDemo} className="group relative bg-gradient-to-r from-[#E22213] to-orange-500 hover:from-[#E22213]/90 hover:to-orange-600 text-white px-6 py-2 sm:px-8 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg shadow-xl sm:shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-xl backdrop-blur-sm border-2 border-white/20 overflow-hidden w-full sm:w-auto">
                   <span className="relative z-10 flex items-center justify-center space-x-2">
                     <Target className="w-5 h-5" />
                     <span>Book Demo</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </button>
+
+                <button
+                  onClick={() => window.open('https://wa.me/919571677609?text=Hi%20I%20want%20to%20know%20more%20about%20your%20curriculum', '_blank')}
+                  className="px-6 py-2 bg-linear-to-r from-[#25D366] to-green-600 text-white font-medium rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                  <FaWhatsapp className="w-5 h-5" />
+                  Chat on WhatsApp
                 </button>
               </div>
 
@@ -326,27 +323,50 @@ const Books = () => {
             {/* Right Content - Book Showcase */}
             <div className="flex-1 hidden md:block flex justify-center lg:justify-end" data-aos="fade-left">
               <div className="relative w-full max-w-lg">
-                <div className="bg-gradient-to-br from-[#E22213]/20 to-[#0b234a]/20 rounded-3xl p-6 border border-gray-200 shadow-xl hover:shadow-2xl transition-all duration-300">
-                  <div className="bg-white rounded-2xl p-8 text-center shadow-lg">
-                    <BookOpen className="w-16 h-16 text-[#0b234a] mx-auto mb-4" />
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Skillful Minds Series</h3>
-                    <p className="text-gray-600 mb-4">Comprehensive Learning Solution</p>
-                    <div className="flex justify-center space-x-2 mb-4">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <Star key={star} className="w-5 h-5 text-yellow-400 fill-current" />
-                      ))}
+                {/* Main Image Container */}
+                {herobook.herorightImage ? (
+                  <div className="relative group">
+                    {/* Main Book Image */}
+                    <img
+                      src={herobook.herorightImage}
+                      alt="Skillful Minds Series Books"
+                      className="w-full h-auto rounded-3xl shadow-2xl border-4 border-white transform group-hover:scale-[1.02] transition-all duration-500"
+                    />
+                   
+                    {/* Floating elements */}
+                    <div className="absolute -top-4 -left-4 bg-white p-3 rounded-xl shadow-lg border border-gray-200 hover:scale-110 transition-all duration-300">
+                      <Code2 className="w-6 h-6 text-[#E22213]" />
                     </div>
-                    <div className="text-sm text-gray-500">Rated 4.9/5 by Educators</div>
+                    <div className="absolute -bottom-4 -right-4 bg-white p-3 rounded-xl shadow-lg border border-gray-200 hover:scale-110 transition-all duration-300">
+                      <Brain className="w-6 h-6 text-[#0b234a]" />
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  /* Fallback Design if image is not available */
+                  <div className="relative">
+                    <div className="bg-gradient-to-br from-[#E22213]/20 to-[#0b234a]/20 rounded-3xl p-6 border border-gray-200 shadow-xl hover:shadow-2xl transition-all duration-300">
+                      <div className="bg-white rounded-2xl p-8 text-center shadow-lg">
+                        <BookOpen className="w-16 h-16 text-[#0b234a] mx-auto mb-4" />
+                        <h3 className="text-2xl font-bold text-gray-900 mb-2">Skillful Minds Series</h3>
+                        <p className="text-gray-600 mb-4">Comprehensive Learning Solution</p>
+                        <div className="flex justify-center space-x-2 mb-4">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <Star key={star} className="w-5 h-5 text-yellow-400 fill-current" />
+                          ))}
+                        </div>
+                        <div className="text-sm text-gray-500">Rated 4.9/5 by Educators</div>
+                      </div>
+                    </div>
 
-                {/* Floating elements */}
-                <div className="absolute -top-4 -left-4 bg-white p-3 rounded-xl shadow-lg border border-gray-200 hover:scale-110 transition-all duration-300">
-                  <Code2 className="w-6 h-6 text-[#E22213]" />
-                </div>
-                <div className="absolute -bottom-4 -right-4 bg-white p-3 rounded-xl shadow-lg border border-gray-200 hover:scale-110 transition-all duration-300">
-                  <Brain className="w-6 h-6 text-[#0b234a]" />
-                </div>
+                    {/* Floating elements */}
+                    <div className="absolute -top-4 -left-4 bg-white p-3 rounded-xl shadow-lg border border-gray-200 hover:scale-110 transition-all duration-300">
+                      <Code2 className="w-6 h-6 text-[#E22213]" />
+                    </div>
+                    <div className="absolute -bottom-4 -right-4 bg-white p-3 rounded-xl shadow-lg border border-gray-200 hover:scale-110 transition-all duration-300">
+                      <Brain className="w-6 h-6 text-[#0b234a]" />
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </section>

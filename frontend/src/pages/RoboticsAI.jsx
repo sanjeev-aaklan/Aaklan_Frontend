@@ -32,6 +32,7 @@ import {
   PlayCircle
 } from 'lucide-react';
 import AaklanLabSection from '../components/AaklanLabSection.jsx';
+import { FaWhatsapp } from 'react-icons/fa';
 
 const RoboticsAI = () => {
   const sectionRef = useRef(null);
@@ -209,7 +210,7 @@ const RoboticsAI = () => {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
-                <button onClick={scrollToBookDemo} className="group relative bg-gradient-to-r from-[#E22213] to-orange-500 hover:from-[#E22213]/90 hover:to-orange-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg shadow-xl sm:shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-xl backdrop-blur-sm border-2 border-white/20 overflow-hidden w-full sm:w-auto">
+                <button onClick={scrollToBookDemo} className="group relative bg-gradient-to-r from-[#E22213] to-orange-500 hover:from-[#E22213]/90 hover:to-orange-600 text-white px-6 py-2 sm:px-8 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg shadow-xl sm:shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-xl backdrop-blur-sm border-2 border-white/20 overflow-hidden w-full sm:w-auto">
                   <span className="relative z-10 flex items-center justify-center space-x-2">
                     <Target className="w-5 h-5" />
                     <span>Book Demo</span>
@@ -218,12 +219,12 @@ const RoboticsAI = () => {
                   <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </button>
 
-                <button onClick={() => window.open('https://wa.me/919571677609?text=Hi%20I%20want%20to%20know%20more%20about%20your%20coding', '_blank')} className="group relative border-2 border-[#0b234a] hover:border-[#E22213] text-[#0b234a] hover:text-[#E22213] px-6 py-2 sm:px-8 sm:py-3 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg transition-all duration-300 hover:shadow-xl backdrop-blur-sm bg-white/80 hover:bg-white overflow-hidden w-full sm:w-auto">
-                  <span className="relative z-10 flex items-center justify-center space-x-2">
-                    <Phone className="w-5 h-5" />
-                    <span>Contact Us</span>
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#0b234a]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <button
+                  onClick={() => window.open('https://wa.me/919571677609?text=Hi%20I%20want%20to%20know%20more%20about%20your%20curriculum', '_blank')}
+                  className="px-6 py-2 bg-linear-to-r from-[#25D366] to-green-600 text-white font-medium rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                  <FaWhatsapp className="w-5 h-5" />
+                  Chat on WhatsApp
                 </button>
               </div>
 
@@ -559,16 +560,6 @@ const RoboticsAI = () => {
             data-aos="fade-up"
             data-aos-delay="300"
           >
-            <div className="flex flex-col sm:flex-row justify-center items-center space-y-3 sm:space-y-0 sm:space-x-4 lg:space-x-6">
-              <button onClick={scrollToBookDemo}  className="bg-gradient-to-r from-[#E22213] to-orange-500 hover:from-[#E22213]/90 hover:to-orange-600 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-xl sm:rounded-2xl font-semibold text-sm sm:text-base md:text-lg shadow-xl sm:shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-xl backdrop-blur-sm border-2 border-white/20 w-full sm:w-auto flex items-center justify-center space-x-2">
-                <Rocket className="w-5 h-5" />
-                <span>Start Your Journey Today</span>
-              </button>
-              <button className="border-2 border-[#0b234a] hover:border-[#E22213] text-[#0b234a] hover:text-[#E22213] px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-xl sm:rounded-2xl font-semibold text-sm sm:text-base md:text-lg transition-all duration-300 hover:shadow-lg backdrop-blur-sm bg-white/80 hover:bg-white w-full sm:w-auto flex items-center justify-center space-x-2">
-                <Download className="w-5 h-5" />
-                <span>Download Setup Guide</span>
-              </button>
-            </div>
           </div>
         </div>
 

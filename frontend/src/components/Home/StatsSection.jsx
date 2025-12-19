@@ -1,6 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { statsSection } from "../../assets/assets";
-
+import { 
+  Map, 
+  Users, 
+  Target, 
+  GraduationCap,
+  ShieldCheck
+} from 'lucide-react';
 const StatsSection = () => {
   const [counters, setCounters] = useState({
     schools: 0,
@@ -41,7 +47,7 @@ const StatsSection = () => {
     if (!isVisible) return;
 
     const targets = {
-      schools: 100,
+      state: 5,
       students: 100000,
       retention: 98,
       trainers: 200
@@ -109,125 +115,117 @@ const StatsSection = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2">
-          {/* LEFT COLUMN - Stats */}
-          <div className="p-4 sm:p-8 lg:p-12 bg-linear-to-br from-blue-50 to-indigo-50">
-            <div className="mb-10">
-              <h2 className="text-2xl lg:text-3xl font-bold text-[#0b234a] mb-4">
-                Transforming Technical Education
-              </h2>
-              <p className="text-gray-600 text-sm sm:text-lg">
-                Our impact in numbers - empowering schools, students and educators across the nation
-              </p>
-            </div>
+          
 
-            <div className="grid grid-cols-2 gap-3 sm:gap-6">
-              {/* Item 1 - Associated Schools */}
-              <div className={`group p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-white/80 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}>
-                <div className="flex items-center gap-4">
-                  <div className="relative">
-                    <img
-                      src={statsSection.school1}
-                      className="hidden sm:block w-14 h-14 transition-transform duration-300 group-hover:scale-110"
-                      alt="Schools"
-                    />
-                    <div className="absolute -inset-2 bg-orange-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-                  </div>
-                  <div>
-                    <p className="text-2xl sm:text-3xl font-bold text-[#0B234A] mb-1">
-                      {counters.schools}+
-                    </p>
-                    <p className="text-gray-600 text-sm font-medium">Associated Schools</p>
-                  </div>
-                </div>
-              </div>
+{/* LEFT COLUMN - Stats */}
+<div className="p-4 sm:p-8 lg:p-12 bg-linear-to-br from-blue-50 to-indigo-50">
+  <div className="mb-10">
+    <h2 className="text-2xl lg:text-3xl font-bold text-[#0b234a] mb-4">
+      Transforming Technical Education
+    </h2>
+    <p className="text-gray-600 text-sm sm:text-lg">
+      Our impact in numbers - empowering schools, students and educators across the nation
+    </p>
+  </div>
 
-              {/* Item 2 - Students Trained */}
-              <div className={`group p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-white/80 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}>
-                <div className="flex items-center gap-4">
-                  <div className="relative">
-                    <img
-                      src={statsSection.student}
-                      className="hidden sm:block w-14 h-14 transition-transform duration-300 group-hover:scale-110"
-                      alt="Students"
-                    />
-                    <div className="absolute -inset-2 bg-blue-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-                  </div>
-                  <div>
-                    <p className="text-2xl sm:text-3xl font-bold text-[#0b234a] mb-1">
-                      {formatNumber(counters.students)}+
-                    </p>
-                    <p className="text-gray-600 text-sm font-medium">Students Trained</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Item 3 - School Retention */}
-              <div className={`group p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-white/80 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}>
-                <div className="flex items-center gap-4">
-                  <div className="relative">
-                    <img
-                      src={statsSection.school2}
-                      className="hidden sm:block w-14 h-14 transition-transform duration-300 group-hover:scale-110"
-                      alt="Retention"
-                    />
-                    <div className="absolute -inset-2 bg-green-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-                  </div>
-                  <div>
-                    <p className="text-2xl sm:text-3xl font-bold text-[#0b234a] mb-1">
-                      {counters.retention}%
-                    </p>
-                    <p className="text-gray-600 text-sm font-medium">School Retention</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Item 4 - Trained Trainers */}
-              <div className={`group p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-white/80 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}>
-                <div className="flex items-center gap-4">
-                  <div className="relative">
-                    <img
-                      src={statsSection.teacher}
-                      className="hidden sm:block w-14 h-14 transition-transform duration-300 group-hover:scale-110"
-                      alt="Trainers"
-                    />
-                    <div className="absolute -inset-2 bg-purple-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-                  </div>
-                  <div>
-                    <p className="text-2xl sm:text-3xl font-bold text-[#0b234a] mb-1">
-                      {counters.trainers}+
-                    </p>
-                    <p className="text-gray-600 text-sm font-medium">Trained Teachers</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Trust Indicators */}
-            <div className={`mt-10 transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}>
-              <div className="flex flex-wrap items-center gap-6">
-                <div className="flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-2xl px-5 py-3 border border-white/60 shadow-lg">
-                  <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-gray-700">Government Recognized</p>
-                    <p className="text-xs text-gray-500">EdTech Initiative</p>
-                  </div>
-                </div>
-
-                <div className="text-sm text-gray-600">
-                  Trusted by <span className="font-bold text-[#0b234a]">95+</span> educational institutions nationwide
-                </div>
-              </div>
-            </div>
+  <div className="grid grid-cols-2 gap-3 sm:gap-6">
+    {/* Item 1 - States */}
+    <div className={`group p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-white/80 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}>
+      <div className="flex items-center gap-4">
+        <div className="relative">
+          <div className="hidden sm:flex w-14 h-14 bg-orange-100 rounded-2xl items-center justify-center transition-transform duration-300 group-hover:scale-110">
+            <Map className="w-8 h-8 text-orange-600" />
           </div>
+          <div className="absolute -inset-2 bg-orange-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+        </div>
+        <div>
+          <p className="text-2xl sm:text-3xl font-bold text-[#0B234A] mb-1">
+            {counters.state}+
+          </p>
+          <p className="text-gray-600 text-sm font-medium">States</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Item 2 - Students Trained */}
+    <div className={`group p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-white/80 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}>
+      <div className="flex items-center gap-4">
+        <div className="relative">
+          <div className="hidden sm:flex w-14 h-14 bg-blue-100 rounded-2xl items-center justify-center transition-transform duration-300 group-hover:scale-110">
+            <Users className="w-8 h-8 text-blue-600" />
+          </div>
+          <div className="absolute -inset-2 bg-blue-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+        </div>
+        <div>
+          <p className="text-2xl sm:text-3xl font-bold text-[#0b234a] mb-1">
+            {formatNumber(counters.students)}+
+          </p>
+          <p className="text-gray-600 text-sm font-medium">Students Trained</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Item 3 - School Retention */}
+    <div className={`group p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-white/80 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}>
+      <div className="flex items-center gap-4">
+        <div className="relative">
+          <div className="hidden sm:flex w-14 h-14 bg-green-100 rounded-2xl items-center justify-center transition-transform duration-300 group-hover:scale-110">
+            <Target className="w-8 h-8 text-green-600" />
+          </div>
+          <div className="absolute -inset-2 bg-green-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+        </div>
+        <div>
+          <p className="text-2xl sm:text-3xl font-bold text-[#0b234a] mb-1">
+            {counters.retention}%
+          </p>
+          <p className="text-gray-600 text-sm font-medium">School Retention</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Item 4 - Trained Teachers */}
+    <div className={`group p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-white/80 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}>
+      <div className="flex items-center gap-4">
+        <div className="relative">
+          <div className="hidden sm:flex w-14 h-14 bg-purple-100 rounded-2xl items-center justify-center transition-transform duration-300 group-hover:scale-110">
+            <GraduationCap className="w-8 h-8 text-purple-600" />
+          </div>
+          <div className="absolute -inset-2 bg-purple-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+        </div>
+        <div>
+          <p className="text-2xl sm:text-3xl font-bold text-[#0b234a] mb-1">
+            {counters.trainers}+
+          </p>
+          <p className="text-gray-600 text-sm font-medium">Trained Teachers</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Trust Indicators */}
+  <div className={`mt-10 transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+    }`}>
+    <div className="flex flex-wrap items-center gap-6">
+      <div className="flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-2xl px-5 py-3 border border-white/60 shadow-lg">
+        <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+          <ShieldCheck className="w-6 h-6 text-green-600" />
+        </div>
+        <div>
+          <p className="text-sm font-medium text-gray-700">Government Recognized</p>
+          <p className="text-xs text-gray-500">EdTech Initiative</p>
+        </div>
+      </div>
+
+      <div className="text-sm text-gray-600">
+        Trusted by <span className="font-bold text-[#0b234a]">95+</span> educational institutions nationwide
+      </div>
+    </div>
+  </div>
+</div>
 
           {/* RIGHT COLUMN - Incubation & Recognition */}
           <div className="p-8 lg:p-12 bg-linear-to-br from-orange-50 to-amber-50 flex flex-col justify-center">

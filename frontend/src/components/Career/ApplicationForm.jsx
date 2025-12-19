@@ -286,7 +286,7 @@ const ApplicationForm = ({ selectedJob, formData, setFormData, onClose }) => {
             <h3 className="text-lg font-bold text-[#0b234a] mb-4">Resume Upload</h3>
             <div className="space-y-2">
               <label className="block text-sm font-semibold text-gray-700">
-                Upload Updated Resume (PDF only, max 5MB) *
+                Upload Single Page Resume (PDF only, max 5MB) *
               </label>
               <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-orange-400 transition-colors">
                 <input

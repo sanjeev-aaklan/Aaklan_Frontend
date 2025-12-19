@@ -284,21 +284,21 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Dsteps } from '../../assets/DadicatedStuf/stuf';
 
 const DedicatedStaffing = () => {
   const navigate = useNavigate();
   const carouselRef = useRef(null);
-  
-  // 使用可靠的占位图片服务
+
   const getImageUrl = (id, width = 800, height = 600) => {
-    // 使用Picsum Photos作为可靠的占位图片源
+  
     const imageUrls = [
-      `https://picsum.photos/seed/school1/${width}/${height}?grayscale`,
-      `https://picsum.photos/seed/manager2/${width}/${height}?grayscale`,
-      `https://picsum.photos/seed/teacher3/${width}/${height}?grayscale`,
-      `https://picsum.photos/seed/tech4/${width}/${height}?grayscale`,
-      `https://picsum.photos/seed/audit5/${width}/${height}?grayscale`,
-      `https://picsum.photos/seed/progress6/${width}/${height}?grayscale`
+      Dsteps.A,
+      Dsteps.B,
+      Dsteps.C,
+      Dsteps.D,
+      Dsteps.E,
+      Dsteps.F,
     ];
     return imageUrls[id % imageUrls.length];
   };
@@ -379,14 +379,13 @@ const DedicatedStaffing = () => {
     }
   ];
 
-  // 使用相同的图片作为背景轮播
   const backgroundImages = steps.map(step => step.image);
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [imageErrors, setImageErrors] = useState({});
 
-  // 处理图片加载错误
+
   const handleImageError = (imageId) => {
     setImageErrors(prev => ({
       ...prev,
@@ -394,9 +393,9 @@ const DedicatedStaffing = () => {
     }));
   };
 
-  // 获取备用图片URL
+
   const getFallbackImage = (id) => {
-    // 使用SVG作为备用方案
+    
     const fallbackSVGs = [
       `<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="400" fill="#0b234a"/><text x="300" y="200" font-family="Arial" font-size="24" fill="white" text-anchor="middle">School Registration</text></svg>`,
       `<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="400" fill="#E22213"/><text x="300" y="200" font-family="Arial" font-size="24" fill="white" text-anchor="middle">Program Manager</text></svg>`,
@@ -408,7 +407,6 @@ const DedicatedStaffing = () => {
     return `data:image/svg+xml;base64,${btoa(fallbackSVGs[id])}`;
   };
 
-  // 修复：添加正确的导航函数
   const handlePreviousClick = () => {
     setIsAutoPlaying(false);
     setCurrentImageIndex(prevIndex => 

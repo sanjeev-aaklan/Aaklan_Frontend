@@ -46,6 +46,7 @@ import {
 // Import AOS
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { FaWhatsapp } from 'react-icons/fa'
 
 const VRARLab = () => {
   const bookDemoRef = useRef(null);
@@ -142,20 +143,25 @@ const VRARLab = () => {
                 ))}
               </div>
 
-              {/* CTA Button */}
-              <button
-                onClick={scrollToBookDemo}
-                className="group relative bg-gradient-to-r from-[#E22213] to-orange-500 hover:from-[#E22213]/90 hover:to-orange-600 text-white px-6 py-2 sm:px-8 sm:py-3 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg shadow-xl sm:shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-xl backdrop-blur-sm border-2 border-white/20 overflow-hidden w-full sm:w-auto"
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
-                <span className="relative z-10 flex items-center justify-center space-x-2">
-                  <Target className="w-5 h-5" />
-                  <span>Book Demo</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </button>
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
+                <button onClick={scrollToBookDemo} className="group relative bg-gradient-to-r from-[#E22213] to-orange-500 hover:from-[#E22213]/90 hover:to-orange-600 text-white px-6 py-2 sm:px-8 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg shadow-xl sm:shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-xl backdrop-blur-sm border-2 border-white/20 overflow-hidden w-full sm:w-auto">
+                  <span className="relative z-10 flex items-center justify-center space-x-2">
+                    <Target className="w-5 h-5" />
+                    <span>Book Demo</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </button>
+
+                <button
+                  onClick={() => window.open('https://wa.me/919571677609?text=Hi%20I%20want%20to%20know%20more%20about%20your%20curriculum', '_blank')}
+                  className="px-6 py-2 bg-linear-to-r from-[#25D366] to-green-600 text-white font-medium rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                  <FaWhatsapp className="w-5 h-5" />
+                  Chat on WhatsApp
+                </button>
+              </div>
 
               {/* Stats */}
               <div className="grid grid-cols-3 gap-6 pt-6" data-aos="fade-up" data-aos-delay="500">

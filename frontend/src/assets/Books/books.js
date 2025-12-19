@@ -31,6 +31,8 @@ import CTFgrade6 from '../Books/CreateTheFeatures/Grade-6.png'
 import CTFgrade7 from '../Books/CreateTheFeatures/Grade-7.png'
 import CTFgrade8 from '../Books/CreateTheFeatures/Grade-8.png'
 import CTFgrade9 from '../Books/CreateTheFeatures/Grade-9-12.png'
+
+import herorightImage from '../Books/hero-book.jpeg'
 export const books = {
     grade1,
     grade2,
@@ -41,7 +43,9 @@ export const books = {
     grade7,
     grade8,
 }
-
+export const herobook = {
+    herorightImage
+}
 export const bookDetails = {
     LTX,
     CTF
