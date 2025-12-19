@@ -146,7 +146,7 @@ const FeatureCard = ({ title, desc, image, index }) => {
       whileHover={{ scale: 1.05 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5 }}
-      className={`group relative bg-white p-4 sm:p-6 hover:z-20 rounded-2xl shadow-lg hover:shadow-2xl transition-all w-full max-w-sm sm:max-w-md lg:max-w-lg border border-gray-100 ${colors.hoverBg}`}
+      className={`group relative bg-white p-4 sm:p-6 hover:z-200 rounded-2xl shadow-lg hover:shadow-2xl transition-all w-full max-w-sm sm:max-w-md lg:max-w-lg border border-gray-100 ${colors.hoverBg}`}
     >
       {/* Glow Border on hover */}
       <div className={`absolute inset-0 border-2 border-transparent rounded-2xl transition-all duration-500 ${colors.hoverBorder} ${colors.glow}`}></div>

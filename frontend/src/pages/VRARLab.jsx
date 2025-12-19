@@ -366,7 +366,7 @@ const VRARLab = () => {
 
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
               A new era of education with{" "}
-              <span className="bg-gradient-to-r from-[#E22213] via-[#0b234a] to-orange-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#E22213] via-[rgb(11,35,74)] to-orange-500 bg-clip-text text-transparent">
                 Aaklan
               </span>
             </h2>
@@ -639,15 +639,6 @@ const VRARLab = () => {
                   ))}
                 </div>
 
-                {/* CTA Button */}
-                <button className={`group relative w-full bg-gradient-to-r ${plan.color} hover:opacity-90 text-white py-3 px-4 rounded-xl font-semibold text-sm shadow-lg transform hover:scale-105 transition-all duration-300 overflow-hidden`}>
-                  <span className="relative z-10 flex items-center justify-center space-x-2">
-                    <span>Get Started</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </button>
-
                 {/* Hover Effect */}
                 <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${plan.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none`}></div>
               </div>
@@ -859,26 +850,6 @@ const VRARLab = () => {
                 </div>
               </div>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-6" data-aos="fade-up" data-aos-delay="500">
-                <button
-                  onClick={scrollToBookDemo}
-                  className="group relative bg-gradient-to-r from-[#E22213] via-[#0b234a] to-orange-500 hover:from-[#E22213]/90 hover:via-[#0b234a]/90 hover:to-orange-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg shadow-xl transform hover:scale-105 transition-all duration-300 hover:shadow-2xl backdrop-blur-sm border-2 border-white/20 overflow-hidden"
-                >
-                  <span className="relative z-10 flex items-center justify-center space-x-2">
-                    <Rocket className="w-5 h-5" />
-                    <span>Request Admin Demo</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                  </span>
-                </button>
-
-                <button className="group relative border-2 border-[#0b234a] hover:border-[#E22213] text-[#0b234a] hover:text-[#E22213] px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg transition-all duration-300 hover:shadow-xl backdrop-blur-sm bg-white/80 hover:bg-white overflow-hidden">
-                  <span className="relative z-10 flex items-center justify-center space-x-2">
-                    <ClipboardList className="w-5 h-5" />
-                    <span>View Features</span>
-                  </span>
-                </button>
-              </div>
             </div>
 
             {/* Right Content - Dashboard Visual */}

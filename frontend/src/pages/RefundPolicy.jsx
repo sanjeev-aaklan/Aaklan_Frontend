@@ -337,7 +337,7 @@ const RefundPolicy = () => {
             </div>
 
             {/* Support Banner */}
-            <div className="mt-8 bg-gradient-to-r from-[#0b234a] to-[#1a3a6e] text-white rounded-xl shadow-lg p-6">
+            {/* <div className="mt-8 bg-gradient-to-r from-[#0b234a] to-[#1a3a6e] text-white rounded-xl shadow-lg p-6">
               <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                 <div>
                   <h3 className="text-xl font-bold mb-2">Need Help with Refund?</h3>
@@ -354,7 +354,7 @@ const RefundPolicy = () => {
                   </button>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Important Notice */}
             <div className="mt-6 bg-red-50 border border-red-200 rounded-xl p-6">

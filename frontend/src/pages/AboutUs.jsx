@@ -212,7 +212,7 @@ export default function AboutUs() {
               <span className="relative z-10">Explore Our Programs</span>
               <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-[#E22213] translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
             </button>
-            <button className="border-2 border-white text-white px-4 sm:px-8 py-2 sm:py-4 rounded-lg font-semibold hover:bg-white hover:text-[#0b234a] transition-all duration-300 flex items-center justify-center gap-2 group relative overflow-hidden">
+            <button className="border-2 border-white text-white px-4 sm:px-8 py-2 sm:py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 group relative overflow-hidden">
               <Play size={18} className="flex-shrink-0 group-hover:scale-110 transition-transform" />
               <span>Watch Our Story</span>
               <div className="absolute inset-0 bg-white -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />

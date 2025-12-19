@@ -95,7 +95,7 @@ const Career = () => {
       }
 
     } catch (error) {
-      console.error("❌ Error submitting application:", error);
+      console.error("Error submitting application:", error);
       toast.error(error.response?.data?.message || "Server error, please try again.");
     }
   };

@@ -37,7 +37,7 @@ const JobOpenings = ({
       setError('');
       setRefreshing(true);
       
-      const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+      const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
       const response = await axios.get(`${API_BASE_URL}/api/jobs`);
       
       if (response.data.success) {
@@ -133,8 +133,8 @@ const JobOpenings = ({
             <div className="w-20 h-20 mx-auto bg-gradient-to-br from-red-100 to-pink-100 rounded-2xl flex items-center justify-center mb-6">
               <FaSearch className="text-3xl text-red-500" />
             </div>
-            <h3 className="text-2xl font-bold text-red-600 mb-3">Failed to Load Jobs</h3>
-            <p className="text-red-500/80 mb-6 text-lg">{error}</p>
+            <h3 className="text-2xl font-bold text-red-600 mb-3">No Opning Right now</h3>
+            {/* <p className="text-red-500/80 mb-6 text-lg">{error}</p> */}
             <button
               onClick={fetchJobs}
               className="px-8 py-3 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-xl hover:from-red-600 hover:to-pink-600 font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"

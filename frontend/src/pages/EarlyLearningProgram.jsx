@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import BookFreeDemo from '../components/BookFreeDemo.jsx';
 import { 
   FaDownload, 
   FaPlay, 
@@ -20,6 +21,15 @@ import { CreateTheFeatureBooks } from '../assets/Books/books';
 const EarlyLearningProgram = () => {
   const [hoveredBook, setHoveredBook] = useState(null);
 
+  const bookDemoRef = useRef(null);
+
+  // Function to scroll to BookFreeDemo section
+  const scrollToBookDemo = () => {
+    bookDemoRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  };
   
   const books = [
     {
@@ -79,6 +89,7 @@ const EarlyLearningProgram = () => {
   };
 
   return (
+    <>
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-yellow-50 p-4 md:p-8">
       {/* Hero Section */}
       <motion.div 
@@ -142,6 +153,7 @@ const EarlyLearningProgram = () => {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <motion.button
+                  onClick={scrollToBookDemo}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="group flex-1 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-4 py-3 rounded-xl font-semibold text-lg flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transition-all"
@@ -387,6 +399,11 @@ const EarlyLearningProgram = () => {
 
       </div>
     </div>
+
+    <div ref={bookDemoRef}>
+        <BookFreeDemo />
+      </div>
+    </>
   );
 };
 

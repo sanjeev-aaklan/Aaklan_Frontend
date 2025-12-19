@@ -156,7 +156,7 @@ const PerksBenefits = () => {
         </div>
 
         {/* Additional Info */}
-        <div className="mt-12 text-center">
+        {/* <div className="mt-12 text-center">
           <div className="inline-flex flex-wrap justify-center gap-8 text-sm md:text-base">
             {[
               { label: "Learning Budget", value: "$1,000/year" },
@@ -175,7 +175,7 @@ const PerksBenefits = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

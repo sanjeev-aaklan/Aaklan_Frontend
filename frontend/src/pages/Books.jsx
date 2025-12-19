@@ -356,12 +356,10 @@ const Books = () => {
             <div className="flex justify-center">
               <div className="bg-white/80 backdrop-blur-md rounded-2xl p-2 border border-gray-200 shadow-lg">
                 {[
-                  { id: 'overview', label: 'Overview' },
                   { id: 'early-learning', label: 'Early Learning' },
                   { id: 'tech-explorers', label: 'Tech Explorers' },
                   { id: 'computer-coding', label: 'Computer & Coding' },
                   { id: 'create-future', label: 'Create Future' },
-                  { id: 'tools', label: 'Grade Books' }
                 ].map((tab) => (
                   <button
                     key={tab.id}

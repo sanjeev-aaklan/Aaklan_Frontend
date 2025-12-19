@@ -385,7 +385,7 @@ const PrivacyPolicy = () => {
             </div>
 
             {/* Consent Banner */}
-            <div className="mt-8 bg-gradient-to-r from-[#0b234a] to-[#1a3a6e] text-white rounded-xl shadow-lg p-6">
+            {/* <div className="mt-8 bg-gradient-to-r from-[#0b234a] to-[#1a3a6e] text-white rounded-xl shadow-lg p-6">
               <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                 <div>
                   <h3 className="text-xl font-bold mb-2">Your Privacy Matters</h3>
@@ -400,7 +400,7 @@ const PrivacyPolicy = () => {
                  
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

@@ -560,7 +560,7 @@ const RoboticsAI = () => {
             data-aos-delay="300"
           >
             <div className="flex flex-col sm:flex-row justify-center items-center space-y-3 sm:space-y-0 sm:space-x-4 lg:space-x-6">
-              <button className="bg-gradient-to-r from-[#E22213] to-orange-500 hover:from-[#E22213]/90 hover:to-orange-600 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-xl sm:rounded-2xl font-semibold text-sm sm:text-base md:text-lg shadow-xl sm:shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-xl backdrop-blur-sm border-2 border-white/20 w-full sm:w-auto flex items-center justify-center space-x-2">
+              <button onClick={scrollToBookDemo}  className="bg-gradient-to-r from-[#E22213] to-orange-500 hover:from-[#E22213]/90 hover:to-orange-600 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-xl sm:rounded-2xl font-semibold text-sm sm:text-base md:text-lg shadow-xl sm:shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-xl backdrop-blur-sm border-2 border-white/20 w-full sm:w-auto flex items-center justify-center space-x-2">
                 <Rocket className="w-5 h-5" />
                 <span>Start Your Journey Today</span>
               </button>
@@ -674,7 +674,7 @@ const RoboticsAI = () => {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <div className="text-center mb-12 sm:mb-16 lg:mb-20" data-aos="fade-up">
+          <div className="text-center mb-12 sm:mb-8 lg:mb-10" data-aos="fade-up">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-lg mb-6">
               <span className="w-2 h-2 bg-[#E22213] rounded-full animate-pulse mr-2"></span>
               <span className="text-sm font-semibold text-[#0b234a]">
@@ -683,7 +683,7 @@ const RoboticsAI = () => {
               </span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6">
               <span className="bg-gradient-to-r from-[#E22213] via-[#0b234a] to-orange-500 bg-clip-text text-transparent">
                 Coding, Robotics & AI
               </span>

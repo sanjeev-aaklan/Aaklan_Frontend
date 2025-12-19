@@ -61,7 +61,7 @@ const TermsAndConditions = () => {
             </div>
 
             {/* Important Notice */}
-            <div className="mt-6 bg-orange-50 border border-orange-200 rounded-xl p-6">
+            {/* <div className="mt-6 bg-orange-50 border border-orange-200 rounded-xl p-6">
               <div className="flex items-start gap-3">
                 <FaExclamationTriangle className="text-orange-500 text-xl mt-1 flex-shrink-0" />
                 <div>
@@ -71,7 +71,7 @@ const TermsAndConditions = () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Main Content */}
@@ -238,7 +238,7 @@ const TermsAndConditions = () => {
             </div>
 
             {/* Acceptance Banner */}
-            <div className="mt-8 bg-gradient-to-r from-[#0b234a] to-[#1a3a6e] text-white rounded-xl shadow-lg p-6">
+            {/* <div className="mt-8 bg-gradient-to-r from-[#0b234a] to-[#1a3a6e] text-white rounded-xl shadow-lg p-6">
               <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                 <div>
                   <h3 className="text-xl font-bold mb-2">Acceptance of Terms</h3>
@@ -250,7 +250,7 @@ const TermsAndConditions = () => {
                   I Understand
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

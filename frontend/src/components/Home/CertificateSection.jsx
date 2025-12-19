@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast, Toaster } from 'react-hot-toast';
-import { 
-  Trophy, 
-  Zap, 
-  Monitor, 
-  Rocket, 
-  Users, 
-  Target, 
+import {
+  Trophy,
+  Zap,
+  Monitor,
+  Rocket,
+  Users,
+  Target,
   Award,
   Share2,
   Printer,
@@ -36,7 +36,7 @@ export default function CertificateSection() {
 
   return (
     <>
-      <Toaster 
+      <Toaster
         position="top-center"
         toastOptions={{
           duration: 3000,
@@ -59,12 +59,12 @@ export default function CertificateSection() {
           },
         }}
       />
-      
+
       <section className="w-full py-16 px-4 bg-linear-to-br from-[#0b234a] via-[#0b234a]/90 to-[#E22213] relative overflow-hidden">
-        
+
         {/* Background Elements */}
         <div className="absolute inset-0 bg-black/40"></div>
-        
+
         {/* Floating Certificate Icons with Hackathon Theme */}
         <div className="absolute top-10 left-10 w-20 h-20 bg-[#0b234a]/20 rounded-lg rotate-12 animate-float flex items-center justify-center">
           <Trophy className="w-10 h-10 text-white/60" />
@@ -78,11 +78,11 @@ export default function CertificateSection() {
         <div className="absolute bottom-10 right-10 w-12 h-12 bg-[#0b234a]/20 rounded-lg -rotate-12 animate-float flex items-center justify-center">
           <Rocket className="w-6 h-6 text-white/60" />
         </div>
-        
+
         {/* Main Content */}
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12">
-            
+
             {/* Text Content - Updated for Hackathon Focus */}
             <div className="w-full lg:w-1/2 text-center lg:text-left">
               <div className="mb-4">
@@ -91,16 +91,16 @@ export default function CertificateSection() {
                   Hackathon Winners Special
                 </span>
               </div>
-              
+
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
-                Win Hackathons & Earn 
+                Win Hackathons & Earn
                 <span className="bg-linear-to-r from-orange-500 to-[#E22213] bg-clip-text text-transparent"> Exclusive Certificates</span>
               </h1>
-              
+
               <p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-8 max-w-2xl">
                 Compete in exciting hackathons, showcase your skills, and earn prestigious certificates that stand out to employers worldwide.
               </p>
-              
+
               {/* Hackathon Stats */}
               <div className="flex flex-wrap gap-4 mb-8">
                 <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-lg">
@@ -125,15 +125,19 @@ export default function CertificateSection() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <button onClick={() => navigate('/hackathons')} className="px-8 py-4 bg-linear-to-r from-orange-500 to-[#E22213] text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 hover:from-orange-400 hover:to-[#E22213]/90 flex items-center justify-center gap-2">
+                <button
+                  onClick={() => {
+                    toast('Next hackathon details coming soon! Stay tuned!');
+                  }}
+                  className="px-8 py-4 bg-linear-to-r from-orange-500 to-[#E22213] text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 hover:from-orange-400 hover:to-[#E22213]/90 flex items-center justify-center gap-2"
+                >
                   <Rocket className="w-5 h-5" />
                   <span>Join Next Hackathon</span>
                 </button>
-              
               </div>
-              
+
               {/* Trust Indicators - Updated for Hackathons */}
               <div className="mt-12 flex flex-wrap gap-6 justify-center lg:justify-start items-center">
                 <div className="flex items-center gap-3 text-white/80">
@@ -156,7 +160,7 @@ export default function CertificateSection() {
                 </div>
               </div>
             </div>
-            
+
             {/* Certificate Visual - Hackathon Edition */}
             <div className="w-full lg:w-1/2 flex justify-center">
               <div className="relative">
@@ -167,9 +171,9 @@ export default function CertificateSection() {
                     WINNER
                   </div>
                 </div>
-                
+
                 {/* Main Certificate Card */}
-                <div 
+                <div
                   onClick={() => {
                     setSelectedCertType('hackathon');
                     setShowCertificate(true);
@@ -177,7 +181,7 @@ export default function CertificateSection() {
                   className="bg-white rounded-2xl p-8 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500 cursor-pointer hover:scale-105"
                 >
                   <div className="border-4 border-[#0b234a] rounded-xl p-6 text-center">
-                    
+
                     {/* Certificate Header */}
                     <div className="mb-6">
                       <div className="w-16 h-16 bg-linear-to-r from-[#0b234a] to-[#E22213] rounded-full flex items-center justify-center mx-auto mb-4">
@@ -186,13 +190,13 @@ export default function CertificateSection() {
                       <h3 className="text-2xl font-bold text-gray-900 mb-2">Hackathon Winner</h3>
                       <p className="text-gray-600">First Prize - Innovation Challenge</p>
                     </div>
-                    
+
                     {/* Winner Name */}
                     <div className="mb-4">
                       <h4 className="text-xl font-bold text-gray-800">Team Innovators</h4>
                       <p className="text-gray-500 text-sm">Project: AI Healthcare App</p>
                     </div>
-                    
+
                     {/* Skills Badges */}
                     <div className="flex flex-wrap justify-center gap-3 mb-6">
                       <span className="px-3 py-1 bg-[#0b234a]/10 text-[#0b234a] rounded-full text-sm font-medium flex items-center gap-1">
@@ -208,7 +212,7 @@ export default function CertificateSection() {
                         Teamwork
                       </span>
                     </div>
-                    
+
                     {/* Issuer */}
                     <div className="border-t pt-4">
                       <p className="text-gray-500 text-sm mb-2">Awarded by</p>
@@ -217,7 +221,7 @@ export default function CertificateSection() {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Floating Elements */}
                 <div className="absolute -top-4 -right-4 w-8 h-8 bg-orange-500 rounded-full shadow-lg animate-bounce flex items-center justify-center">
                   <Zap className="w-4 h-4 text-white" />
@@ -229,7 +233,7 @@ export default function CertificateSection() {
             </div>
           </div>
         </div>
-        
+
         {/* Upcoming Hackathon Section */}
         <div className="mt-16 relative z-10">
           <div className="max-w-4xl mx-auto">
