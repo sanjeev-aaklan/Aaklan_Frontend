@@ -1,5 +1,8 @@
 // components/Career/ApplicationForm.js
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+
+import { useNavigate  } from 'react-router-dom';
 import { 
   FaTimes, 
   FaCheck, 
@@ -19,7 +22,7 @@ import {
 const ApplicationForm = ({ selectedJob, formData, setFormData, onClose }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
-  
+  const navigate = useNavigate();
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
     
@@ -130,7 +133,8 @@ const ApplicationForm = ({ selectedJob, formData, setFormData, onClose }) => {
     const result = await response.json();
     
     if (response.ok && result.success) {
-      alert('Application submitted successfully!');
+      toast.success('Application submitted successfully!');
+      navigate('/')
       // Reset form
       setFormData({
         name: '',

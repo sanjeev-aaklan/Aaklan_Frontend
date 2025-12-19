@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {
+  Globe,
+  BookOpen,
+  GraduationCap,
+  RefreshCw
+} from "lucide-react";
 
 export default function StructuredCurriculum() {
   const navigate = useNavigate()
@@ -146,62 +152,72 @@ export default function StructuredCurriculum() {
         </div>
 
         {/* Standards */}
-        <div className="bg-white rounded-2xl p-6 my-5 border-l-4 border-[#E22213] shadow-lg hover:shadow-xl transition-shadow duration-300 group hover:bg-[#E22213]/5">
-          <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center group-hover:text-[#E22213] transition-colors">
-            <span className="w-10 h-10 bg-[#E22213] rounded-full flex items-center justify-center text-white mr-3 group-hover:scale-110 transition-transform">
-              🌐
-            </span>
-            Global Standards Alignment
-          </h3>
-          <div className="flex flex-wrap gap-2 mt-3">
-            {['CBSE', 'IB', 'IGCSE', 'ICSE', 'CSTA', 'CIE'].map((standard, index) => {
-              const colorClasses = [
-                'bg-[#0b234a]/10 text-[#0b234a] border-[#0b234a]/20',
-                'bg-orange-500/10 text-orange-700 border-orange-500/20',
-                'bg-[#E22213]/10 text-[#E22213] border-[#E22213]/20',
-                'bg-[#0b234a]/10 text-[#0b234a] border-[#0b234a]/20',
-                'bg-orange-500/10 text-orange-700 border-orange-500/20',
-                'bg-[#E22213]/10 text-[#E22213] border-[#E22213]/20'
-              ];
+<div className="bg-white rounded-2xl p-6 my-5 border-l-4 border-[#E22213] shadow-lg hover:shadow-xl transition-shadow duration-300 group hover:bg-[#E22213]/5">
+  <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center group-hover:text-[#E22213] transition-colors">
+    <span className="w-10 h-10 bg-[#E22213] rounded-full flex items-center justify-center text-white mr-3 group-hover:scale-110 transition-transform">
+      <Globe size={20} />
+    </span>
+    Global Standards Alignment
+  </h3>
 
-              return (
-                <span
-                  key={standard}
-                  className={`px-3 py-1 rounded-full text-sm font-medium border hover:scale-105 transition-transform duration-200 ${colorClasses[index]}`}
-                >
-                  {standard}
-                </span>
-              );
-            })}
-          </div>
-        </div>
+  <div className="flex flex-wrap gap-2 mt-3">
+    {['CBSE', 'IB', 'IGCSE', 'ICSE', 'CSTA', 'CIE'].map((standard, index) => {
+      const colorClasses = [
+        'bg-[#0b234a]/10 text-[#0b234a] border-[#0b234a]/20',
+        'bg-orange-500/10 text-orange-700 border-orange-500/20',
+        'bg-[#E22213]/10 text-[#E22213] border-[#E22213]/20',
+        'bg-[#0b234a]/10 text-[#0b234a] border-[#0b234a]/20',
+        'bg-orange-500/10 text-orange-700 border-orange-500/20',
+        'bg-[#E22213]/10 text-[#E22213] border-[#E22213]/20'
+      ];
 
-        {/* Additional Features */}
-        <div className="mt-16 mb-5 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="text-center p-6 bg-gradient-to-br from-[#0b234a]/5 to-transparent rounded-2xl border border-[#0b234a]/10 hover:shadow-lg transition-shadow">
-            <div className="w-12 h-12 bg-[#0b234a] rounded-full flex items-center justify-center text-white mx-auto mb-4">
-              <span className="text-lg">📚</span>
-            </div>
-            <h4 className="font-bold text-gray-900 mb-2">Comprehensive Materials</h4>
-            <p className="text-gray-600 text-sm">Detailed lesson plans and resources for every grade level</p>
-          </div>
+      return (
+        <span
+          key={standard}
+          className={`px-3 py-1 rounded-full text-sm font-medium border hover:scale-105 transition-transform duration-200 ${colorClasses[index]}`}
+        >
+          {standard}
+        </span>
+      );
+    })}
+  </div>
+</div>
 
-          <div className="text-center p-6 bg-gradient-to-br from-orange-500/5 to-transparent rounded-2xl border border-orange-500/10 hover:shadow-lg transition-shadow">
-            <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white mx-auto mb-4">
-              <span className="text-lg">👨‍🏫</span>
-            </div>
-            <h4 className="font-bold text-gray-900 mb-2">Expert Designed</h4>
-            <p className="text-gray-600 text-sm">Created by industry experts and educators</p>
-          </div>
+{/* Additional Features */}
+<div className="mt-16 mb-5 grid grid-cols-1 md:grid-cols-3 gap-6">
 
-          <div className="text-center p-6 bg-gradient-to-br from-[#E22213]/5 to-transparent rounded-2xl border border-[#E22213]/10 hover:shadow-lg transition-shadow">
-            <div className="w-12 h-12 bg-[#E22213] rounded-full flex items-center justify-center text-white mx-auto mb-4">
-              <span className="text-lg">🔄</span>
-            </div>
-            <h4 className="font-bold text-gray-900 mb-2">Regular Updates</h4>
-            <p className="text-gray-600 text-sm">Curriculum updated with latest AI advancements</p>
-          </div>
-        </div>
+  <div className="text-center p-6 bg-gradient-to-br from-[#0b234a]/5 to-transparent rounded-2xl border border-[#0b234a]/10 hover:shadow-lg transition-shadow">
+    <div className="w-12 h-12 bg-[#0b234a] rounded-full flex items-center justify-center text-white mx-auto mb-4">
+      <BookOpen size={22} />
+    </div>
+    <h4 className="font-bold text-gray-900 mb-2">Comprehensive Materials</h4>
+    <p className="text-gray-600 text-sm">
+      Detailed lesson plans and resources for every grade level
+    </p>
+  </div>
+
+  <div className="text-center p-6 bg-gradient-to-br from-orange-500/5 to-transparent rounded-2xl border border-orange-500/10 hover:shadow-lg transition-shadow">
+    <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+      <GraduationCap size={22} />
+    </div>
+    <h4 className="font-bold text-gray-900 mb-2">Expert Designed</h4>
+    <p className="text-gray-600 text-sm">
+      Created by industry experts and educators
+    </p>
+  </div>
+
+  <div className="text-center p-6 bg-gradient-to-br from-[#E22213]/5 to-transparent rounded-2xl border border-[#E22213]/10 hover:shadow-lg transition-shadow">
+    <div className="w-12 h-12 bg-[#E22213] rounded-full flex items-center justify-center text-white mx-auto mb-4">
+      <RefreshCw size={22} />
+    </div>
+    <h4 className="font-bold text-gray-900 mb-2">Regular Updates</h4>
+    <p className="text-gray-600 text-sm">
+      Curriculum updated with latest AI advancements
+    </p>
+  </div>
+
+</div>
+
       </div>
     </section>
   );

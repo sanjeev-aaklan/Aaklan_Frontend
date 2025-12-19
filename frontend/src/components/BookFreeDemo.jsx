@@ -6,20 +6,24 @@ import 'react-toastify/dist/ReactToastify.css';
 const BookDemoForm = () => {
 
   const normalizePhoneNumber = (phone) => {
-  let cleaned = phone.replace(/\s|-/g, '');
+    if (!phone) return phone;
 
-  // If user entered 10-digit Indian number
-  if (/^[6-9]\d{9}$/.test(cleaned)) {
-    return `+91${cleaned}`;
-  }
+    // Remove all non-digit characters
+    let cleaned = phone.replace(/\D/g, '');
 
-  // If already in +91 format
-  if (/^\+91[6-9]\d{9}$/.test(cleaned)) {
+    // If it's a 10-digit Indian number starting with 6-9
+    if (/^[6-9]\d{9}$/.test(cleaned)) {
+      return `+91${cleaned}`;
+    }
+
+    // If already in +91 format
+    if (/^\+91[6-9]\d{9}$/.test(cleaned)) {
+      return cleaned;
+    }
+
+    // For other formats, return as is (with + if present)
     return cleaned;
-  }
-
-  return cleaned; // fallback
-};
+  };
 
   // State for form fields
   const [formData, setFormData] = useState({
@@ -42,7 +46,7 @@ const BookDemoForm = () => {
 
   // API base URL - using axios base instance
   const API_BASE = `${import.meta.env.VITE_BACKEND_URL}/api`;
-  
+
   // Create axios instance with default config
   const api = axios.create({
     baseURL: API_BASE,
@@ -106,13 +110,13 @@ const BookDemoForm = () => {
     }
 
     setLoading(true);
-    
+
     try {
       const response = await api.post('/otp/send', {
-  email: formData.email,
-  phoneNumber: normalizePhoneNumber(formData.phoneNumber),
-  name: formData.name
-});
+        email: formData.email,
+        phoneNumber: normalizePhoneNumber(formData.phoneNumber),
+        name: formData.name
+      });
 
 
       const { data } = response;
@@ -146,10 +150,10 @@ const BookDemoForm = () => {
     setLoading(true);
     try {
       const response = await api.post('/otp/verify', {
-  email: formData.email,
-  otp: otp,
-  phoneNumber: normalizePhoneNumber(formData.phoneNumber)
-});
+        email: formData.email,
+        otp: otp,
+        phoneNumber: normalizePhoneNumber(formData.phoneNumber)
+      });
 
 
       const { data } = response;
@@ -176,7 +180,7 @@ const BookDemoForm = () => {
   // Validate form fields
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!formData.name?.trim()) newErrors.name = 'Name is required';
     if (!formData.email?.trim()) newErrors.email = 'Email is required';
     if (!formData.phoneNumber?.trim()) newErrors.phoneNumber = 'Phone number is required';
@@ -196,7 +200,7 @@ const BookDemoForm = () => {
   // Handle form submission using Axios
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
@@ -213,14 +217,19 @@ const BookDemoForm = () => {
     }
 
     setLoading(true);
-    
+
     try {
-      const response = await api.post('/book-demo', formData);
+      const submissionData = {
+      ...formData,
+      phoneNumber: normalizePhoneNumber(formData.phoneNumber) 
+    };
+    
+    const response = await api.post('/book-demo', submissionData);
       const { data } = response;
 
       if (data.success) {
         toast.success('Demo request submitted successfully! We will contact you within 24 hours.');
-        
+
         // Reset form
         setFormData({
           name: '',
@@ -239,7 +248,7 @@ const BookDemoForm = () => {
       } else {
         const errorMsg = data.message || 'Submission failed';
         toast.error(errorMsg);
-        
+
         if (data.errors) {
           const serverErrors = {};
           data.errors.forEach(error => {
@@ -253,7 +262,7 @@ const BookDemoForm = () => {
       console.error('Error submitting form:', error);
       const errorMsg = error.response?.data?.message || error.message || 'Failed to submit form. Please try again.';
       toast.error(errorMsg);
-      
+
       if (error.response?.data?.errors) {
         const serverErrors = {};
         error.response.data.errors.forEach(error => {
@@ -281,12 +290,12 @@ const BookDemoForm = () => {
       <div className="absolute inset-0 overflow-hidden">
         {/* Main gradient mesh */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#E22213] via-[#0b234a] to-orange-500"></div>
-        
+
         {/* Animated orbs - glass morphism effect */}
         <div className="absolute top-1/4 -left-32 w-96 h-96 bg-gradient-to-r from-[#E22213]/20 via-[#0b234a]/20 to-orange-500/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-violet-500/10 to-fuchsia-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
-        
+
         {/* Floating particles */}
         <div className="absolute inset-0">
           {[...Array(20)].map((_, i) => (
@@ -302,9 +311,9 @@ const BookDemoForm = () => {
             />
           ))}
         </div>
-        
+
         {/* Grid pattern overlay */}
-        <div className="absolute inset-0 opacity-10" 
+        <div className="absolute inset-0 opacity-10"
           style={{
             backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px),
                              linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
@@ -345,9 +354,8 @@ const BookDemoForm = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className={`relative w-full px-4 py-2 bg-gray-900/50 border rounded-lg focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all duration-200 outline-none text-white placeholder-gray-500 text-sm ${
-                      errors.name ? 'border-red-500/50' : 'border-white/10'
-                    }`}
+                    className={`relative w-full px-4 py-2 bg-gray-900/50 border rounded-lg focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all duration-200 outline-none text-white placeholder-gray-500 text-sm ${errors.name ? 'border-red-500/50' : 'border-white/10'
+                      }`}
                     placeholder="John Doe"
                   />
                 </div>
@@ -377,9 +385,8 @@ const BookDemoForm = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className={`relative w-full px-4 py-2 bg-gray-900/50 border rounded-lg focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all duration-200 outline-none text-white placeholder-gray-500 text-sm ${
-                      errors.email ? 'border-red-500/50' : 'border-white/10'
-                    }`}
+                    className={`relative w-full px-4 py-2 bg-gray-900/50 border rounded-lg focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all duration-200 outline-none text-white placeholder-gray-500 text-sm ${errors.email ? 'border-red-500/50' : 'border-white/10'
+                      }`}
                     placeholder="john@example.com"
                   />
                 </div>
@@ -418,27 +425,25 @@ const BookDemoForm = () => {
                       value={formData.phoneNumber}
                       onChange={handleChange}
                       required
-                      className={`relative w-full px-4 py-2 bg-gray-900/50 border rounded-lg focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all duration-200 outline-none text-white placeholder-gray-500 text-sm ${
-                        errors.phoneNumber ? 'border-red-500/50' : 'border-white/10'
-                      }`}
-                      placeholder="+1 (555) 123-4567"
+                      className={`relative w-full px-4 py-2 bg-gray-900/50 border rounded-lg focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all duration-200 outline-none text-white placeholder-gray-500 text-sm ${errors.phoneNumber ? 'border-red-500/50' : 'border-white/10'
+                        }`}
+                      placeholder="Enter only 10 digit of phone number"
                     />
                   </div>
                   <button
                     type="button"
                     onClick={handleSendOtp}
                     disabled={!formData.phoneNumber || !formData.email || !formData.name || isOtpSent || loading}
-                    className={`relative group px-5 py-3 rounded-lg font-medium transition-all duration-300 text-sm ${
-                      !formData.phoneNumber || !formData.email || !formData.name || isOtpSent || loading
-                        ? 'bg-gray-800/50 text-gray-500 cursor-not-allowed border border-gray-700/50'
-                        : 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:shadow-lg hover:shadow-cyan-500/25 transform hover:-translate-y-0.5'
-                    }`}
+                    className={`relative group px-5 py-3 rounded-lg font-medium transition-all duration-300 text-sm ${!formData.phoneNumber || !formData.email || !formData.name || isOtpSent || loading
+                      ? 'bg-gray-800/50 text-gray-500 cursor-not-allowed border border-gray-700/50'
+                      : 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:shadow-lg hover:shadow-cyan-500/25 transform hover:-translate-y-0.5'
+                      }`}
                   >
                     {loading ? (
                       <span className="flex items-center justify-center gap-1">
                         <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                         </svg>
                         Sending...
                       </span>
@@ -490,26 +495,24 @@ const BookDemoForm = () => {
                           onChange={handleOtpChange}
                           maxLength="6"
                           placeholder="• • • • • •"
-                          className={`relative w-full px-4 py-2 bg-gray-900/50 border rounded-lg focus:ring-2 focus:ring-green-500/50 focus:border-transparent transition-all duration-200 outline-none text-center text-xl font-mono tracking-widest text-white ${
-                            errors.otp ? 'border-red-500/50' : 'border-white/10'
-                          }`}
+                          className={`relative w-full px-4 py-2 bg-gray-900/50 border rounded-lg focus:ring-2 focus:ring-green-500/50 focus:border-transparent transition-all duration-200 outline-none text-center text-xl font-mono tracking-widest text-white ${errors.otp ? 'border-red-500/50' : 'border-white/10'
+                            }`}
                         />
                       </div>
                       <button
                         type="button"
                         onClick={handleVerifyOtp}
                         disabled={!otp || otp.length !== 6 || loading}
-                        className={`relative group px-5 py-2 rounded-lg font-medium transition-all duration-300 text-sm ${
-                          !otp || otp.length !== 6 || loading
-                            ? 'bg-gray-800/50 text-gray-500 cursor-not-allowed border border-gray-700/50'
-                            : 'bg-gradient-to-r from-green-500 to-emerald-500 text-white hover:shadow-lg hover:shadow-green-500/25 transform hover:-translate-y-0.5'
-                        }`}
+                        className={`relative group px-5 py-2 rounded-lg font-medium transition-all duration-300 text-sm ${!otp || otp.length !== 6 || loading
+                          ? 'bg-gray-800/50 text-gray-500 cursor-not-allowed border border-gray-700/50'
+                          : 'bg-gradient-to-r from-green-500 to-emerald-500 text-white hover:shadow-lg hover:shadow-green-500/25 transform hover:-translate-y-0.5'
+                          }`}
                       >
                         {loading ? (
                           <span className="flex items-center justify-center gap-1">
                             <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
-                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
-                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                             </svg>
                             Verifying...
                           </span>
@@ -541,9 +544,8 @@ const BookDemoForm = () => {
                     value={formData.schoolName}
                     onChange={handleChange}
                     required
-                    className={`relative w-full px-4 py-2 bg-gray-900/50 border rounded-lg focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all duration-200 outline-none text-white placeholder-gray-500 text-sm ${
-                      errors.schoolName ? 'border-red-500/50' : 'border-white/10'
-                    }`}
+                    className={`relative w-full px-4 py-2 bg-gray-900/50 border rounded-lg focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all duration-200 outline-none text-white placeholder-gray-500 text-sm ${errors.schoolName ? 'border-red-500/50' : 'border-white/10'
+                      }`}
                     placeholder="Springfield High School"
                   />
                 </div>
@@ -570,9 +572,8 @@ const BookDemoForm = () => {
                     value={formData.city}
                     onChange={handleChange}
                     required
-                    className={`relative w-full px-4 py-2 bg-gray-900/50 border rounded-lg focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all duration-200 outline-none text-white placeholder-gray-500 text-sm ${
-                      errors.city ? 'border-red-500/50' : 'border-white/10'
-                    }`}
+                    className={`relative w-full px-4 py-2 bg-gray-900/50 border rounded-lg focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all duration-200 outline-none text-white placeholder-gray-500 text-sm ${errors.city ? 'border-red-500/50' : 'border-white/10'
+                      }`}
                     placeholder="New York"
                   />
                 </div>
@@ -599,9 +600,8 @@ const BookDemoForm = () => {
                     value={formData.schoolAddress}
                     onChange={handleChange}
                     required
-                    className={`relative w-full px-4 py-2 bg-gray-900/50 border rounded-lg focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all duration-200 outline-none text-white placeholder-gray-500 text-sm ${
-                      errors.schoolAddress ? 'border-red-500/50' : 'border-white/10'
-                    }`}
+                    className={`relative w-full px-4 py-2 bg-gray-900/50 border rounded-lg focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all duration-200 outline-none text-white placeholder-gray-500 text-sm ${errors.schoolAddress ? 'border-red-500/50' : 'border-white/10'
+                      }`}
                     placeholder="123 Education Street, Suite 100"
                   />
                 </div>
@@ -627,9 +627,8 @@ const BookDemoForm = () => {
                     value={formData.scheduleCallFor}
                     onChange={handleChange}
                     required
-                    className={`relative w-full px-4 py-2 bg-gray-900/50 border rounded-lg focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all duration-200 outline-none text-white appearance-none text-sm ${
-                      errors.scheduleCallFor ? 'border-red-500/50' : 'border-white/10'
-                    }`}
+                    className={`relative w-full px-4 py-2 bg-gray-900/50 border rounded-lg focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all duration-200 outline-none text-white appearance-none text-sm ${errors.scheduleCallFor ? 'border-red-500/50' : 'border-white/10'
+                      }`}
                   >
                     <option value="" className="bg-gray-900">Select Option</option>
                     <option value="AI and Robotics Lab" className="bg-gray-900">AI and Robotics Lab</option>
@@ -679,21 +678,19 @@ const BookDemoForm = () => {
               <button
                 type="submit"
                 disabled={!isOtpVerified || loading}
-                className={`relative group w-full py-4 px-6 rounded-xl font-semibold transition-all duration-500 overflow-hidden text-sm ${
-                  !isOtpVerified || loading
-                    ? 'bg-gray-800/50 text-gray-500 cursor-not-allowed border border-gray-700/50'
-                    : 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:shadow-2xl hover:shadow-purple-500/30 transform hover:-translate-y-0.5'
-                }`}
+                className={`relative group w-full py-4 px-6 rounded-xl font-semibold transition-all duration-500 overflow-hidden text-sm ${!isOtpVerified || loading
+                  ? 'bg-gray-800/50 text-gray-500 cursor-not-allowed border border-gray-700/50'
+                  : 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:shadow-2xl hover:shadow-purple-500/30 transform hover:-translate-y-0.5'
+                  }`}
               >
-                <div className={`absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
-                  !isOtpVerified || loading ? 'hidden' : ''
-                }`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${!isOtpVerified || loading ? 'hidden' : ''
+                  }`}></div>
                 <span className="relative flex items-center justify-center gap-2">
                   {loading ? (
                     <>
                       <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                       </svg>
                       Processing Your Request...
                     </>

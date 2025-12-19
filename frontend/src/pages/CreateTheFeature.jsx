@@ -204,7 +204,7 @@ const CreateTheFeature = () => {
                     onClick={scrollToBookDemo}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="group flex-1 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-3 rounded-xl font-semibold text-lg flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transition-all"
+                    className="group bg-gradient-to-r from-orange-500 to-orange-800 text-white px-4 py-3 rounded-xl font-semibold text-lg flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transition-all"
                   >
                     <FaPlay className="group-hover:scale-110 transition-transform" />
                     <span>Book Demo</span>
@@ -214,7 +214,7 @@ const CreateTheFeature = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="group flex-1 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-4 py-3 rounded-xl font-semibold text-lg flex items-center justify-center gap-3 hover:bg-white/20 transition-all"
+                    className="group bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-4 py-3 rounded-xl font-semibold text-lg flex items-center justify-center gap-3 hover:bg-white/20 transition-all"
                   >
                     <FaDownload className="group-hover:scale-110 transition-transform" />
                     <span>Download Curriculum</span>

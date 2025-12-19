@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { LittleTechExplores } from '../assets/Books/books';
 import { motion } from 'framer-motion';
+import BookFreeDemo from '../components/BookFreeDemo.jsx';
 import { 
   FaDownload, 
   FaPlay, 
@@ -15,7 +16,15 @@ import {
 
 const LittleTechExplorers = () => {
   const [hoveredBook, setHoveredBook] = useState(null);
-
+  const bookDemoRef = useRef(null);
+  
+    // Function to scroll to BookFreeDemo section
+    const scrollToBookDemo = () => {
+      bookDemoRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    };
   
   const books = [
     {
@@ -99,6 +108,7 @@ const LittleTechExplorers = () => {
   };
 
   return (
+    <>
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 p-4 md:p-8">
       {/* Hero Section */}
       <motion.div 
@@ -159,12 +169,13 @@ const LittleTechExplorers = () => {
                 young learners into digital creators from Grade 1 to Grade 5.
               </p>
 
-              {/* Action Buttons */}
+             {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <motion.button
+                  onClick={scrollToBookDemo}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="group flex-1 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-3 rounded-xl font-semibold text-lg flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transition-all"
+                  className="group bg-gradient-to-r from-orange-500 to-orange-800 text-white px-4 py-3 rounded-xl font-semibold text-lg flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transition-all"
                 >
                   <FaPlay className="group-hover:scale-110 transition-transform" />
                   <span>Book Demo</span>
@@ -174,7 +185,7 @@ const LittleTechExplorers = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="group flex-1 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-4 py-3 rounded-xl font-semibold text-lg flex items-center justify-center gap-3 hover:bg-white/20 transition-all"
+                  className="group bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-4 py-3 rounded-xl font-semibold text-lg flex items-center justify-center gap-3 hover:bg-white/20 transition-all"
                 >
                   <FaDownload className="group-hover:scale-110 transition-transform" />
                   <span>Download Curriculum</span>
@@ -407,6 +418,12 @@ const LittleTechExplorers = () => {
 
       </div>
     </div>
+
+    <div ref={bookDemoRef}>
+        <BookFreeDemo />
+      </div>
+
+      </>
   );
 };
 

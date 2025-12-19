@@ -100,7 +100,7 @@ const EarlyLearningProgram = () => {
       >
         <div className="relative overflow-hidden rounded-3xl shadow-2xl">
           {/* Background Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0B234A] via-purple-800 to-orange-400 opacity-90" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0B234A] via-[#E22213] to-[#0B234A] opacity-90" />
           
           {/* Floating Elements */}
           <div className="absolute inset-0">
@@ -141,7 +141,7 @@ const EarlyLearningProgram = () => {
               {/* Main Heading */}
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
                 <span className="text-white">Early Learning </span>
-                <span className="text-yellow-300">Program</span>
+                <span className="text-orange-500">Program</span>
               </h1>
 
               {/* Description */}
@@ -156,7 +156,7 @@ const EarlyLearningProgram = () => {
                   onClick={scrollToBookDemo}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="group flex-1 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-4 py-3 rounded-xl font-semibold text-lg flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transition-all"
+                  className="group bg-gradient-to-r from-orange-500 to-orange-800 text-white px-4 py-3 rounded-xl font-semibold text-lg flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transition-all"
                 >
                   <FaPlay className="group-hover:scale-110 transition-transform" />
                   <span>Book Demo</span>
@@ -166,7 +166,7 @@ const EarlyLearningProgram = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="group flex-1 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-4 py-3 rounded-xl font-semibold text-lg flex items-center justify-center gap-3 hover:bg-white/20 transition-all"
+                  className="group bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-4 py-3 rounded-xl font-semibold text-lg flex items-center justify-center gap-3 hover:bg-white/20 transition-all"
                 >
                   <FaDownload className="group-hover:scale-110 transition-transform" />
                   <span>Download Curriculum</span>
