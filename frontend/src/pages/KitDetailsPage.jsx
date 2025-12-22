@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { FaWhatsapp, FaPlay, FaCheck, FaArrowLeft, FaCartPlus, FaImages, FaVideo, FaBoxOpen, FaCubes } from 'react-icons/fa';
 import { products } from '../components/AaklanKit';
+import { kit } from '../assets/Our_Kits/ourKits';
 
 const KitDetailsPage = () => {
     const { id } = useParams();
@@ -11,155 +12,134 @@ const KitDetailsPage = () => {
     const [product, setProduct] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [activeMedia, setActiveMedia] = useState('video');
-
-    const kitComponents = {
-        'starter-robotics-kit': [
-            {
-                id: 1,
-                name: "Arduino Uno R3",
-                description: "Main microcontroller with USB cable",
-                image: "https://cdn.shopify.com/s/files/1/0174/1800/9852/products/3_32f7a77f-9c51-4cee-8625-4c0b22769be9_600x.jpg",
-                quantity: 1
-            },
-            {
-                id: 2,
-                name: "Ultrasonic Sensor HC-SR04",
-                description: "Distance measurement sensor",
-                image: "https://cdn.shopify.com/s/files/1/0174/1800/9852/products/7_ce6c92a8-a3d9-4a59-8dcb-157e27a1734c_600x.jpg",
-                quantity: 1
-            },
-            {
-                id: 3,
-                name: "IR Sensor Module",
-                description: "Line following and obstacle detection",
-                image: "https://cdn.shopify.com/s/files/1/0174/1800/9852/products/8_600x.jpg",
-                quantity: 2
-            },
-            {
-                id: 4,
-                name: "Servo Motor SG90",
-                description: "180-degree rotation servo",
-                image: "https://cdn.shopify.com/s/files/1/0174/1800/9852/products/9_0abdcfd5-4259-4daf-81b2-3f43424a16c5_600x.jpg",
-                quantity: 2
-            },
-            {
-                id: 5,
-                name: "DC Motors with Wheels",
-                description: "300 RPM motors with plastic wheels",
-                image: "https://cdn.shopify.com/s/files/1/0174/1800/9852/products/2_bb05c77f-0d1f-47a7-b5d8-56faa7ecc129_600x.jpg",
-                quantity: 2
-            },
-            {
-                id: 6,
-                name: "Motor Driver L298N",
-                description: "Dual H-bridge motor driver",
-                image: "https://cdn.shopify.com/s/files/1/0174/1800/9852/products/5_0b150bc9-c1f1-42a1-823d-784125ab9883_600x.jpg",
-                quantity: 1
-            },
-            {
-                id: 7,
-                name: "Breadboard & Jumper Wires",
-                description: "400 points breadboard and wire pack",
-                image: "https://cdn.shopify.com/s/files/1/0174/1800/9852/products/6_600x.jpg",
-                quantity: 1
-            },
-            {
-                id: 8,
-                name: "9V Battery with Connector",
-                description: "Rechargeable battery pack",
-                image: "https://cdn.shopify.com/s/files/1/0174/1800/9852/products/4_89f9ba8b-08dc-4274-b34d-26f90f63e677_600x.jpg",
-                quantity: 1
-            }
-        ],
-        'ai-computer-vision-kit': [
-            {
-                id: 1,
-                name: "Raspberry Pi 4B",
-                description: "4GB RAM with cooling fan",
-                image: "https://cdn.shopify.com/s/files/1/0174/1800/9852/products/10_600x.jpg",
-                quantity: 1
-            },
-            {
-                id: 2,
-                name: "Raspberry Pi Camera V2",
-                description: "8MP camera module",
-                image: "https://cdn.shopify.com/s/files/1/0174/1800/9852/products/11_600x.jpg",
-                quantity: 1
-            },
-            {
-                id: 3,
-                name: "Google Coral USB Accelerator",
-                description: "Edge TPU for AI inference",
-                image: "https://cdn.shopify.com/s/files/1/0174/1800/9852/products/12_600x.jpg",
-                quantity: 1
-            },
-            {
-                id: 4,
-                name: "32GB MicroSD Card",
-                description: "Class 10 with OS pre-installed",
-                image: "https://cdn.shopify.com/s/files/1/0174/1800/9852/products/13_600x.jpg",
-                quantity: 1
-            },
-            {
-                id: 5,
-                name: "Power Supply 5V/3A",
-                description: "Official Raspberry Pi supply",
-                image: "https://cdn.shopify.com/s/files/1/0174/1800/9852/products/14_600x.jpg",
-                quantity: 1
-            },
-            {
-                id: 6,
-                name: "USB Keyboard & Mouse",
-                description: "Compact wireless combo",
-                image: "https://cdn.shopify.com/s/files/1/0174/1800/9852/products/15_600x.jpg",
-                quantity: 1
-            }
-        ],
-        'iot-smart-home-kit': [
-            {
-                id: 1,
-                name: "ESP32 Development Board",
-                description: "Wi-Fi & Bluetooth enabled",
-                image: "https://cdn.shopify.com/s/files/1/0174/1800/9852/products/16_600x.jpg",
-                quantity: 1
-            },
-            {
-                id: 2,
-                name: "DHT11 Sensor",
-                description: "Temperature & humidity",
-                image: "https://cdn.shopify.com/s/files/1/0174/1800/9852/products/17_600x.jpg",
-                quantity: 1
-            },
-            {
-                id: 3,
-                name: "PIR Motion Sensor",
-                description: "Human detection",
-                image: "https://cdn.shopify.com/s/files/1/0174/1800/9852/products/18_600x.jpg",
-                quantity: 1
-            },
-            {
-                id: 4,
-                name: "Relay Module 4-channel",
-                description: "Home appliances control",
-                image: "https://cdn.shopify.com/s/files/1/0174/1800/9852/products/19_600x.jpg",
-                quantity: 1
-            },
-            {
-                id: 5,
-                name: "LCD Display 16x2",
-                description: "I2C interface",
-                image: "https://cdn.shopify.com/s/files/1/0174/1800/9852/products/20_600x.jpg",
-                quantity: 1
-            },
-            {
-                id: 6,
-                name: "Buzzer & LED Pack",
-                description: "Audio and visual indicators",
-                image: "https://cdn.shopify.com/s/files/1/0174/1800/9852/products/21_600x.jpg",
-                quantity: 1
-            }
-        ]
-    };
+    console.log(id);
+    
+    // kitComponents को update करें
+const kitComponents = {
+    'starter-robotics-kit': [
+        {
+            id: 1,
+            name: "Ultrasonic Sensor",
+            description: "Distance measurement sensor for obstacle detection",
+            image: kit.ultrasonic_sensor,
+            quantity: 1
+        },
+        {
+            id: 2,
+            name: "OLED Display",
+            description: "0.96 inch display for visual output",
+            image: kit.oled_display,
+            quantity: 1
+        },
+        {
+            id: 3,
+            name: "Jumper Wires",
+            description: "Male to male wires for connections",
+            image: kit.jumper_wire,
+            quantity: 20
+        },
+        {
+            id: 4,
+            name: "Type-C USB Cable",
+            description: "For power and data transfer",
+            image: kit.c_type_usb_cable,
+            quantity: 1
+        },
+        {
+            id: 5,
+            name: "Screwdriver",
+            description: "Precision screwdriver set",
+            image: kit.screw_driver,
+            quantity: 1
+        },
+        {
+            id: 6,
+            name: "Li-ion Battery",
+            description: "Rechargeable battery for power supply",
+            image: kit.li_ion_battery,
+            quantity: 1
+        },
+        {
+            id: 7,
+            name: "Screws",
+            description: "Assorted screws for assembly",
+            image: kit.screws,
+            quantity: 50
+        },
+        {
+            id: 8,
+            name: "DC Motor",
+            description: "High torque motor for robotics",
+            image: kit.dc_motor,
+            quantity: 2
+        },
+        {
+            id: 9,
+            name: "Motor Clip",
+            description: "Mounting clip for DC motors",
+            image: kit.moter_clip,
+            quantity: 2
+        },
+        {
+            id: 10,
+            name: "Wheels",
+            description: "Plastic wheels for robotics projects",
+            image: kit.wheels,
+            quantity: 2
+        },
+        {
+            id: 11,
+            name: "Leela Board",
+            description: "Main microcontroller board",
+            image: kit.leelaboard,
+            quantity: 1
+        }
+    ],
+    'ai-computer-vision-kit': [
+        {
+            id: 1,
+            name: "Ultrasonic Sensor",
+            description: "Main microcontroller board with AI capabilities",
+            image: kit.ultrasonic_sensor,
+            quantity: 1
+        },
+        {
+            id: 2,
+            name: "OLED Display",
+            description: "0.96 inch display for visual output",
+            image: kit.ir_sensor,
+            quantity: 1
+        },
+        {
+            id: 3,
+            name: "Ultrasonic Sensor",
+            description: "Distance measurement sensor",
+            image: kit.pir_sensor,
+            quantity: 1
+        },
+        {
+            id: 4,
+            name: "Type-C USB Cable",
+            description: "For power and data transfer",
+            image: kit.c_type_usb_cable,
+            quantity: 2
+        },
+        {
+            id: 5,
+            name: "Jumper Wires",
+            description: "Male to male wires for connections",
+            image: kit.jumper_wire,
+            quantity: 30
+        },
+        {
+            id: 6,
+            name: "Li-ion Battery",
+            description: "Rechargeable battery pack",
+            image: kit.li_ion_battery,
+            quantity: 2
+        }
+    ],
+};
 
     useEffect(() => {
         const foundProduct = products.find(p => p.slug === id);
@@ -218,7 +198,7 @@ const KitDetailsPage = () => {
         );
     }
 
-    // Current kit के components get करें
+    // Current kit 
     const currentKitComponents = kitComponents[id] || kitComponents['starter-robotics-kit'];
     const otherProducts = products.filter(p => p.id !== product.id);
 
@@ -412,7 +392,7 @@ const KitDetailsPage = () => {
                     </div>
 
                     {/* WHAT'S INCLUDED SECTION */}
-                    <div className="border-t border-gray-200 p-6 lg:p-8 bg-gradient-to-b from-white to-gray-50">
+                   {id !== 'leela-arduino-board' && <div className="border-t border-gray-200 p-6 lg:p-8 bg-gradient-to-b from-white to-gray-50">
                         <div className="flex items-center gap-3 mb-6">
                             <div className="p-3 bg-gradient-to-r from-[#0b234a] to-[#E22213] rounded-lg">
                                 <FaBoxOpen className="text-2xl text-white" />
@@ -446,7 +426,7 @@ const KitDetailsPage = () => {
                                 </div>
                             ))}
                         </div>
-                    </div>
+                    </div>}
 
                     {/* RELATED PRODUCTS */}
                     <div className="border-t border-gray-200 p-6 lg:p-8">

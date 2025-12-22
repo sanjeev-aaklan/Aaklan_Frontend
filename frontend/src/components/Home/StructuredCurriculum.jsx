@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Globe,
@@ -6,9 +6,56 @@ import {
   GraduationCap,
   RefreshCw
 } from "lucide-react";
+import { st } from '../../assets/Structured Curriculum/st';
 
 export default function StructuredCurriculum() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [activeSection, setActiveSection] = useState('earlyLearning');
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Array of images for different sections
+  const sectionImages = [
+    st.elp,
+    st.lte,
+    st.cac,
+    st.ctf
+  ];
+
+  // Auto-rotation effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        (prevIndex + 1) % sectionImages.length
+      );
+      
+      // Update active section based on current image index
+      switch(currentImageIndex) {
+        case 0:
+          setActiveSection('earlyLearning');
+          break;
+        case 1:
+          setActiveSection('techExplorers');
+          break;
+        case 2:
+          setActiveSection('computerCoding');
+          break;
+        case 3:
+          setActiveSection('createFuture');
+          break;
+        default:
+          setActiveSection('earlyLearning');
+      }
+    }, 2000); // Change every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [currentImageIndex]);
+
+  // Handle section click
+  const handleSectionClick = (sectionId, imageIndex) => {
+    setActiveSection(sectionId);
+    setCurrentImageIndex(imageIndex);
+  };
 
   return (
     <section className="w-full py-16 px-4 bg-white relative overflow-hidden">
@@ -67,17 +114,57 @@ export default function StructuredCurriculum() {
 
         <div className="flex flex-col lg:flex-row items-center gap-12">
 
-          {/* Image Section */}
+          {/* Image Section - Fixed size container */}
           <div className="w-full lg:w-1/2">
-            <div className="relative bg-gradient-to-br from-[#0b234a]/5 to-[#E22213]/5 rounded-3xl p-8 shadow-lg border border-[#0b234a]/10">
+            <div 
+              className="relative  rounded-3xl p-8 shadow-lg border border-[#0b234a]/10"
+              style={{ height: '500px' }} // Fixed height for all devices
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
               <div className="absolute -top-4 -right-4 w-8 h-8 bg-orange-500 rounded-full opacity-30 animate-ping"></div>
               <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-[#E22213] rounded-full opacity-30 animate-ping delay-700"></div>
 
-              <img
-                src="https://roboticschools.com/wp-content/uploads/2024/03/RS_2-2.png"
-                alt="Structured Curriculum"
-                className="w-full object-contain transform hover:scale-105 transition-transform duration-500"
-              />
+              {/* Single Image that changes - Now with cover and hover zoom */}
+              <div className="relative w-full h-full overflow-hidden rounded-2xl">
+                <img
+                  src={sectionImages[currentImageIndex]}
+                  alt="Structured Curriculum"
+                  className={`absolute  inset-0 w-full h-90 object-cover transition-all duration-700 ${
+                    isHovered ? 'scale-110' : 'scale-100'
+                  }`}
+                  onError={(e) => {
+                    e.target.src = 'https://via.placeholder.com/800x600?text=Curriculum+Image';
+                  }}
+                />
+                
+                {/* Overlay for better text readability if needed */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              
+              {/* Image indicator dots */}
+              <div className="flex justify-center mt-4 space-x-2">
+                {sectionImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === currentImageIndex 
+                        ? 'bg-[#0b234a] w-6' 
+                        : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
+                    aria-label={`Go to image ${index + 1}`}
+                  />
+                ))}
+              </div>
+              
+              {/* Current image label */}
+              <div className="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">
+                {currentImageIndex === 0 && 'Early Learning Program'}
+                {currentImageIndex === 1 && 'Little Tech Explorers'}
+                {currentImageIndex === 2 && 'Computer And Coding'}
+                {currentImageIndex === 3 && 'Create The Future'}
+              </div>
             </div>
           </div>
 
@@ -86,7 +173,12 @@ export default function StructuredCurriculum() {
             <div className="space-y-6">
 
               {/* Age Groups */}
-              <div className="bg-white rounded-2xl p-6 border-l-4 border-[#0b234a] shadow-lg hover:shadow-xl transition-shadow duration-300 group hover:bg-[#0b234a]/5">
+              <div 
+                onClick={() => handleSectionClick('earlyLearning', 0)}
+                className={`bg-white rounded-2xl p-6 border-l-4 border-[#0b234a] shadow-lg hover:shadow-xl transition-shadow duration-300 group hover:bg-[#0b234a]/5 cursor-pointer ${
+                  activeSection === 'earlyLearning' ? 'ring-2 ring-[#0b234a] ring-opacity-50' : ''
+                }`}
+              >
                 <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center group-hover:text-[#0b234a] transition-colors">
                   <span className="w-10 h-10 bg-[#0b234a] rounded-full flex items-center justify-center text-white mr-3 text-sm group-hover:scale-110 transition-transform">
                     1
@@ -98,8 +190,13 @@ export default function StructuredCurriculum() {
                 </p>
               </div>
 
-              {/* Grade Levels */}
-              <div className="bg-white rounded-2xl p-6 border-l-4 border-orange-500 shadow-lg hover:shadow-xl transition-shadow duration-300 group hover:bg-orange-500/5">
+              {/* Little Tech Explorers */}
+              <div 
+                onClick={() => handleSectionClick('techExplorers', 1)}
+                className={`bg-white rounded-2xl p-6 border-l-4 border-orange-500 shadow-lg hover:shadow-xl transition-shadow duration-300 group hover:bg-orange-500/5 cursor-pointer ${
+                  activeSection === 'techExplorers' ? 'ring-2 ring-orange-500 ring-opacity-50' : ''
+                }`}
+              >
                 <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center group-hover:text-orange-600 transition-colors">
                   <span className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center text-white mr-3 text-sm group-hover:scale-110 transition-transform">
                     2
@@ -111,8 +208,13 @@ export default function StructuredCurriculum() {
                 </p>
               </div>
 
-              {/* Grade Levels */}
-              <div className="bg-white rounded-2xl p-6 border-l-4 border-orange-500 shadow-lg hover:shadow-xl transition-shadow duration-300 group hover:bg-orange-500/5">
+              {/* Computer And Coding */}
+              <div 
+                onClick={() => handleSectionClick('computerCoding', 2)}
+                className={`bg-white rounded-2xl p-6 border-l-4 border-orange-500 shadow-lg hover:shadow-xl transition-shadow duration-300 group hover:bg-orange-500/5 cursor-pointer ${
+                  activeSection === 'computerCoding' ? 'ring-2 ring-gray-900 ring-opacity-50' : ''
+                }`}
+              >
                 <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center group-hover:text-orange-600 transition-colors">
                   <span className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center text-white mr-3 text-sm group-hover:scale-110 transition-transform">
                     3
@@ -124,8 +226,13 @@ export default function StructuredCurriculum() {
                 </p>
               </div>
 
-              {/* Grade Levels */}
-              <div className="bg-white rounded-2xl p-6 border-l-4 border-orange-500 shadow-lg hover:shadow-xl transition-shadow duration-300 group hover:bg-orange-500/5">
+              {/* Create The Future */}
+              <div 
+                onClick={() => handleSectionClick('createFuture', 3)}
+                className={`bg-white rounded-2xl p-6 border-l-4 border-orange-500 shadow-lg hover:shadow-xl transition-shadow duration-300 group hover:bg-orange-500/5 cursor-pointer ${
+                  activeSection === 'createFuture' ? 'ring-2 ring-red-600 ring-opacity-50' : ''
+                }`}
+              >
                 <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center group-hover:text-orange-600 transition-colors">
                   <span className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-white mr-3 text-sm group-hover:scale-110 transition-transform">
                     4
@@ -137,8 +244,6 @@ export default function StructuredCurriculum() {
                 </p>
               </div>
             </div>
-
-
 
             {/* CTA Button */}
             <button onClick={() => navigate('/books')} className="mt-8 w-full bg-gradient-to-r from-[#0b234a] to-[#E22213] hover:from-[#0b234a]/90 hover:to-[#E22213]/90 text-white font-bold text-sm sm:text-lg py-2 px-4 sm:py-4 sm:px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-2">
@@ -152,71 +257,71 @@ export default function StructuredCurriculum() {
         </div>
 
         {/* Standards */}
-<div className="bg-white rounded-2xl p-6 my-5 border-l-4 border-[#E22213] shadow-lg hover:shadow-xl transition-shadow duration-300 group hover:bg-[#E22213]/5">
-  <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center group-hover:text-[#E22213] transition-colors">
-    <span className="w-10 h-10 bg-[#E22213] rounded-full flex items-center justify-center text-white mr-3 group-hover:scale-110 transition-transform">
-      <Globe size={20} />
-    </span>
-    Global Standards Alignment
-  </h3>
+        <div className="bg-white rounded-2xl p-6 my-5 border-l-4 border-[#E22213] shadow-lg hover:shadow-xl transition-shadow duration-300 group hover:bg-[#E22213]/5">
+          <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center group-hover:text-[#E22213] transition-colors">
+            <span className="w-10 h-10 bg-[#E22213] rounded-full flex items-center justify-center text-white mr-3 group-hover:scale-110 transition-transform">
+              <Globe size={20} />
+            </span>
+            Global Standards Alignment
+          </h3>
 
-  <div className="flex flex-wrap gap-2 mt-3">
-    {['CBSE', 'IB', 'IGCSE', 'ICSE', 'CSTA', 'CIE'].map((standard, index) => {
-      const colorClasses = [
-        'bg-[#0b234a]/10 text-[#0b234a] border-[#0b234a]/20',
-        'bg-orange-500/10 text-orange-700 border-orange-500/20',
-        'bg-[#E22213]/10 text-[#E22213] border-[#E22213]/20',
-        'bg-[#0b234a]/10 text-[#0b234a] border-[#0b234a]/20',
-        'bg-orange-500/10 text-orange-700 border-orange-500/20',
-        'bg-[#E22213]/10 text-[#E22213] border-[#E22213]/20'
-      ];
+          <div className="flex flex-wrap gap-2 mt-3">
+            {['CBSE', 'IB', 'IGCSE', 'ICSE', 'CSTA', 'CIE'].map((standard, index) => {
+              const colorClasses = [
+                'bg-[#0b234a]/10 text-[#0b234a] border-[#0b234a]/20',
+                'bg-orange-500/10 text-orange-700 border-orange-500/20',
+                'bg-[#E22213]/10 text-[#E22213] border-[#E22213]/20',
+                'bg-[#0b234a]/10 text-[#0b234a] border-[#0b234a]/20',
+                'bg-orange-500/10 text-orange-700 border-orange-500/20',
+                'bg-[#E22213]/10 text-[#E22213] border-[#E22213]/20'
+              ];
 
-      return (
-        <span
-          key={standard}
-          className={`px-3 py-1 rounded-full text-sm font-medium border hover:scale-105 transition-transform duration-200 ${colorClasses[index]}`}
-        >
-          {standard}
-        </span>
-      );
-    })}
-  </div>
-</div>
+              return (
+                <span
+                  key={standard}
+                  className={`px-3 py-1 rounded-full text-sm font-medium border hover:scale-105 transition-transform duration-200 ${colorClasses[index]}`}
+                >
+                  {standard}
+                </span>
+              );
+            })}
+          </div>
+        </div>
 
-{/* Additional Features */}
-<div className="mt-16 mb-5 grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Additional Features */}
+        <div className="mt-16 mb-5 grid grid-cols-1 md:grid-cols-3 gap-6">
 
-  <div className="text-center p-6 bg-gradient-to-br from-[#0b234a]/5 to-transparent rounded-2xl border border-[#0b234a]/10 hover:shadow-lg transition-shadow">
-    <div className="w-12 h-12 bg-[#0b234a] rounded-full flex items-center justify-center text-white mx-auto mb-4">
-      <BookOpen size={22} />
-    </div>
-    <h4 className="font-bold text-gray-900 mb-2">Comprehensive Materials</h4>
-    <p className="text-gray-600 text-sm">
-      Detailed lesson plans and resources for every grade level
-    </p>
-  </div>
+          <div className="text-center p-6 bg-gradient-to-br from-[#0b234a]/5 to-transparent rounded-2xl border border-[#0b234a]/10 hover:shadow-lg transition-shadow">
+            <div className="w-12 h-12 bg-[#0b234a] rounded-full flex items-center justify-center text-white mx-auto mb-4">
+              <BookOpen size={22} />
+            </div>
+            <h4 className="font-bold text-gray-900 mb-2">Comprehensive Materials</h4>
+            <p className="text-gray-600 text-sm">
+              Detailed lesson plans and resources for every grade level
+            </p>
+          </div>
 
-  <div className="text-center p-6 bg-gradient-to-br from-orange-500/5 to-transparent rounded-2xl border border-orange-500/10 hover:shadow-lg transition-shadow">
-    <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white mx-auto mb-4">
-      <GraduationCap size={22} />
-    </div>
-    <h4 className="font-bold text-gray-900 mb-2">Expert Designed</h4>
-    <p className="text-gray-600 text-sm">
-      Created by industry experts and educators
-    </p>
-  </div>
+          <div className="text-center p-6 bg-gradient-to-br from-orange-500/5 to-transparent rounded-2xl border border-orange-500/10 hover:shadow-lg transition-shadow">
+            <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+              <GraduationCap size={22} />
+            </div>
+            <h4 className="font-bold text-gray-900 mb-2">Expert Designed</h4>
+            <p className="text-gray-600 text-sm">
+              Created by industry experts and educators
+            </p>
+          </div>
 
-  <div className="text-center p-6 bg-gradient-to-br from-[#E22213]/5 to-transparent rounded-2xl border border-[#E22213]/10 hover:shadow-lg transition-shadow">
-    <div className="w-12 h-12 bg-[#E22213] rounded-full flex items-center justify-center text-white mx-auto mb-4">
-      <RefreshCw size={22} />
-    </div>
-    <h4 className="font-bold text-gray-900 mb-2">Regular Updates</h4>
-    <p className="text-gray-600 text-sm">
-      Curriculum updated with latest AI advancements
-    </p>
-  </div>
+          <div className="text-center p-6 bg-gradient-to-br from-[#E22213]/5 to-transparent rounded-2xl border border-[#E22213]/10 hover:shadow-lg transition-shadow">
+            <div className="w-12 h-12 bg-[#E22213] rounded-full flex items-center justify-center text-white mx-auto mb-4">
+              <RefreshCw size={22} />
+            </div>
+            <h4 className="font-bold text-gray-900 mb-2">Regular Updates</h4>
+            <p className="text-gray-600 text-sm">
+              Curriculum updated with latest AI advancements
+            </p>
+          </div>
 
-</div>
+        </div>
 
       </div>
     </section>
