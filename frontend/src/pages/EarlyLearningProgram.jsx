@@ -15,14 +15,18 @@ import {
   FaMusic,
   FaGamepad,
   FaPuzzlePiece,
-  FaWhatsapp
+  FaWhatsapp,
+  FaTimes
 } from 'react-icons/fa';
-import { CreateTheFeatureBooks } from '../assets/Books/books';
+import { bookDetails, CreateTheFeatureBooks } from '../assets/Books/books';
 
 const EarlyLearningProgram = () => {
   const [hoveredBook, setHoveredBook] = useState(null);
-
+  const [selectedBook, setSelectedBook] = useState(null);
+  const [showBookDetails, setShowBookDetails] = useState(false);
+  
   const bookDemoRef = useRef(null);
+  const bookDetailsRef = useRef(null);
 
   // Function to scroll to BookFreeDemo section
   const scrollToBookDemo = () => {
@@ -32,16 +36,38 @@ const EarlyLearningProgram = () => {
     });
   };
 
+  // Function to scroll to book details
+  const scrollToBookDetails = (book) => {
+    setSelectedBook(book);
+    setShowBookDetails(true);
+    
+    // Small delay to ensure state is updated before scrolling
+    setTimeout(() => {
+      bookDetailsRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }, 100);
+  };
+
+  // Function to close book details
+  const closeBookDetails = () => {
+    setShowBookDetails(false);
+    setSelectedBook(null);
+  };
+
   const books = [
     {
       id: 1,
       grade: "Nursery",
       title: "Early Learning Program - Nursery",
-      image: CreateTheFeatureBooks.CTFgrade7,
+      image: bookDetails.ELP_Box_P_N, // यहाँ आपकी वास्तविक image path आएगी // बड़ी image के लिए
       description: "Introduction to basic concepts, colors, shapes, and simple digital interactions",
+      detailedDescription: "This nursery program is designed for young learners aged 3-4 years. It introduces children to basic concepts through engaging activities. The curriculum focuses on developing fine motor skills, color recognition, and early cognitive abilities through interactive digital content and hands-on activities.",
       chapters: 10,
       pages: 64,
-      skills: ["Color Recognition", "Shape Matching", "Basic Motor Skills"],
+      skills: ["Color Recognition", "Shape Matching", "Basic Motor Skills", "Number Counting", "Alphabet Introduction"],
+      activities: ["Interactive Games", "Color Matching", "Shape Sorting", "Animal Sounds"],
       color: "#0B234A",
       icon: <FaChild />
     },
@@ -49,11 +75,13 @@ const EarlyLearningProgram = () => {
       id: 2,
       grade: "LKG",
       title: "Early Learning Program - LKG",
-      image: CreateTheFeatureBooks.CTFgrade7,
+      image: bookDetails.ELP_Box_P_N,
       description: "Introduction to numbers, letters, and simple problem-solving activities",
+      detailedDescription: "The LKG program builds upon nursery foundations with more structured learning. Children aged 4-5 years learn numbers 1-50, complete alphabet recognition, and engage in simple problem-solving activities. The program includes interactive storytelling and basic math concepts.",
       chapters: 12,
       pages: 80,
-      skills: ["Number Recognition", "Alphabet Learning", "Simple Puzzles"],
+      skills: ["Number Recognition", "Alphabet Learning", "Simple Puzzles", "Phonics", "Pattern Recognition"],
+      activities: ["Number Games", "Letter Tracing", "Memory Games", "Simple Stories"],
       color: "#EA8E0A",
       icon: <FaShapes />
     },
@@ -61,11 +89,13 @@ const EarlyLearningProgram = () => {
       id: 3,
       grade: "UKG",
       title: "Early Learning Program - UKG",
-      image: CreateTheFeatureBooks.CTFgrade7,
+      image: bookDetails.ELP_Box_UKG,
       description: "Introduction to basic computing, creative activities, and interactive learning",
+      detailedDescription: "For children aged 5-6 years, this UKG program prepares them for formal schooling. It introduces basic computing concepts, enhances creative expression through art activities, and develops logical thinking through structured exercises. The curriculum includes introduction to keyboarding and digital creativity tools.",
       chapters: 15,
       pages: 96,
-      skills: ["Basic Computer Skills", "Creative Expression", "Logical Thinking"],
+      skills: ["Basic Computer Skills", "Creative Expression", "Logical Thinking", "Reading Readiness", "Early Writing"],
+      activities: ["Digital Drawing", "Simple Coding Games", "Creative Projects", "Interactive Reading"],
       color: "#0B234A",
       icon: <FaPaintBrush />
     }
@@ -168,12 +198,10 @@ const EarlyLearningProgram = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => window.open('https://wa.me/919571677609?text=Hi%20I%20want%20to%20know%20more%20about%20your%20curriculum', '_blank')}
-                    className="px-6 py-2 bg-linear-to-r from-[#25D366] to-green-600 text-white font-medium rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                    className="px-6 py-2 bg-gradient-to-r from-[#25D366] to-green-600 text-white font-medium rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <FaWhatsapp className="w-5 h-5" />
-                    <span>
-                      Chat on WhatsApp
-                    </span>
+                    <span>Chat on WhatsApp</span>
                   </motion.button>
                 </div>
 
@@ -273,16 +301,6 @@ const EarlyLearningProgram = () => {
                           </h3>
                         </div>
                       </div>
-
-                      {/* Interactive Button */}
-                      {/* <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="w-10 h-10 rounded-full flex items-center justify-center text-white"
-                      style={{ backgroundColor: book.color }}
-                    >
-                      <FaChevronRight />
-                    </motion.button> */}
                     </div>
 
                     {/* Book Image */}
@@ -293,9 +311,7 @@ const EarlyLearningProgram = () => {
                           alt={book.title}
                           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                         />
-                        <div
-                          className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
-                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                       </div>
 
                       {/* Floating Stats */}
@@ -317,12 +333,12 @@ const EarlyLearningProgram = () => {
                       </p>
 
                       {/* Skills */}
-                      <div className="space-y-2">
+                      <div className="space-y-2 mb-6">
                         <div className="text-sm font-semibold text-gray-700">
                           Skills Children Learn:
                         </div>
                         <div className="flex flex-wrap gap-2">
-                          {book.skills.map((skill, index) => (
+                          {book.skills.slice(0, 3).map((skill, index) => (
                             <motion.span
                               key={index}
                               initial={{ opacity: 0, scale: 0 }}
@@ -340,6 +356,21 @@ const EarlyLearningProgram = () => {
                           ))}
                         </div>
                       </div>
+
+                      {/* Explore Details Button */}
+                      <motion.button
+                        onClick={() => scrollToBookDetails(book)}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="w-full py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all duration-300"
+                        style={{
+                          backgroundColor: book.color,
+                          color: 'white'
+                        }}
+                      >
+                        Explore Details
+                        <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                      </motion.button>
                     </div>
                   </div>
 
@@ -349,21 +380,167 @@ const EarlyLearningProgram = () => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       className="absolute inset-0 bg-gradient-to-t from-purple-900/90 to-transparent flex items-end justify-center p-6 rounded-2xl"
-                    >
-                      {/* <motion.button
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      className="w-full bg-white text-purple-900 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-purple-50 transition-colors"
-                    >
-                      Explore Curriculum
-                      <FaArrowRight />
-                    </motion.button> */}
-                    </motion.div>
+                    />
                   )}
                 </div>
               </motion.div>
             ))}
           </motion.div>
+
+          {/* Book Details Section - Will appear when a book is selected */}
+          <div ref={bookDetailsRef}>
+            {showBookDetails && selectedBook && (
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 50 }}
+                className="mb-16"
+              >
+                <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+                  {/* Close Button */}
+                  <div className="flex justify-end p-4">
+                    <motion.button
+                      onClick={closeBookDetails}
+                      whileHover={{ scale: 1.1, rotate: 90 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition-colors"
+                    >
+                      <FaTimes className="text-gray-600" />
+                    </motion.button>
+                  </div>
+
+                  {/* Book Details Content */}
+                  <div className="p-8">
+                    <div className="grid md:grid-cols-2 gap-8">
+                      {/* Left Column - Book Image */}
+                      <div>
+                        <div className="sticky top-8">
+                          <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
+                            <img
+                              src={selectedBook.image}
+                              alt={selectedBook.title}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="mt-4 flex justify-center">
+                            <div className="inline-flex items-center gap-4 px-6 py-3 rounded-full shadow-lg"
+                              style={{ backgroundColor: `${selectedBook.color}15` }}>
+                              <div className="flex items-center gap-2">
+                                <FaBookOpen style={{ color: selectedBook.color }} />
+                                <span className="font-semibold">{selectedBook.chapters} Chapters</span>
+                              </div>
+                              <div className="h-6 w-px bg-gray-300"></div>
+                              <div className="font-semibold">{selectedBook.pages} Pages</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Right Column - Book Details */}
+                      <div>
+                        {/* Grade Badge */}
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4"
+                          style={{ backgroundColor: `${selectedBook.color}20` }}>
+                          <div style={{ color: selectedBook.color }}>
+                            {selectedBook.icon}
+                          </div>
+                          <span className="font-bold" style={{ color: selectedBook.color }}>
+                            {selectedBook.grade}
+                          </span>
+                        </div>
+
+                        {/* Title */}
+                        <h2 className="text-3xl font-bold mb-4 text-gray-800">
+                          {selectedBook.title}
+                        </h2>
+
+                        {/* Detailed Description */}
+                        <p className="text-gray-600 mb-8 leading-relaxed">
+                          {selectedBook.detailedDescription}
+                        </p>
+
+                        {/* Skills Section */}
+                        <div className="mb-8">
+                          <h3 className="text-xl font-bold mb-4" style={{ color: selectedBook.color }}>
+                            Skills Developed
+                          </h3>
+                          <div className="flex flex-wrap gap-3">
+                            {selectedBook.skills.map((skill, index) => (
+                              <motion.span
+                                key={index}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: index * 0.1 }}
+                                className="px-4 py-2 rounded-lg font-medium"
+                                style={{
+                                  backgroundColor: `${selectedBook.color}10`,
+                                  color: selectedBook.color,
+                                  border: `1px solid ${selectedBook.color}30`
+                                }}
+                              >
+                                {skill}
+                              </motion.span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Activities Section */}
+                        <div className="mb-8">
+                          <h3 className="text-xl font-bold mb-4" style={{ color: selectedBook.color }}>
+                            Key Activities
+                          </h3>
+                          <div className="grid grid-cols-2 gap-3">
+                            {selectedBook.activities.map((activity, index) => (
+                              <motion.div
+                                key={index}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: index * 0.1 }}
+                                className="flex items-center gap-2 p-3 rounded-lg bg-gray-50"
+                              >
+                                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: selectedBook.color }}></div>
+                                <span className="text-gray-700">{activity}</span>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Action Buttons */}
+                        <div className="flex gap-4">
+                          <motion.button
+                            onClick={scrollToBookDemo}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="flex-1 py-3 rounded-xl font-semibold text-white flex items-center justify-center gap-2 shadow-lg"
+                            style={{ backgroundColor: selectedBook.color }}
+                          >
+                            <FaPlay />
+                            Book Demo Class
+                          </motion.button>
+                          
+                          <motion.button
+                            onClick={closeBookDetails}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="px-6 py-3 rounded-xl font-semibold border-2 hover:bg-gray-50 transition-colors"
+                            style={{ 
+                              borderColor: selectedBook.color,
+                              color: selectedBook.color
+                            }}
+                          >
+                            Back to All Books
+                          </motion.button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </div>
+
+
+          {/* hame yaha par 3 section add karni nursary ka 8 book , lkg ka 9 book and ukg ka 8 book */}
 
           {/* Interactive Features Section */}
           <motion.div
@@ -400,7 +577,6 @@ const EarlyLearningProgram = () => {
               </div>
             </div>
           </motion.div>
-
         </div>
       </div>
 

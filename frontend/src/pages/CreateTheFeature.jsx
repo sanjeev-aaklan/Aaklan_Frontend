@@ -71,8 +71,8 @@ const CreateTheFeature = () => {
     },
     {
       id: 4,
-      grade: "Grade 9",
-      title: "CreateTheFeature - Grade 9",
+      grade: "Grade 9-12",
+      title: "CreateTheFeature - Grade 9-12",
       image: CreateTheFeatureBooks.CTFgrade9,
       description: "Advanced feature engineering, AI integration, and machine learning features",
       chapters: 20,
@@ -81,42 +81,7 @@ const CreateTheFeature = () => {
       color: "#EA8E0A",
       icon: <FaBrain />
     },
-    {
-      id: 5,
-      grade: "Grade 10",
-      title: "CreateTheFeature - Grade 10",
-      image: CreateTheFeatureBooks.CTFgrade8,
-      description: "Cloud-based features, microservices architecture, and scalable systems",
-      chapters: 22,
-      pages: 184,
-      skills: ["Cloud Architecture", "Microservices", "Scalable Design"],
-      color: "#E22213",
-      icon: <FaCloud />
-    },
-    {
-      id: 6,
-      grade: "Grade 11",
-      title: "CreateTheFeature - Grade 11",
-      image: CreateTheFeatureBooks.CTFgrade6,
-      description: "Enterprise feature development, DevOps integration, and deployment strategies",
-      chapters: 24,
-      pages: 200,
-      skills: ["Enterprise Features", "DevOps", "Deployment"],
-      color: "#0B234A",
-      icon: <FaCogs />
-    },
-    {
-      id: 7,
-      grade: "Grade 12",
-      title: "CreateTheFeature - Grade 12",
-      image: CreateTheFeatureBooks.CTFgrade7,
-      description: "Innovation methodologies, research-based features, and industry projects",
-      chapters: 26,
-      pages: 216,
-      skills: ["Innovation", "Research", "Industry Projects"],
-      color: "#EA8E0A",
-      icon: <FaProjectDiagram />
-    }
+   
   ];
 
   const containerVariants = {

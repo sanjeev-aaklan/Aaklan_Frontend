@@ -1,15 +1,3 @@
-import grade1 from '../Books/grade-1.png'
-import grade2 from '../Books/grade-2.png'
-import grade3 from '../Books/grade-3.png'
-import grade4 from '../Books/grade-4.png'
-import grade5 from '../Books/grade-5.png'
-import grade6 from '../Books/grade-6.png'
-import grade7 from '../Books/grade-7.png'
-import grade8 from '../Books/grade-8.png'
-
-import LTX from '../Books/LTX.jpeg'
-import CTF from '../Books/CTF.png'
-
 import LTEgrade1 from '../Books/LittleTechExplores/Grade-1.jpeg'
 import LTEgrade2 from '../Books/LittleTechExplores/Grade-2.jpeg'
 import LTEgrade3 from '../Books/LittleTechExplores/Grade-3.jpeg'
@@ -32,23 +20,26 @@ import CTFgrade7 from '../Books/CreateTheFeatures/Grade-7.png'
 import CTFgrade8 from '../Books/CreateTheFeatures/Grade-8.png'
 import CTFgrade9 from '../Books/CreateTheFeatures/Grade-9-12.png'
 
+
+import LTE_Box from '../Books/LittleTechExplores/LTE_Box.jpeg'
+import CTF_Box from '../Books/CreateTheFeatures/CTF_Box.jpeg'
+import CAC_Box from '../Books/Computer&Coding/CAC_Box.jpeg'
+import ELP_Box_P_N from '../Books/EarlyLearningProgram/ELP_Box_P_N.jpeg'
+import ELP_Box_UKG from '../Books/EarlyLearningProgram/ELP_Box_UKG.jpeg'
+
 import herorightImage from '../Books/hero-book.jpeg'
-export const books = {
-    grade1,
-    grade2,
-    grade3,
-    grade4,
-    grade5,
-    grade6,
-    grade7,
-    grade8,
-}
+
+
 export const herobook = {
     herorightImage
 }
+
 export const bookDetails = {
-    LTX,
-    CTF
+    LTE_Box,
+    CTF_Box,
+    CAC_Box,
+    ELP_Box_P_N,
+    ELP_Box_UKG,
 }
 
 

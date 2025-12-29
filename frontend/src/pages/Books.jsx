@@ -447,11 +447,11 @@ const Books = () => {
 
                   <div className="order-2 lg:order-1 flex justify-center" data-aos="fade-right">
                     <div className="relative w-full max-w-md">
-                      <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border border-gray-200 shadow-lg">
+                      <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-2 border border-gray-200 shadow-lg">
                         <div className="aspect-[3/4] bg-gradient-to-br from-blue-100 to-cyan-100 rounded-xl overflow-hidden shadow-inner">
                           {/* Actual Image */}
                           <img
-                            src={bookDetails.LTX}
+                            src={bookDetails.ELP_Box_UKG}
                             alt="Little Tech Explorers Book Cover"
                             className="w-full h-full object-cover"
                           />
@@ -484,11 +484,11 @@ const Books = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                   <div className="order-2 lg:order-1 flex justify-center" data-aos="fade-right">
                     <div className="relative w-full max-w-md">
-                      <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border border-gray-200 shadow-lg">
+                      <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-2 border border-gray-200 shadow-lg">
                         <div className="aspect-[3/4] bg-gradient-to-br from-blue-100 to-cyan-100 rounded-xl overflow-hidden shadow-inner">
                           {/* Actual Image */}
                           <img
-                            src={bookDetails.LTX}
+                            src={bookDetails.LTE_Box}
                             alt="Little Tech Explorers Book Cover"
                             className="w-full h-full object-cover"
                           />
@@ -583,11 +583,11 @@ const Books = () => {
 
                   <div className="order-2 lg:order-1 flex justify-center" data-aos="fade-right">
                     <div className="relative w-full max-w-md">
-                      <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border border-gray-200 shadow-lg">
+                      <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-2 border border-gray-200 shadow-lg">
                         <div className="aspect-[3/4] bg-gradient-to-br from-blue-100 to-cyan-100 rounded-xl overflow-hidden shadow-inner">
                           {/* Actual Image */}
                           <img
-                            src={bookDetails.LTX}
+                            src={bookDetails.CAC_Box}
                             alt="Little Tech Explorers Book Cover"
                             className="w-full h-full object-cover"
                           />
@@ -614,11 +614,11 @@ const Books = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                   <div className="order-2 lg:order-1 flex justify-center" data-aos="fade-right">
                     <div className="relative w-full max-w-md">
-                      <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border border-gray-200 shadow-lg">
+                      <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-2 border border-gray-200 shadow-lg">
                         <div className="aspect-[3/4] bg-gradient-to-br from-blue-100 to-cyan-100 rounded-xl overflow-hidden shadow-inner">
                           {/* Actual Image */}
                           <img
-                            src={bookDetails.CTF}
+                            src={bookDetails.CTF_Box}
                             alt="Little Tech Explorers Book Cover"
                             className="w-full h-full object-cover"
                           />
