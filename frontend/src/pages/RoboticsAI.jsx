@@ -33,11 +33,12 @@ import {
 } from 'lucide-react';
 import AaklanLabSection from '../components/AaklanLabSection.jsx';
 import { FaWhatsapp } from 'react-icons/fa';
-
+import { useNavigate } from 'react-router-dom'
 const RoboticsAI = () => {
   const sectionRef = useRef(null);
   const stepRefs = useRef([]);
   const bookDemoRef = useRef(null);
+  const navigate = useNavigate()
 
   // Function to scroll to BookFreeDemo section
   const scrollToBookDemo = () => {
@@ -847,7 +848,7 @@ const RoboticsAI = () => {
               >
                 <span className="relative z-10 flex items-center justify-center space-x-2">
                   <BookOpen className="w-5 h-5" />
-                  <span>View Sample Chapters</span>
+                  <span onClick={() => navigate('/books')}>View Sample Chapters</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

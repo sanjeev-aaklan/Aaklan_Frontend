@@ -155,20 +155,20 @@ const kitComponents = {
         window.scrollTo(0, 0);
     }, [id, navigate]);
 
-    const handleQuantityChange = (change) => {
-        const newQuantity = quantity + change;
-        if (product && newQuantity >= 1 && newQuantity <= product.stock) {
-            setQuantity(newQuantity);
-        }
-    };
+    // const handleQuantityChange = (change) => {
+    //     const newQuantity = quantity + change;
+    //     if (product && newQuantity >= 1 && newQuantity <= product.stock) {
+    //         setQuantity(newQuantity);
+    //     }
+    // };
 
-    const handleAddToCart = () => {
-        alert(`${quantity} × ${product.name} added to cart!`);
-    };
+    // const handleAddToCart = () => {
+    //     alert(`${quantity} × ${product.name} added to cart!`);
+    // };
 
-    const handleBuyNow = () => {
-        alert(`Proceeding to checkout with ${quantity} × ${product.name}`);
-    };
+    // const handleBuyNow = () => {
+    //     alert(`Proceeding to checkout with ${quantity} × ${product.name}`);
+    // };
 
     const handleWhatsAppClick = () => {
         const message = `Hi, I'm interested in ${product.name}. Can you provide more details?`;
@@ -345,7 +345,7 @@ const kitComponents = {
                             </div>
 
                             {/* Quantity Selector */}
-                            <div className="mb-8">
+                            {/* <div className="mb-8">
                                 <p className="text-gray-700 font-medium mb-3">Quantity:</p>
                                 <div className="flex items-center">
                                     <button
@@ -369,10 +369,10 @@ const kitComponents = {
                                         {product.stock} units available
                                     </span>
                                 </div>
-                            </div>
+                            </div> */}
 
                             {/* Action Buttons */}
-                            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                            {/* <div className="flex flex-col sm:flex-row gap-4 mb-8">
                                 <button
                                     onClick={handleAddToCart}
                                     className="flex-1 px-6 py-4 bg-white border-2 border-[#0b234a] text-[#0b234a] rounded-xl font-bold text-lg hover:bg-[#0b234a] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
@@ -386,7 +386,7 @@ const kitComponents = {
                                 >
                                     Buy Now
                                 </button>
-                            </div>
+                            </div> */}
 
                         </div>
                     </div>
