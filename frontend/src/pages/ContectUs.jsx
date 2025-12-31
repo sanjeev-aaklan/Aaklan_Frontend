@@ -25,7 +25,7 @@ export default function ContactUs() {
     {
       icon: <FaPhoneAlt className="text-2xl text-[#E22213]" />,
       title: "Call Us",
-      details: "+91 - 9571677609\n+91 - 1234567890",
+      details: "+91 - 9571677609",
       link: "tel:+919571677609",
     },
     {
