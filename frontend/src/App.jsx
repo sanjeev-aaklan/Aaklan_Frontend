@@ -1,6 +1,6 @@
 import React from 'react'
 import Home from './pages/Home.jsx'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route ,Navigate } from 'react-router-dom'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import Coding from './pages/Coding.jsx'
@@ -62,7 +62,7 @@ const App = () => {
 
           <Route path="/robotics-ai/kitDetails/:id" element={<KitDetailsPage />} />
           <Route path="/video-submition" element={<VideoUpload />} />
-          <Route path="/*" element={<Home />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
 
         </Routes>
       </main>
