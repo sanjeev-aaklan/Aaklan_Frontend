@@ -62,6 +62,7 @@ const App = () => {
 
           <Route path="/robotics-ai/kitDetails/:id" element={<KitDetailsPage />} />
           <Route path="/video-submition" element={<VideoUpload />} />
+          <Route path="/*" element={<Home />} />
 
         </Routes>
       </main>
