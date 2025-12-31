@@ -26,7 +26,7 @@ import CTF_Box from '../Books/CreateTheFeatures/CTF_Box.jpeg'
 import CAC_Box from '../Books/Computer&Coding/CAC_Box.jpeg'
 import ELP_Box_P_N from '../Books/EarlyLearningProgram/ELP_Box_P_N.jpeg'
 import ELP_Box_UKG from '../Books/EarlyLearningProgram/ELP_Box_UKG.jpeg'
-import ELP_Box_LKG from '../Books/EarlyLearningProgram/ELP_Box_UKG.jpeg'
+import ELP_Box_LKG from '../Books/EarlyLearningProgram/ELP_Box_LKG.jpeg'
 
 import herorightImage from '../Books/hero-book.jpeg'
 

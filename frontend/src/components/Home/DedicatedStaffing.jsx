@@ -343,7 +343,7 @@ const DedicatedStaffing = () => {
     },
     {
       id: 4,
-      title: "Teacher starts classes over tech platform",
+      title: "Teacher starts classes offline Mode",
       description: "Seamless integration with our advanced technology",
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

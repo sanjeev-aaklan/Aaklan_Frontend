@@ -456,7 +456,7 @@ const kitComponents = {
                                                 )}
                                             </div>
                                             <Link
-                                                to={`/kitDetails/${relatedProduct.slug}`}
+                                                to={`/robotics-ai/kitDetails/${relatedProduct.slug}`}
                                                 className="px-4 py-2 text-sm bg-[#0b234a] text-white rounded-lg hover:bg-[#E22213] transition-colors"
                                             >
                                                 View Details
