@@ -721,7 +721,7 @@ const RoboticsAI = () => {
                     <div className="w-8 h-8 bg-[#E22213] rounded-lg flex items-center justify-center">
                       <Cpu className="text-white text-sm" />
                     </div>
-                    <span className="text-sm font-medium text-[#E22213]">Quarky Ultimate Kit</span>
+                    <span className="text-sm font-medium text-[#E22213]">Aaklan Wonder Kit</span>
                   </div>
                 </div>
               </div>

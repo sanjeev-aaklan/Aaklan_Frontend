@@ -14,7 +14,7 @@ import TermsAndConditions from './pages/TermsAndConditions.jsx'
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 import RefundPolicy from './pages/RefundPolicy.jsx'
 import Career from './pages/Career.jsx'
-import Blog from './pages/Blog.jsx'
+// import Blog from './pages/Blog.jsx'
 import LMS from './pages/LMS.jsx'
 import VideoUpload from './pages/VideoUpload.jsx'
 import BookDemoForm from './components/BookFreeDemo.jsx'
@@ -49,7 +49,7 @@ const App = () => {
           <Route path="/refund" element={<RefundPolicy />} />
           <Route path="/career" element={<Career />} />
           <Route path="/contact" element={<ContectUs />} />
-          <Route path="/blog" element={<Blog />} />
+          {/* <Route path="/blog" element={<Blog />} /> */}
 
 
           <Route path="/books/elp" element={<EarlyLearningProgram />} />

@@ -123,7 +123,7 @@ export default function Footer() {
                 { name: "Refund Policy", path: "/refund" },
                 { name: "Career", path: "/career" },
                 { name: "Contact Us", path: "/contact" },
-                { name: "Blog", path: "/blog" },
+                // { name: "Blog", path: "/blog" },
               ].map((item, index) => (
                 <li key={index} className="group cursor-pointer"
                   onClick={() => navigate(item.path)}>

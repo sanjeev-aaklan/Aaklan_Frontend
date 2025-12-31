@@ -598,7 +598,6 @@ const EarlyLearningProgram = () => {
                     { label: "Total Books", value: totalBooks },
                     { label: "Levels", value: "3" },
                     { label: "Subjects", value: categories.length },
-                    { label: "Total Pages", value: `${totalPages}+` },
                   ].map((stat, index) => (
                     <motion.div
                       key={stat.label}

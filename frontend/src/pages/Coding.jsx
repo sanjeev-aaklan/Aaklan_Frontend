@@ -15,7 +15,7 @@ import {
   Lightbulb,
   Target,
   ArrowRight,
-   Hash, // Basic Syntax
+  Hash, // Basic Syntax
   Database, // Data Types
   FunctionSquare, // Functions
   RefreshCw, // Loops
@@ -543,76 +543,76 @@ const Coding = () => {
 
 
       <section className="relative py-8 bg-linear-to-br from-white via-gray-50 to-blue-50/30 overflow-hidden">
-  {/* Animated Background Elements */}
-  <div className="absolute inset-0 overflow-hidden">
-    {/* Floating Platform Icons */}
-    <div className="absolute top-10 left-5 sm:left-10 w-48 h-48 sm:w-56 sm:h-56 bg-[#E22213]/10 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float">
-      <div className="absolute inset-0 flex items-center justify-center text-3xl opacity-20">
-        <Monitor className="w-12 h-12" />
-      </div>
-    </div>
-    <div className="absolute top-40 right-5 sm:right-10 w-40 h-40 sm:w-48 sm:h-48 bg-[#0b234a]/10 rounded-full mix-blend-multiply filter blur-xl opacity-25 animate-float" style={{ animationDelay: '2s' }}>
-      <div className="absolute inset-0 flex items-center justify-center text-2xl opacity-20">
-        <User className="w-10 h-10" />
-      </div>
-    </div>
-    <div className="absolute bottom-20 left-1/4 w-32 h-32 sm:w-40 sm:h-40 bg-orange-500/10 rounded-full mix-blend-multiply filter blur-xl opacity-25 animate-float" style={{ animationDelay: '3s' }}>
-      <div className="absolute inset-0 flex items-center justify-center text-2xl opacity-20">
-        <Rocket className="w-10 h-10" />
-      </div>
-    </div>
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Floating Platform Icons */}
+          <div className="absolute top-10 left-5 sm:left-10 w-48 h-48 sm:w-56 sm:h-56 bg-[#E22213]/10 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float">
+            <div className="absolute inset-0 flex items-center justify-center text-3xl opacity-20">
+              <Monitor className="w-12 h-12" />
+            </div>
+          </div>
+          <div className="absolute top-40 right-5 sm:right-10 w-40 h-40 sm:w-48 sm:h-48 bg-[#0b234a]/10 rounded-full mix-blend-multiply filter blur-xl opacity-25 animate-float" style={{ animationDelay: '2s' }}>
+            <div className="absolute inset-0 flex items-center justify-center text-2xl opacity-20">
+              <User className="w-10 h-10" />
+            </div>
+          </div>
+          <div className="absolute bottom-20 left-1/4 w-32 h-32 sm:w-40 sm:h-40 bg-orange-500/10 rounded-full mix-blend-multiply filter blur-xl opacity-25 animate-float" style={{ animationDelay: '3s' }}>
+            <div className="absolute inset-0 flex items-center justify-center text-2xl opacity-20">
+              <Rocket className="w-10 h-10" />
+            </div>
+          </div>
 
-    {/* Code Pattern Background */}
-    <div className="absolute inset-0 opacity-5">
-      <div className="absolute top-20 left-10 font-mono text-xs text-[#0b234a]">
-        {`function create() {`}
-      </div>
-      <div className="absolute top-32 right-20 font-mono text-xs text-[#E22213]" style={{ animationDelay: '1s' }}>
-        {`if (creative) {`}
-      </div>
-      <div className="absolute bottom-32 left-20 font-mono text-xs text-[#0b234a]" style={{ animationDelay: '2s' }}>
-        {`return amazing;`}
-      </div>
-    </div>
+          {/* Code Pattern Background */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute top-20 left-10 font-mono text-xs text-[#0b234a]">
+              {`function create() {`}
+            </div>
+            <div className="absolute top-32 right-20 font-mono text-xs text-[#E22213]" style={{ animationDelay: '1s' }}>
+              {`if (creative) {`}
+            </div>
+            <div className="absolute bottom-32 left-20 font-mono text-xs text-[#0b234a]" style={{ animationDelay: '2s' }}>
+              {`return amazing;`}
+            </div>
+          </div>
 
-    {/* Grid Pattern */}
-    <div className="absolute inset-0 opacity-3">
-      <div className="absolute inset-0" style={{
-        backgroundImage: `linear-gradient(#0b234a 1px, transparent 1px),
+          {/* Grid Pattern */}
+          <div className="absolute inset-0 opacity-3">
+            <div className="absolute inset-0" style={{
+              backgroundImage: `linear-gradient(#0b234a 1px, transparent 1px),
             linear-gradient(90deg, #0b234a 1px, transparent 1px)`,
-        backgroundSize: '40px 40px',
-      }}></div>
-    </div>
-  </div>
+              backgroundSize: '40px 40px',
+            }}></div>
+          </div>
+        </div>
 
-  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    {/* Section Header */}
-    <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
-      <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-lg mb-6">
-        <span className="w-2 h-2 bg-[#E22213] rounded-full animate-pulse mr-2"></span>
-        <span className="text-sm font-semibold text-[#0b234a]">
-          <BookOpen className="w-4 h-4 inline mr-1" />
-          Structured Learning Path
-        </span>
-      </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-lg mb-6">
+              <span className="w-2 h-2 bg-[#E22213] rounded-full animate-pulse mr-2"></span>
+              <span className="text-sm font-semibold text-[#0b234a]">
+                <BookOpen className="w-4 h-4 inline mr-1" />
+                Structured Learning Path
+              </span>
+            </div>
 
-      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
-        <span className="bg-gradient-to-r from-[#E22213] via-[#0b234a] to-orange-500 bg-clip-text text-transparent">
-          Text Based Coding Curriculum
-        </span>
-        <br />
-        <span className="text-gray-900">From Beginner to Expert</span>
-      </h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
+              <span className="bg-gradient-to-r from-[#E22213] via-[#0b234a] to-orange-500 bg-clip-text text-transparent">
+                Text Based Coding Curriculum
+              </span>
+              <br />
+              <span className="text-gray-900">From Beginner to Expert</span>
+            </h2>
 
-      <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-        Our carefully designed curriculum ensures progressive learning with hands-on projects at every stage.
-      </p>
-    </div>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Our carefully designed curriculum ensures progressive learning with hands-on projects at every stage.
+            </p>
+          </div>
 
-    {/* Curriculum Tabs */}
-    <div className="mb-8 sm:mb-12" data-aos="fade-up">
+          {/* Curriculum Tabs */}
+          <div className="mb-8 sm:mb-12" data-aos="fade-up">
 
-      {/* <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8">
+            {/* <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8">
         {['Beginner', 'Intermediate', 'Advanced', 'Expert'].map((level, index) => (
           <button
             key={index}
@@ -626,147 +626,147 @@ const Coding = () => {
         ))}
       </div> */}
 
-      {/* Courses Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-        {[
-          {
-            title: 'Python Fundamentals',
-            duration: '8 Weeks',
-            level: 'Beginner',
-            icon: <Code2 className="w-6 h-6" />,
-            topics: [
-              { name: 'Basic Syntax', icon: <Hash className="w-3 h-3" /> },
-              { name: 'Data Types', icon: <Database className="w-3 h-3" /> },
-              { name: 'Functions', icon: <FunctionSquare className="w-3 h-3" /> },
-              { name: 'Loops', icon: <RefreshCw className="w-3 h-3" /> }
-            ],
-            projects: 5,
-            color: 'from-blue-500 to-cyan-500'
-          },
-          {
-            title: 'Web Development',
-            duration: '12 Weeks',
-            level: 'Intermediate',
-            icon: <Globe className="w-6 h-6" />,
-            topics: [
-              { name: 'HTML/CSS', icon: <FileCode className="w-3 h-3" /> },
-              { name: 'JavaScript', icon: <Code className="w-3 h-3" /> },
-              { name: 'React', icon: <Atom className="w-3 h-3" /> },
-              { name: 'APIs', icon: <Link className="w-3 h-3" /> }
-            ],
-            projects: 8,
-            color: 'from-purple-500 to-pink-500'
-          },
-          {
-            title: 'AI & Machine Learning',
-            duration: '16 Weeks',
-            level: 'Advanced',
-            icon: <Cpu className="w-6 h-6" />,
-            topics: [
-              { name: 'Python Libraries', icon: <Library className="w-3 h-3" /> },
-              { name: 'Data Science', icon: <BarChart3 className="w-3 h-3" /> },
-              { name: 'Neural Networks', icon: <Brain className="w-3 h-3" /> },
-              { name: 'Projects', icon: <Box className="w-3 h-3" /> }
-            ],
-            projects: 10,
-            color: 'from-green-500 to-emerald-500'
-          },
-          {
-            title: 'Mobile App Development',
-            duration: '10 Weeks',
-            level: 'Intermediate',
-            icon: <Smartphone className="w-6 h-6" />,
-            topics: [
-              { name: 'App Design', icon: <Palette className="w-3 h-3" /> },
-              { name: 'Flutter', icon: <Layers className="w-3 h-3" /> },
-              { name: 'Firebase', icon: <Cloud className="w-3 h-3" /> },
-              { name: 'Deployment', icon: <Upload className="w-3 h-3" /> }
-            ],
-            projects: 6,
-            color: 'from-orange-500 to-red-500'
-          },
-          {
-            title: 'Game Development',
-            duration: '14 Weeks',
-            level: 'Advanced',
-            icon: <Gamepad2 className="w-6 h-6" />,
-            topics: [
-              { name: 'Game Physics', icon: <Move3d className="w-3 h-3" /> },
-              { name: 'Unity Basics', icon: <Joystick className="w-3 h-3" /> },
-              { name: '2D/3D Games', icon: <GamepadIcon className="w-3 h-3" /> },
-              { name: 'Publishing', icon: <Package className="w-3 h-3" /> }
-            ],
-            projects: 7,
-            color: 'from-yellow-500 to-orange-500'
-          },
-          {
-            title: 'IoT & Robotics',
-            duration: '12 Weeks',
-            level: 'Expert',
-            icon: <Zap className="w-6 h-6" />,
-            topics: [
-              { name: 'Arduino', icon: <CpuIcon className="w-3 h-3" /> },
-              { name: 'Sensors', icon: <Radio className="w-3 h-3" /> },
-              { name: 'Automation', icon: <Settings className="w-3 h-3" /> },
-              { name: 'Smart Systems', icon: <Home className="w-3 h-3" /> }
-            ],
-            projects: 9,
-            color: 'from-indigo-500 to-purple-500'
-          }
-        ].map((course, index) => (
-          <div
-            key={index}
-            className="group bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/50 hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500"
-            data-aos="fade-up"
-            data-aos-delay={index * 100}
-          >
+            {/* Courses Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {[
+                {
+                  title: 'Python Fundamentals',
+                  duration: '8 Weeks',
+                  level: 'Beginner',
+                  icon: <Code2 className="w-6 h-6" />,
+                  topics: [
+                    { name: 'Basic Syntax', icon: <Hash className="w-3 h-3" /> },
+                    { name: 'Data Types', icon: <Database className="w-3 h-3" /> },
+                    { name: 'Functions', icon: <FunctionSquare className="w-3 h-3" /> },
+                    { name: 'Loops', icon: <RefreshCw className="w-3 h-3" /> }
+                  ],
+                  projects: 5,
+                  color: 'from-blue-500 to-cyan-500'
+                },
+                {
+                  title: 'Web Development',
+                  duration: '12 Weeks',
+                  level: 'Intermediate',
+                  icon: <Globe className="w-6 h-6" />,
+                  topics: [
+                    { name: 'HTML', icon: <FileCode className="w-3 h-3" /> },
+                    { name: 'CSS', icon: <FileCode className="w-3 h-3" /> },
+                    { name: 'JavaScript', icon: <Code className="w-3 h-3" /> },
+                    { name: 'React', icon: <Atom className="w-3 h-3" /> },
+                  ],
+                  projects: 8,
+                  color: 'from-purple-500 to-pink-500'
+                },
+                {
+                  title: 'AI & Machine Learning',
+                  duration: '16 Weeks',
+                  level: 'Advanced',
+                  icon: <Cpu className="w-6 h-6" />,
+                  topics: [
+                    { name: 'Python Libraries', icon: <Library className="w-3 h-3" /> },
+                    { name: 'Data Science', icon: <BarChart3 className="w-3 h-3" /> },
+                    { name: 'Neural Networks', icon: <Brain className="w-3 h-3" /> },
+                    { name: 'Projects', icon: <Box className="w-3 h-3" /> }
+                  ],
+                  projects: 10,
+                  color: 'from-green-500 to-emerald-500'
+                },
+                {
+                  title: 'Mobile App Development',
+                  duration: '10 Weeks',
+                  level: 'Intermediate',
+                  icon: <Smartphone className="w-6 h-6" />,
+                  topics: [
+                    { name: 'App Design', icon: <Palette className="w-3 h-3" /> },
+                    { name: 'Flutter', icon: <Layers className="w-3 h-3" /> },
+                    { name: 'React Native Basic', icon: <Cloud className="w-3 h-3" /> },
+                    { name: 'Deployment', icon: <Upload className="w-3 h-3" /> }
+                  ],
+                  projects: 6,
+                  color: 'from-orange-500 to-red-500'
+                },
+                {
+                  title: 'Game Development',
+                  duration: '14 Weeks',
+                  level: 'Advanced',
+                  icon: <Gamepad2 className="w-6 h-6" />,
+                  topics: [
+                    { name: 'Game Physics', icon: <Move3d className="w-3 h-3" /> },
+                    { name: 'Unity Basics', icon: <Joystick className="w-3 h-3" /> },
+                    { name: '2D/3D Games', icon: <GamepadIcon className="w-3 h-3" /> },
+                    { name: 'Publishing', icon: <Package className="w-3 h-3" /> }
+                  ],
+                  projects: 7,
+                  color: 'from-yellow-500 to-orange-500'
+                },
+                {
+                  title: 'IoT & Robotics',
+                  duration: '12 Weeks',
+                  level: 'Expert',
+                  icon: <Zap className="w-6 h-6" />,
+                  topics: [
+                    { name: 'Arduino', icon: <CpuIcon className="w-3 h-3" /> },
+                    { name: 'Sensors', icon: <Radio className="w-3 h-3" /> },
+                    { name: 'Automation', icon: <Settings className="w-3 h-3" /> },
+                    { name: 'Smart Systems', icon: <Home className="w-3 h-3" /> }
+                  ],
+                  projects: 9,
+                  color: 'from-indigo-500 to-purple-500'
+                }
+              ].map((course, index) => (
+                <div
+                  key={index}
+                  className="group bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/50 hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500"
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                >
 
-            <div className="flex items-start justify-between mb-4">
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${course.color} flex items-center justify-center`}>
-                <div className="text-white">
-                  {course.icon}
+                  <div className="flex items-start justify-between mb-4">
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${course.color} flex items-center justify-center`}>
+                      <div className="text-white">
+                        {course.icon}
+                      </div>
+                    </div>
+                  </div>
+
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0b234a] transition-colors duration-300">
+                    {course.title}
+                  </h3>
+
+                  <div className="mb-4">
+                    <span className={`px-2 py-1 text-xs font-semibold rounded-full ${course.level === 'Beginner'
+                      ? 'bg-blue-100 text-blue-600'
+                      : course.level === 'Intermediate'
+                        ? 'bg-purple-100 text-purple-600'
+                        : course.level === 'Advanced'
+                          ? 'bg-orange-100 text-orange-600'
+                          : 'bg-red-100 text-red-600'
+                      }`}>
+                      {course.level}
+                    </span>
+                  </div>
+
+                  <div className="mb-6">
+                    <h4 className="text-sm font-semibold text-gray-700 mb-2">Topics Covered:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {course.topics.map((topic, idx) => (
+                        <span
+                          key={idx}
+                          className="px-2 py-1 text-xs bg-gray-50 text-gray-600 rounded-lg border border-gray-200 flex items-center gap-1"
+                        >
+                          {topic.icon}
+                          {topic.name}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-
-            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0b234a] transition-colors duration-300">
-              {course.title}
-            </h3>
-
-            <div className="mb-4">
-              <span className={`px-2 py-1 text-xs font-semibold rounded-full ${course.level === 'Beginner'
-                ? 'bg-blue-100 text-blue-600'
-                : course.level === 'Intermediate'
-                  ? 'bg-purple-100 text-purple-600'
-                  : course.level === 'Advanced'
-                    ? 'bg-orange-100 text-orange-600'
-                    : 'bg-red-100 text-red-600'
-                }`}>
-                {course.level}
-              </span>
-            </div>
-
-            <div className="mb-6">
-              <h4 className="text-sm font-semibold text-gray-700 mb-2">Topics Covered:</h4>
-              <div className="flex flex-wrap gap-2">
-                {course.topics.map((topic, idx) => (
-                  <span
-                    key={idx}
-                    className="px-2 py-1 text-xs bg-gray-50 text-gray-600 rounded-lg border border-gray-200 flex items-center gap-1"
-                  >
-                    {topic.icon}
-                    {topic.name}
-                  </span>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
-        ))}
-      </div>
-    </div>
 
-  </div>
-</section>
+        </div>
+      </section>
 
       {/* <section className="relative py-8 bg-linear-to-br from-gray-50 via-white to-blue-50/30 overflow-hidden">
         

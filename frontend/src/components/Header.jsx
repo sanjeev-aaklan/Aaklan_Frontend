@@ -14,9 +14,12 @@ export default function Header() {
 
   // Active route check
   const isActivePath = useCallback(
-    (path) => location.pathname === path,
-    [location]
-  );
+  (path) => {
+    if (path === "/") return location.pathname === "/";
+    return location.pathname.startsWith(path);
+  },
+  [location]
+);
 
   // Sticky header shadow on scroll
   useEffect(() => {

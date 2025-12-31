@@ -1250,7 +1250,7 @@ const VRARLab = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-xl font-bold mb-2">Download fotonVR Parent App</h3>
-                    <p className="text-[#E22213]/80 text-sm">Stay connected with your child's learning journey</p>
+                    <p className="text-black text-sm">Stay connected with your child's learning journey</p>
                   </div>
                   <div className="flex space-x-3">
                     <button className="bg-black hover:bg-gray-800 px-4 py-2 rounded-xl text-white text-sm font-semibold transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
