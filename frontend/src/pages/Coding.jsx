@@ -597,7 +597,7 @@ const Coding = () => {
             </div>
 
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
-              <span className="bg-gradient-to-r from-[#E22213] via-[#0b234a] to-orange-500 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-[#E22213] via-[#0b234a] to-orange-500 bg-clip-text text-transparent">
                 Text Based Coding Curriculum
               </span>
               <br />
@@ -722,7 +722,7 @@ const Coding = () => {
                 >
 
                   <div className="flex items-start justify-between mb-4">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${course.color} flex items-center justify-center`}>
+                    <div className={`w-12 h-12 rounded-xl bg-linear-to-br ${course.color} flex items-center justify-center`}>
                       <div className="text-white">
                         {course.icon}
                       </div>
