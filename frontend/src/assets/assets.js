@@ -74,6 +74,8 @@ import RBRightImage from './RB/RBRightImage.png'
 
 import labSetup from './labSetup.jpg'
 import microcontroller from './microcontroller2.jpeg'
+import download_brocher from './Brochure_with_Pricing.pdf'
+
 export const assets = {
     logo,
     heroBanner,
@@ -85,6 +87,7 @@ export const assets = {
     labSetup,
     microcontroller,
     board,
+    download_brocher
 }
 
 export const buttonCard = {

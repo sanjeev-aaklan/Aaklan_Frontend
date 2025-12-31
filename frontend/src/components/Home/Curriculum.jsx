@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { curriculum } from "../../assets/assets";
+import { assets, curriculum } from "../../assets/assets";
 import { FaWhatsapp } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom";
 
@@ -244,7 +244,7 @@ const Curriculum = () => {
                 Schedule a Demo
               </button>
               <a
-                href="/brochure.pdf"
+                href={assets.download_brocher}
                 download="Company-Brochure.pdf"
                 className="px-6 py-3 bg-white text-gray-700 font-medium rounded-xl border border-gray-300 hover:border-gray-400 shadow-lg hover:shadow-xl transition-all duration-300"
               >
