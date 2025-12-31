@@ -172,7 +172,7 @@ export default function AaklanKit() {
     const navigate = useNavigate();
 
     const handleProductClick = (slug) => {
-        navigate(`/kitDetails/${slug}`);
+        navigate(`/robotics-ai/kitDetails/${slug}`);
     };
 
     useEffect(() => {
