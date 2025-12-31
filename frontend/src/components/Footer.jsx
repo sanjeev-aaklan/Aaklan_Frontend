@@ -25,7 +25,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="bg-linear-to-br from-[#062241] to-[#0a3266] text-white relative overflow-hidden">
+    <footer className="bg-linear-to-br from-[#062241] to-[#0a3266] text-white relative overflow-hidden Made-By-Ujjwal Kumar">
 
       {/* Scroll To Top */}
       {isVisible && (
