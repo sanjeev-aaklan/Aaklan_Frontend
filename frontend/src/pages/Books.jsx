@@ -168,12 +168,12 @@ const Books = () => {
       gradient: 'from-pink-500 to-purple-500',
       description: 'Foundational digital literacy program for young learners to develop basic computer skills through fun, interactive activities.',
       features: [
-        'Basic Computer Familiarization',
-        'Mouse & Keyboard Skills',
-        'Colorful Interactive Activities',
-        'Simple Puzzle Solving',
-        'Digital Art & Creativity',
-        'Audio-Visual Learning'
+        'Early Literacy',
+        'Numeracy Development',
+        'Strong Motor Skill Building',
+        'Social and Emotional Learning',
+        'Concept Mastery',
+        'STEM & Phonics'
       ],
       ageGroup: '2-5 Years',
       imageUrl: 'https://images.unsplash.com/photo-1596495578065-6e0763fa1178?w=400&h=300&fit=crop'
