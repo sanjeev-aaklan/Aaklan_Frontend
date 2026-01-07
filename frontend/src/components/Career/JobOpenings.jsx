@@ -1,18 +1,18 @@
 // components/Career/JobOpenings.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,forwardRef  } from 'react';
 import { FaSearch, FaBriefcase, FaMapMarkerAlt, FaClock, FaArrowRight, FaGraduationCap, FaRocket, FaUsers, FaFilter, FaSync } from 'react-icons/fa';
 import axios from 'axios';
 import JobCategoryFilter from './JobCategoryFilter';
 import JobCard from './JobCard';
 
-const JobOpenings = ({
+const JobOpenings = forwardRef(({
   activeCategory,
   setActiveCategory,
   searchTerm,
   setSearchTerm,
   selectedJob,
-  onApplyClick
-}) => {
+  onApplyClick,
+}, ref) => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -148,7 +148,7 @@ const JobOpenings = ({
   }
 
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 relative overflow-hidden">
+    <section ref={ref}  className="py-16 md:py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Floating Circles */}
@@ -322,21 +322,9 @@ const JobOpenings = ({
           </div>
         )}
 
-        {/* Call to Action */}
-        {jobs.length > 0 && (
-          <div className="text-center mt-16 pt-8 border-t border-slate-200/50">
-            <p className="text-slate-600 text-lg mb-6">
-              Don't see the perfect role? We're always looking for talented people!
-            </p>
-            <button className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-              Send General Application
-              <FaArrowRight className="text-sm" />
-            </button>
-          </div>
-        )}
       </div>
     </section>
   );
-};
+});
 
 export default JobOpenings;

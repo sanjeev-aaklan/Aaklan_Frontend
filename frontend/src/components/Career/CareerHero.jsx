@@ -1,6 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+const CareerHero = ({scrollToJobOpenings}) => {
+  const navigate = useNavigate();
 
-const CareerHero = () => {
+  const handleViewOpenPositions = () => {
+    if (scrollToJobOpenings) {
+      scrollToJobOpenings();
+    }
+  };
+
   return (
     <section className="relative bg-gradient-to-br from-[#0b234a] via-[#1a3a6e] to-[#2d4a8a] py-10 md:py-18 overflow-hidden">
       {/* Animated Background Elements */}
@@ -41,10 +49,10 @@ const CareerHero = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button className="bg-gradient-to-r from-[#E22213] to-orange-500 text-white px-8 py-4 rounded-xl font-semibold hover:from-[#c01e11] hover:to-orange-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl shadow-[#E22213]/25">
+          <button onClick={handleViewOpenPositions} className="bg-gradient-to-r from-[#E22213] to-orange-500 text-white px-8 py-4 rounded-xl font-semibold hover:from-[#c01e11] hover:to-orange-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl shadow-[#E22213]/25">
             View Open Positions
           </button>
-          <button className="border-2 border-white/30 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm hover:border-white/50">
+          <button onClick={() => navigate('/blog')} className="border-2 border-white/30 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm hover:border-white/50">
             Learn About Culture
           </button>
         </div>

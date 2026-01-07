@@ -1,5 +1,5 @@
 // components/Career/Career.js
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -21,6 +21,14 @@ const Career = () => {
   const [showApplicationForm, setShowApplicationForm] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [agreeToTerms, setAgreeToTerms] = useState(false);
+  const jobOpeningsRef = useRef(null);
+
+  const scrollToJobOpenings = () => {
+    jobOpeningsRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  };
 
   useEffect(() => {
     // Initialize AOS
@@ -118,10 +126,10 @@ const Career = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <CareerHero />
+      <CareerHero scrollToJobOpenings={scrollToJobOpenings} />
       {/* <CareerStats /> */}
 
-      <JobOpenings
+      <JobOpenings ref={jobOpeningsRef}
         activeCategory={activeCategory}
         setActiveCategory={setActiveCategory}
         searchTerm={searchTerm}

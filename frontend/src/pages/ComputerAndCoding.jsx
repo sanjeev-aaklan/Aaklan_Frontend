@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { ComputerAndCodingBooks } from '../assets/Books/books';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import BookFreeDemo from '../components/BookFreeDemo.jsx';
 import {
   FaDownload,
@@ -16,11 +16,19 @@ import {
   FaGamepad,
   FaMobile,
   FaDatabase,
-  FaWhatsapp
+  FaWhatsapp,
+  FaTimes,
+  FaInfoCircle,
+  FaGraduationCap,
+  FaFileAlt,
+  FaLaptopCode,
+  FaProjectDiagram
 } from 'react-icons/fa';
 
 const ComputerAndCoding = () => {
   const [hoveredBook, setHoveredBook] = useState(null);
+  const [selectedBook, setSelectedBook] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
 
   const bookDemoRef = useRef(null);
 
@@ -32,16 +40,32 @@ const ComputerAndCoding = () => {
     });
   };
 
+  // Function to open book details popup
+  const openBookDetails = (book) => {
+    setSelectedBook(book);
+    setShowPopup(true);
+    // Disable body scroll when popup is open
+    document.body.style.overflow = 'hidden';
+  };
+
+  // Function to close popup
+  const closePopup = () => {
+    setShowPopup(false);
+    setSelectedBook(null);
+    // Re-enable body scroll
+    document.body.style.overflow = 'auto';
+  };
+
   const books = [
     {
       id: 1,
       grade: "Grade 1",
       title: "Computer & Coding - Grade 1",
       image: ComputerAndCodingBooks.CCgrade1,
-      description: "Introduction to computers, basic parts, and simple digital activities",
+      description: "Introduces computers, their parts, basic mouse and keyboard usage, drawing with colours and shapes, and simple logic concepts through fun activities.",
       chapters: 10,
       pages: 80,
-      skills: ["Computer Basics", "Mouse Skills", "Simple Games"],
+      skills: ["Introduction To Computer", "Parts Of Computer", "Using The Mouse","Keyboard Basics","Drawing With Tux Paint","Fun With Colours","Shapes And Lines","Simple Commands","Introduction To Logic","Knowledge Organizer"],
       color: "#0B234A",
       icon: <FaDesktop />
     },
@@ -50,10 +74,10 @@ const ComputerAndCoding = () => {
       grade: "Grade 2",
       title: "Computer & Coding - Grade 2",
       image: ComputerAndCodingBooks.CCgrade2,
-      description: "Keyboard mastery, simple commands, and introduction to logic",
-      chapters: 12,
-      pages: 96,
-      skills: ["Keyboard Skills", "Basic Commands", "Logical Thinking"],
+      description: "Builds strong computer fundamentals by learning keyboard and mouse usage, managing files and folders, understanding IT basics, and creating digital drawings.",
+      chapters: 9,
+      pages: 91,
+      skills: ["Foundamentals Of Computer", "Keyboard And Mouse", "Exploring The Desktop","Files And Folders","What's The Use Of Information Technology","Digital Paintion","Colours Everywhere","Shapes And Fill","Erase And Recreate"],
       color: "#EA8E0A",
       icon: <FaCode />
     },
@@ -62,10 +86,10 @@ const ComputerAndCoding = () => {
       grade: "Grade 3",
       title: "Computer & Coding - Grade 3",
       image: ComputerAndCodingBooks.CCgrade3,
-      description: "Scratch programming fundamentals and interactive storytelling",
+      description: "Covers hardware and software basics, Windows and Tux Paint, and introduces Scratch through animations, movements, sounds, and interactive projects.",
       chapters: 14,
-      pages: 112,
-      skills: ["Scratch Basics", "Animation", "Interactive Stories"],
+      pages: 120,
+      skills: ["Parts Of Computer", "Hardware & Software", "The Keyboard and The Mouse","Understanding MS Windows 10","Tux Paint","Introduction to Interface Guide","Cool character","Grow & Shrink","Moving Cars","Moving Underwater","Spaceman","Animal Sounds","Penguins","Knowledge Organizer"],
       color: "#0B234A",
       icon: <FaGamepad />
     },
@@ -74,10 +98,10 @@ const ComputerAndCoding = () => {
       grade: "Grade 4",
       title: "Computer & Coding - Grade 4",
       image: ComputerAndCodingBooks.CCgrade4,
-      description: "Advanced Scratch projects and introduction to web concepts",
-      chapters: 16,
-      pages: 128,
-      skills: ["Game Development", "HTML Introduction", "CSS Basics"],
+      description: "Focuses on internet basics, Word and PowerPoint, and Scratch programming concepts like loops and conditions to design games and creative projects.",
+      chapters: 11,
+      pages: 116,
+      skills: ["Fundamental Of Computer", "Files And Folder", "All About The Internet","Microsoft Word","Microsoft PowerPoint","Introduction to Scratch","Loops in Scratch","Drawing with Scratch","Infinite Loops","Loops with Condition","Game Design"],
       color: "#EA8E0A",
       icon: <FaCode />
     },
@@ -86,10 +110,10 @@ const ComputerAndCoding = () => {
       grade: "Grade 5",
       title: "Computer & Coding - Grade 5",
       image: ComputerAndCodingBooks.CCgrade5,
-      description: "Python programming basics and computational thinking",
-      chapters: 18,
+      description: "Introduces Python programming with core concepts such as variables, loops, and functions, along with hands-on projects to strengthen problem-solving skills.",
+      chapters: 15,
       pages: 144,
-      skills: ["Python Basics", "Algorithms", "Problem Solving"],
+      skills: ["Python Basics", "Computational Thinking", "Problem Solving","Variables & Data Types","Input & Output","Conditional Statements","Loops in Python","Functions in Python","Lists & Tuples","Dictionaries","Project: Simple Calculator","Project: Guess the Number","Project: To-Do List","Project: Mad Libs Game","Knowledge Organizer"],
       color: "#E22213",
       icon: <FaCode />
     },
@@ -98,10 +122,10 @@ const ComputerAndCoding = () => {
       grade: "Grade 6",
       title: "Computer & Coding - Grade 6",
       image: ComputerAndCodingBooks.CCgrade6,
-      description: "Advanced Python, game development, and mobile app concepts",
-      chapters: 20,
-      pages: 160,
-      skills: ["Python OOP", "Game Development", "App Design"],
+      description: "Teaches Google tools, number systems, internet basics, and app development using MIT App Inventor, with projects and an introduction to AI.",
+      chapters: 13,
+      pages: 106,
+      skills: ["Google Docs", "Google Slides","Google Sheets", "Number System","Internet","Introduction To MIT App Inventor","Events","Variables","Operators","Functions","Project-1","Project-2","Artificial Intelligence"],
       color: "#0B234A",
       icon: <FaMobile />
     },
@@ -110,10 +134,10 @@ const ComputerAndCoding = () => {
       grade: "Grade 7",
       title: "Computer & Coding - Grade 7",
       image: ComputerAndCodingBooks.CCgrade7,
-      description: "Web development, databases, and intermediate programming",
-      chapters: 22,
-      pages: 176,
-      skills: ["Web Development", "JavaScript", "Database Basics"],
+      description: "Covers logic gates, cyber security, Excel, design tools, and website creation using WordPress, HTML, and CSS, along with AI fundamentals.",
+      chapters: 9,
+      pages: 96,
+      skills: ["Number System","Logic Gates","Internet and Cyber Security","Advanced Excel","Introduction to InkScape","Introduction To WordPress","More About WordPress","HTML and CSS","Artificial Intelligence"],
       color: "#EA8E0A",
       icon: <FaDatabase />
     },
@@ -122,10 +146,10 @@ const ComputerAndCoding = () => {
       grade: "Grade 8",
       title: "Computer & Coding - Grade 8",
       image: ComputerAndCodingBooks.CCgrade8,
-      description: "Advanced programming, AI concepts, and project development",
-      chapters: 24,
-      pages: 192,
-      skills: ["Advanced Programming", "AI Concepts", "Project Management"],
+      description: "Focuses on networking, databases, web development with HTML, CSS, JavaScript, Python programming, and practical understanding of Artificial Intelligence.",
+      chapters: 13,
+      pages: 110,
+      skills: ["Computer Network","Networking and Cyber-Security","Database:SQL","Introduction to HTML","HTML Tags","HTML Image & Anchor Tag","HTML Table and List","HTML Form","Cascading Style Sheets","Javascript","Python","Artificial Intelligence","Knowledge Organizer"],
       color: "#E22213",
       icon: <FaRobot />
     }
@@ -146,6 +170,32 @@ const ComputerAndCoding = () => {
     visible: {
       y: 0,
       opacity: 1
+    }
+  };
+
+  const popupVariants = {
+    hidden: { 
+      opacity: 0,
+      scale: 0.8,
+      y: -50
+    },
+    visible: { 
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        damping: 25,
+        stiffness: 500
+      }
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.8,
+      y: 50,
+      transition: {
+        duration: 0.2
+      }
     }
   };
 
@@ -278,7 +328,7 @@ const ComputerAndCoding = () => {
             </p>
           </motion.div>
 
-          {/* Books Grid */}
+          {/* Books Grid - MODIFIED FOR LIMITED CONTENT */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -301,7 +351,7 @@ const ComputerAndCoding = () => {
                 />
 
                 {/* Book Card */}
-                <div className="relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300">
+                <div className="relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
                   {/* Top Ribbon */}
                   <div
                     className="relative h-2"
@@ -311,7 +361,7 @@ const ComputerAndCoding = () => {
                   </div>
 
                   {/* Content */}
-                  <div className="p-6">
+                  <div className="p-6 flex-grow">
                     {/* Grade Header */}
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-2">
@@ -351,34 +401,38 @@ const ComputerAndCoding = () => {
                       {/* Floating Stats */}
                       <div className="absolute -bottom-3 left-0 right-0 flex justify-center gap-2">
                         <div className="bg-white px-3 py-1 rounded-full shadow-lg flex items-center gap-2">
-                          <FaBookOpen className="text-blue-600" />
+                          {/* <FaBookOpen className="text-blue-600" /> */}
                           <span className="font-semibold">{book.chapters} Chapters</span>
+                        </div>
+                        <div className="bg-white px-3 py-1 rounded-full shadow-lg flex items-center gap-2">
+                          {/* <FaFileAlt className="text-green-600" /> */}
+                          <span className="font-semibold">{book.pages} Pages</span>
                         </div>
                       </div>
                     </div>
 
-                    {/* Book Info */}
-                    <div className="mt-6">
-                      <h4 className="font-bold text-lg mb-2 text-gray-800">
+                    {/* Book Info - LIMITED CONTENT */}
+                    <div className="mt-8">
+                      <h4 className="font-bold text-lg mb-3 text-gray-800 line-clamp-2">
                         {book.title}
                       </h4>
-                      <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                      
+                      {/* Limited Description */}
+                      <p className="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-3">
                         {book.description}
                       </p>
 
-                      {/* Skills */}
+                      {/* Limited Skills Preview (only first 3) */}
                       <div className="space-y-2">
-                        <div className="text-sm font-semibold text-gray-700">
-                          Skills You'll Learn:
+                        <div className="text-sm font-semibold text-gray-700 flex items-center gap-1">
+                          <FaInfoCircle className="text-blue-500" />
+                          Skills Preview:
                         </div>
-                        <div className="flex flex-wrap gap-2">
-                          {book.skills.map((skill, index) => (
-                            <motion.span
+                        <div className="flex flex-wrap">
+                          {book.skills.slice(0, 3).map((skill, index) => (
+                            <span
                               key={index}
-                              initial={{ opacity: 0, scale: 0 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              transition={{ delay: index * 0.1 }}
-                              className="px-3 py-1 text-xs rounded-full font-medium"
+                              className="px-2 py-1 m-0.5 text-xs rounded-full font-medium"
                               style={{
                                 backgroundColor: `${book.color}15`,
                                 color: book.color,
@@ -386,23 +440,34 @@ const ComputerAndCoding = () => {
                               }}
                             >
                               {skill}
-                            </motion.span>
+                            </span>
                           ))}
+                          {book.skills.length > 3 && (
+                            <span className="px-2 py-1 text-xs text-gray-500 font-medium">
+                              +{book.skills.length - 3} more
+                            </span>
+                          )}
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Hover Overlay */}
-                  {hoveredBook === book.id && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      className="absolute inset-0 bg-gradient-to-t from-blue-900/90 to-transparent flex items-end justify-center p-6 rounded-2xl"
+                  {/* More Details Button at Bottom */}
+                  <div className="p-4 pt-0 mt-4">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => openBookDetails(book)}
+                      className="w-full py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all group"
+                      style={{
+                        backgroundColor: book.color,
+                        color: 'white'
+                      }}
                     >
-                      {/* Optional: Add action button on hover */}
-                    </motion.div>
-                  )}
+                      <span>More Details</span>
+                      <FaChevronRight className="group-hover:translate-x-1 transition-transform" />
+                    </motion.button>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -446,10 +511,196 @@ const ComputerAndCoding = () => {
         </div>
       </div>
 
+      {/* Book Details Popup */}
+      <AnimatePresence>
+        {showPopup && selectedBook && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={closePopup}
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            >
+              {/* Popup Content */}
+              <motion.div
+                variants={popupVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                onClick={(e) => e.stopPropagation()}
+                className="bg-white rounded-3xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden"
+              >
+                {/* Popup Header */}
+                <div
+                  className="p-6 relative"
+                  style={{ backgroundColor: selectedBook.color }}
+                >
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="bg-white/20 p-2 rounded-lg">
+                          {selectedBook.icon}
+                        </div>
+                        <div>
+                          <div className="text-white/80 text-sm">Computer & Coding</div>
+                          <h2 className="text-2xl md:text-3xl font-bold text-white">
+                            {selectedBook.title}
+                          </h2>
+                        </div>
+                      </div>
+                      <p className="text-white/90 max-w-3xl">
+                        {selectedBook.description}
+                      </p>
+                    </div>
+                    <button
+                      onClick={closePopup}
+                      className="bg-white/20 hover:bg-white/30 p-2 rounded-full transition-colors"
+                    >
+                      <FaTimes className="text-white text-xl" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Popup Body */}
+                <div className="p-6 md:p-8 overflow-y-auto max-h-[60vh]">
+                  <div className="grid md:grid-cols-3 gap-8">
+                    {/* Left Column - Book Image and Stats */}
+                    <div className="space-y-6">
+                      {/* Book Cover */}
+                      <div className="rounded-2xl overflow-hidden shadow-xl">
+                        <img
+                          src={selectedBook.image}
+                          alt={selectedBook.title}
+                          className="w-full h-auto object-cover"
+                        />
+                      </div>
+
+                      {/* Quick Stats */}
+                      <div className="bg-gray-50 rounded-2xl p-6">
+                        <h3 className="font-bold text-lg mb-4 text-gray-800">Book Overview</h3>
+                        <div className="space-y-4">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-600">Grade Level:</span>
+                            <span className="font-bold" style={{ color: selectedBook.color }}>
+                              {selectedBook.grade}
+                            </span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-600">Total Chapters:</span>
+                            <span className="font-bold">{selectedBook.chapters}</span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-600">Total Pages:</span>
+                            <span className="font-bold">{selectedBook.pages}</span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-600">Skills Covered:</span>
+                            <span className="font-bold">{selectedBook.skills.length}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Call to Action */}
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => {
+                          closePopup();
+                          scrollToBookDemo();
+                        }}
+                        className="w-full py-3 rounded-xl font-semibold text-white flex items-center justify-center gap-2"
+                        style={{ backgroundColor: selectedBook.color }}
+                      >
+                        <FaPlay />
+                        Book Demo
+                      </motion.button>
+                    </div>
+
+                    {/* Right Column - Detailed Content */}
+                    <div className="md:col-span-2">
+                      {/* Curriculum Details */}
+                      <div className="mb-8">
+                        <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                          <FaLaptopCode className="text-blue-600" />
+                          Curriculum Highlights
+                        </h3>
+                        <div className="bg-gradient-to-r from-blue-50 to-gray-50 rounded-2xl p-6">
+                          <p className="text-gray-700 mb-4">
+                            This comprehensive curriculum is designed to provide students with hands-on experience
+                            in computer science fundamentals and practical coding skills.
+                          </p>
+                          <div className="grid grid-cols-2 gap-4">
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                              <span>Project-Based Learning</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                              <span>Hands-on Activities</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 rounded-full bg-purple-500"></div>
+                              <span>Real-World Applications</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 rounded-full bg-orange-500"></div>
+                              <span>Interactive Exercises</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Skills Covered */}
+                      <div>
+                        <div className="flex justify-between items-center mb-4">
+                          <h3 className="text-xl font-bold flex items-center gap-2">
+                            <FaCode className="text-green-600" />
+                            Complete Skills List
+                          </h3>
+                          <span className="text-sm text-gray-500">
+                            {selectedBook.skills.length} skills
+                          </span>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                          {selectedBook.skills.map((skill, index) => (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: index * 0.05 }}
+                              className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
+                            >
+                              <div
+                                className="w-8 h-8 rounded-lg flex items-center justify-center"
+                                style={{ backgroundColor: `${selectedBook.color}20` }}
+                              >
+                                <span
+                                  className="font-bold"
+                                  style={{ color: selectedBook.color }}
+                                >
+                                  {index + 1}
+                                </span>
+                              </div>
+                              <span className="font-medium text-gray-800">{skill}</span>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </motion.div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
       <div ref={bookDemoRef}>
         <BookFreeDemo />
       </div>
-
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { CreateTheFeatureBooks } from '../assets/Books/books';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import BookFreeDemo from '../components/BookFreeDemo.jsx';
 import {
   FaDownload,
@@ -17,11 +17,22 @@ import {
   FaProjectDiagram,
   FaCloud,
   FaBrain,
-  FaWhatsapp
+  FaWhatsapp,
+  FaTimes,
+  FaInfoCircle,
+  FaGraduationCap,
+  FaFileAlt,
+  FaLaptopCode,
+  FaDatabase,
+  FaMobileAlt,
+  FaNetworkWired,
+  FaPython
 } from 'react-icons/fa';
 
 const CreateTheFeature = () => {
   const [hoveredBook, setHoveredBook] = useState(null);
+  const [selectedBook, setSelectedBook] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
   const bookDemoRef = useRef(null);
 
   // Function to scroll to BookFreeDemo section
@@ -32,16 +43,44 @@ const CreateTheFeature = () => {
     });
   };
 
+  // Function to open book details popup
+  const openBookDetails = (book) => {
+    setSelectedBook(book);
+    setShowPopup(true);
+    // Disable body scroll when popup is open
+    document.body.style.overflow = 'hidden';
+  };
+
+  // Function to close popup
+  const closePopup = () => {
+    setShowPopup(false);
+    setSelectedBook(null);
+    // Re-enable body scroll
+    document.body.style.overflow = 'auto';
+  };
+
   const books = [
     {
       id: 1,
       grade: "Grade 6",
       title: "CreateTheFeature - Grade 6",
       image: CreateTheFeatureBooks.CTFgrade6,
-      description: "Introduction to feature design, basic prototyping, and user-centered thinking",
-      chapters: 14,
-      pages: 120,
-      skills: ["Design Thinking", "Basic Prototyping", "User Research"],
+      description:
+        "Students learn Google tools, internet basics, app development using MIT App Inventor, core programming concepts, and get introduced to AI, robotics, Pictoblox, and Quarky.",
+      chapters: 10,
+      pages: 124,
+      skills: [
+        "Google Docs",
+        "Google Slides",
+        "Google Sheets",
+        "Internet",
+        "Introduction to MIT App Inventor",
+        "Variables & Operators",
+        "Functions",
+        "AI & Robotics Basics",
+        "Introduction to Pictoblox",
+        "Introduction to Quarky"
+      ],
       color: "#0B234A",
       icon: <FaLightbulb />
     },
@@ -50,10 +89,22 @@ const CreateTheFeature = () => {
       grade: "Grade 7",
       title: "CreateTheFeature - Grade 7",
       image: CreateTheFeatureBooks.CTFgrade7,
-      description: "Advanced prototyping, user experience design, and feature planning",
-      chapters: 16,
+      description:
+        "Students explore UX design, wireframing, and prototyping, build advanced apps using MIT App Inventor, and learn AI and machine learning concepts with Pictoblox and Quarky.",
+      chapters: 11,
       pages: 136,
-      skills: ["UX Design", "Wireframing", "Feature Specification"],
+      skills: [
+        "UX Design",
+        "Wireframing",
+        "Prototyping",
+        "Feature Planning",
+        "Introduction to Figma",
+        "Advanced MIT App Inventor",
+        "Event Handling",
+        "Introduction to AI & ML",
+        "Intermediate Pictoblox",
+        "Intermediate Quarky"
+      ],
       color: "#EA8E0A",
       icon: <FaPaintBrush />
     },
@@ -62,10 +113,23 @@ const CreateTheFeature = () => {
       grade: "Grade 8",
       title: "CreateTheFeature - Grade 8",
       image: CreateTheFeatureBooks.CTFgrade8,
-      description: "Feature implementation, API design, and system integration",
-      chapters: 18,
-      pages: 152,
-      skills: ["API Design", "System Integration", "Feature Development"],
+      description:
+        "Students learn networking and cybersecurity, web basics, SQL, algorithms, Python programming, and build AI and robotics projects using Pictoblox and Quarky.",
+      chapters: 11,
+      pages: 138,
+      skills: [
+        "Networking & Cybersecurity",
+        "HTML",
+        "Structured Query Language",
+        "Algorithms And Flowchart",
+        "Introduction to Python",
+        "Python Conditional Statements and Loops",
+        "Python: Arrays, Lists, Strings, Tuples",
+        "Python Function",
+        "AI & Robotics",
+        "Introduction to Pictoblox",
+        "Introduction to Quarky (Projects)"
+      ],
       color: "#0B234A",
       icon: <FaProjectDiagram />
     },
@@ -74,14 +138,23 @@ const CreateTheFeature = () => {
       grade: "Grade 9-12",
       title: "CreateTheFeature - Grade 9-12",
       image: CreateTheFeatureBooks.CTFgrade9,
-      description: "Advanced feature engineering, AI integration, and machine learning features",
+      description:
+        "Students master advanced Python, data structures, web development, API design, and machine learning while building real-world AI-powered features and projects.",
       chapters: 20,
       pages: 168,
-      skills: ["AI Integration", "ML Features", "Advanced Algorithms"],
+      skills: [
+        "Advanced Python Programming",
+        "Data Structures & Algorithms",
+        "Web Development with Flask/Django",
+        "RESTful API Design",
+        "Machine Learning Basics",
+        "AI Integration in Features",
+        "Advanced Pictoblox Projects",
+        "Advanced Quarky Projects"
+      ],
       color: "#EA8E0A",
       icon: <FaBrain />
-    },
-   
+    }
   ];
 
   const containerVariants = {
@@ -99,6 +172,32 @@ const CreateTheFeature = () => {
     visible: {
       y: 0,
       opacity: 1
+    }
+  };
+
+  const popupVariants = {
+    hidden: { 
+      opacity: 0,
+      scale: 0.8,
+      y: -50
+    },
+    visible: { 
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        damping: 25,
+        stiffness: 500
+      }
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.8,
+      y: 50,
+      transition: {
+        duration: 0.2
+      }
     }
   };
 
@@ -194,8 +293,8 @@ const CreateTheFeature = () => {
                 <div className="grid grid-cols-3 gap-4 max-w-md">
                   {[
                     { label: "Grades", value: "6-12" },
-                    { label: "Books", value: "7" },
-                    { label: "Skills", value: "30+" },
+                    { label: "Books", value: "4" },
+                    { label: "Skills", value: "40+" },
                   ].map((stat, index) => (
                     <motion.div
                       key={stat.label}
@@ -231,7 +330,7 @@ const CreateTheFeature = () => {
             </p>
           </motion.div>
 
-          {/* Books Grid */}
+          {/* Books Grid - MODIFIED FOR LIMITED CONTENT */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -254,7 +353,7 @@ const CreateTheFeature = () => {
                 />
 
                 {/* Book Card */}
-                <div className="relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300">
+                <div className="relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
                   {/* Top Ribbon */}
                   <div
                     className="relative h-2"
@@ -264,7 +363,7 @@ const CreateTheFeature = () => {
                   </div>
 
                   {/* Content */}
-                  <div className="p-6">
+                  <div className="p-6 flex-grow">
                     {/* Grade Header */}
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-2">
@@ -286,16 +385,6 @@ const CreateTheFeature = () => {
                           </h3>
                         </div>
                       </div>
-
-                      {/* Interactive Button */}
-                      {/* <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="w-10 h-10 rounded-full flex items-center justify-center text-white"
-                      style={{ backgroundColor: book.color }}
-                    >
-                      <FaChevronRight />
-                    </motion.button> */}
                     </div>
 
                     {/* Book Image */}
@@ -314,34 +403,38 @@ const CreateTheFeature = () => {
                       {/* Floating Stats */}
                       <div className="absolute -bottom-3 left-0 right-0 flex justify-center gap-2">
                         <div className="bg-white px-3 py-1 rounded-full shadow-lg flex items-center gap-2">
-                          <FaBookOpen className="text-blue-600" />
+                          {/* <FaBookOpen className="text-blue-600" /> */}
                           <span className="font-semibold">{book.chapters} Chapters</span>
+                        </div>
+                        <div className="bg-white px-3 py-1 rounded-full shadow-lg flex items-center gap-2">
+                          {/* <FaFileAlt className="text-green-600" /> */}
+                          <span className="font-semibold">{book.pages} Pages</span>
                         </div>
                       </div>
                     </div>
 
-                    {/* Book Info */}
-                    <div className="mt-6">
-                      <h4 className="font-bold text-lg mb-2 text-gray-800">
+                    {/* Book Info - LIMITED CONTENT */}
+                    <div className="mt-8">
+                      <h4 className="font-bold text-lg mb-3 text-gray-800 line-clamp-2">
                         {book.title}
                       </h4>
-                      <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                      
+                      {/* Limited Description */}
+                      <p className="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-3">
                         {book.description}
                       </p>
 
-                      {/* Skills */}
+                      {/* Limited Skills Preview (only first 3) */}
                       <div className="space-y-2">
-                        <div className="text-sm font-semibold text-gray-700">
-                          Skills You'll Learn:
+                        <div className="text-sm font-semibold text-gray-700 flex items-center gap-1">
+                          <FaInfoCircle className="text-blue-500" />
+                          Skills Preview:
                         </div>
                         <div className="flex flex-wrap gap-2">
-                          {book.skills.map((skill, index) => (
-                            <motion.span
+                          {book.skills.slice(0, 3).map((skill, index) => (
+                            <span
                               key={index}
-                              initial={{ opacity: 0, scale: 0 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              transition={{ delay: index * 0.1 }}
-                              className="px-3 py-1 text-xs rounded-full font-medium"
+                              className="px-2 py-1 text-xs rounded-full font-medium"
                               style={{
                                 backgroundColor: `${book.color}15`,
                                 color: book.color,
@@ -349,30 +442,34 @@ const CreateTheFeature = () => {
                               }}
                             >
                               {skill}
-                            </motion.span>
+                            </span>
                           ))}
+                          {book.skills.length > 3 && (
+                            <span className="px-2 py-1 text-xs text-gray-500 font-medium">
+                              +{book.skills.length - 3} more
+                            </span>
+                          )}
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Hover Overlay */}
-                  {hoveredBook === book.id && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      className="absolute inset-0 bg-gradient-to-t from-blue-900/90 to-transparent flex items-end justify-center p-6 rounded-2xl"
+                  {/* More Details Button at Bottom */}
+                  <div className="p-4 pt-0 mt-4">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => openBookDetails(book)}
+                      className="w-full py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all group"
+                      style={{
+                        backgroundColor: book.color,
+                        color: 'white'
+                      }}
                     >
-                      {/* <motion.button
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      className="w-full bg-white text-blue-900 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors"
-                    >
-                      Explore Curriculum
-                      <FaArrowRight />
-                    </motion.button> */}
-                    </motion.div>
-                  )}
+                      <span>More Details</span>
+                      <FaChevronRight className="group-hover:translate-x-1 transition-transform" />
+                    </motion.button>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -416,6 +513,345 @@ const CreateTheFeature = () => {
 
         </div>
       </div>
+
+      {/* Book Details Popup */}
+      <AnimatePresence>
+        {showPopup && selectedBook && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={closePopup}
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            >
+              {/* Popup Content */}
+              <motion.div
+                variants={popupVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                onClick={(e) => e.stopPropagation()}
+                className="bg-white rounded-3xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden"
+              >
+                {/* Popup Header */}
+                <div
+                  className="p-6 relative"
+                  style={{ backgroundColor: selectedBook.color }}
+                >
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="bg-white/20 p-2 rounded-lg">
+                          {selectedBook.icon}
+                        </div>
+                        <div>
+                          <div className="text-white/80 text-sm">CreateTheFeature</div>
+                          <h2 className="text-2xl md:text-3xl font-bold text-white">
+                            {selectedBook.title}
+                          </h2>
+                        </div>
+                      </div>
+                      <p className="text-white/90 max-w-3xl">
+                        {selectedBook.description}
+                      </p>
+                    </div>
+                    <button
+                      onClick={closePopup}
+                      className="bg-white/20 hover:bg-white/30 p-2 rounded-full transition-colors"
+                    >
+                      <FaTimes className="text-white text-xl" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Popup Body */}
+                <div className="p-6 md:p-8 overflow-y-auto max-h-[60vh]">
+                  <div className="grid md:grid-cols-3 gap-8">
+                    {/* Left Column - Book Image and Stats */}
+                    <div className="space-y-6">
+                      {/* Book Cover */}
+                      <div className="rounded-2xl overflow-hidden shadow-xl">
+                        <img
+                          src={selectedBook.image}
+                          alt={selectedBook.title}
+                          className="w-full h-auto object-cover"
+                        />
+                      </div>
+
+                      {/* Quick Stats */}
+                      <div className="bg-gradient-to-br from-blue-50 to-gray-50 rounded-2xl p-6">
+                        <h3 className="font-bold text-lg mb-4 text-gray-800 flex items-center gap-2">
+                          <FaProjectDiagram className="text-blue-600" />
+                          Book Overview
+                        </h3>
+                        <div className="space-y-4">
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-600">Grade Level:</span>
+                            <span className="font-bold" style={{ color: selectedBook.color }}>
+                              {selectedBook.grade}
+                            </span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-600">Total Chapters:</span>
+                            <span className="font-bold">{selectedBook.chapters}</span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-600">Total Pages:</span>
+                            <span className="font-bold">{selectedBook.pages}</span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-600">Skills Covered:</span>
+                            <span className="font-bold">{selectedBook.skills.length}</span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-600">Focus Area:</span>
+                            <span className="font-bold text-right">
+                              {selectedBook.grade === "Grade 6" && "Foundations"}
+                              {selectedBook.grade === "Grade 7" && "UX & Prototyping"}
+                              {selectedBook.grade === "Grade 8" && "Web & Python"}
+                              {selectedBook.grade === "Grade 9-12" && "Advanced Development"}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Tech Stack */}
+                      <div className="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-2xl p-6">
+                        <h3 className="font-bold text-lg mb-4 text-gray-800 flex items-center gap-2">
+                          <FaCogs className="text-orange-600" />
+                          Tech Stack
+                        </h3>
+                        <div className="space-y-3">
+                          {selectedBook.grade === "Grade 6" && (
+                            <>
+                              <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                                <span>Google Workspace</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                                <span>MIT App Inventor</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full bg-purple-500"></div>
+                                <span>Pictoblox & Quarky</span>
+                              </div>
+                            </>
+                          )}
+                          {selectedBook.grade === "Grade 7" && (
+                            <>
+                              <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                                <span>Figma</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                                <span>MIT App Inventor</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full bg-purple-500"></div>
+                                <span>AI/ML Concepts</span>
+                              </div>
+                            </>
+                          )}
+                          {selectedBook.grade === "Grade 8" && (
+                            <>
+                              <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                                <span>HTML & SQL</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                                <span>Python</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full bg-purple-500"></div>
+                                <span>Pictoblox & Quarky</span>
+                              </div>
+                            </>
+                          )}
+                          {selectedBook.grade === "Grade 9-12" && (
+                            <>
+                              <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                                <span>Flask/Django</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                                <span>Advanced Python</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full bg-purple-500"></div>
+                                <span>Machine Learning</span>
+                              </div>
+                            </>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Call to Action */}
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => {
+                          closePopup();
+                          scrollToBookDemo();
+                        }}
+                        className="w-full py-3 rounded-xl font-semibold text-white flex items-center justify-center gap-2"
+                        style={{ backgroundColor: selectedBook.color }}
+                      >
+                        <FaPlay />
+                        Book Demo
+                      </motion.button>
+                    </div>
+
+                    {/* Right Column - Detailed Content */}
+                    <div className="md:col-span-2">
+                      {/* Learning Outcomes */}
+                      <div className="mb-8">
+                        <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                          <FaGraduationCap className="text-green-600" />
+                          Learning Outcomes
+                        </h3>
+                        <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-6">
+                          <p className="text-gray-700 mb-4">
+                            By completing this course, students will be able to:
+                          </p>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {selectedBook.grade === "Grade 6" && (
+                              <>
+                                <div className="flex items-center gap-3">
+                                  <FaMobileAlt className="text-blue-600" />
+                                  <span>Build mobile applications</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                  <FaRobot className="text-green-600" />
+                                  <span>Understand AI basics</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                  <FaDatabase className="text-purple-600" />
+                                  <span>Work with Google tools</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                  <FaLightbulb className="text-yellow-600" />
+                                  <span>Develop problem-solving skills</span>
+                                </div>
+                              </>
+                            )}
+                            {selectedBook.grade === "Grade 7" && (
+                              <>
+                                <div className="flex items-center gap-3">
+                                  <FaPaintBrush className="text-blue-600" />
+                                  <span>Design user interfaces</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                  <FaLaptopCode className="text-green-600" />
+                                  <span>Create advanced apps</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                  <FaBrain className="text-purple-600" />
+                                  <span>Implement AI concepts</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                  <FaProjectDiagram className="text-yellow-600" />
+                                  <span>Plan and prototype features</span>
+                                </div>
+                              </>
+                            )}
+                            {selectedBook.grade === "Grade 8" && (
+                              <>
+                                <div className="flex items-center gap-3">
+                                  <FaNetworkWired className="text-blue-600" />
+                                  <span>Understand networking concepts</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                  <FaPython className="text-green-600" />
+                                  <span>Write Python programs</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                  <FaDatabase className="text-purple-600" />
+                                  <span>Work with databases</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                  <FaCode className="text-yellow-600" />
+                                  <span>Develop web applications</span>
+                                </div>
+                              </>
+                            )}
+                            {selectedBook.grade === "Grade 9-12" && (
+                              <>
+                                <div className="flex items-center gap-3">
+                                  <FaPython className="text-blue-600" />
+                                  <span>Master advanced Python</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                  <FaDatabase className="text-green-600" />
+                                  <span>Design RESTful APIs</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                  <FaBrain className="text-purple-600" />
+                                  <span>Build ML models</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                  <FaLaptopCode className="text-yellow-600" />
+                                  <span>Create full-stack applications</span>
+                                </div>
+                              </>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Skills Covered */}
+                      <div>
+                        <div className="flex justify-between items-center mb-4">
+                          <h3 className="text-xl font-bold flex items-center gap-2">
+                            <FaCogs className="text-red-600" />
+                            Complete Skills List
+                          </h3>
+                          <span className="text-sm text-gray-500">
+                            {selectedBook.skills.length} skills to master
+                          </span>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                          {selectedBook.skills.map((skill, index) => (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: index * 0.05 }}
+                              className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors group"
+                            >
+                              <div
+                                className="w-10 h-10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform"
+                                style={{ backgroundColor: `${selectedBook.color}20` }}
+                              >
+                                <span
+                                  className="font-bold text-lg"
+                                  style={{ color: selectedBook.color }}
+                                >
+                                  {index + 1}
+                                </span>
+                              </div>
+                              <div className="flex-1">
+                                <span className="font-medium text-gray-800">{skill}</span>
+                                
+                              </div>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </motion.div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
       <div ref={bookDemoRef}>
         <BookFreeDemo />

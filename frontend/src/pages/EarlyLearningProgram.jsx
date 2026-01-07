@@ -56,11 +56,11 @@ const EarlyLearningProgram = () => {
       image: Early_Learning_Program.P_N_Math_part_1,
       category: "Mathematics",
       description: "Introduction to basic math concepts through fun activities",
-      pages: 48,
+      pages: 81,
       color: "#FF6B6B",
       icon: <FaCalculator />,
       ageGroup: "3-4 years",
-      skills: ["Counting", "Number Recognition", "Basic Shapes", "Patterns"]
+      skills: ["Number 0","Number 1","Number 2","Exercise","Number 3","Exercise","Number 4","Exercise","Number 5","Exercise","Number 6","Number 7","Number 8 ","Number 9","Number 10","Exercise","Number 11","Number 12","Number 13","Number 14","Number 15","Exercise"]
     },
     {
       id: 2,
@@ -70,11 +70,11 @@ const EarlyLearningProgram = () => {
       image: Early_Learning_Program.P_N_Math_part_2,
       category: "Mathematics",
       description: "Advanced math concepts for pre-nursery students",
-      pages: 52,
+      pages: 70,
       color: "#FF6B6B",
       icon: <FaCalculator />,
       ageGroup: "3-4 years",
-      skills: ["Addition", "Subtraction", "Measurement", "Sorting"]
+      skills: ["Number 1-50","Exercise","Number 16","Number 17","Number 18","Number 19","Exercise","Number 20","Exercise","Comparison","Exercise","Shapes","Exercise","Practice Sheet"]
     },
     {
       id: 3,
@@ -84,11 +84,11 @@ const EarlyLearningProgram = () => {
       image: Early_Learning_Program.P_N_Alpha_1,
       category: "Language",
       description: "Introduction to alphabet and phonics",
-      pages: 56,
+      pages: 120,
       color: "#4ECDC4",
       icon: <FaLanguage />,
       ageGroup: "3-4 years",
-      skills: ["Alphabet Recognition", "Phonics", "Vocabulary", "Letter Formation"]
+      skills: ["Practice Letter A","Practice Letter B","Practice Letter C","Practice Letter D","Practice Letter E","Practice Letter F","Practice Letter G","Practice Letter H","Practice Letter I","Practice Letter J","Practice Letter K","Practice Letter L","Practice Letter M","Activities"]
     },
     {
       id: 4,
@@ -98,11 +98,11 @@ const EarlyLearningProgram = () => {
       image: Early_Learning_Program.P_N_Alpha_2,
       category: "Language",
       description: "Advanced alphabet and word formation",
-      pages: 60,
+      pages: 119,
       color: "#4ECDC4",
       icon: <FaLanguage />,
       ageGroup: "3-4 years",
-      skills: ["Word Formation", "Sentence Building", "Reading Readiness", "Writing"]
+      skills: ["Practice Letter N","Practice Letter O","Practice Letter P","Practice Letter Q","Practice Letter R","Practice Letter S","Practice Letter T","Practice Letter U","Practice Letter V","Practice Letter W","Practice Letter X","Practice Letter Y","Practice Letter Z","Activities"]
     },
     {
       id: 5,
@@ -112,11 +112,11 @@ const EarlyLearningProgram = () => {
       image: Early_Learning_Program.P_N_Pyare_axar_1,
       category: "Language",
       description: "Hindi alphabet learning with fun activities",
-      pages: 44,
+      pages: 87,
       color: "#45B7D1",
       icon: <FaLanguage />,
       ageGroup: "3-4 years",
-      skills: ["Hindi Alphabet", "Vocabulary", "Writing", "Pronunciation"]
+      skills: ["Alphabet","Hindi Alphabet", "Vocabulary", "Writing", "Pronunciation","Practice"]
     },
     {
       id: 6,
@@ -126,11 +126,11 @@ const EarlyLearningProgram = () => {
       image: Early_Learning_Program.P_N_Pyare_axar_2,
       category: "Language",
       description: "Hindi word formation and sentences",
-      pages: 48,
+      pages: 108,
       color: "#45B7D1",
       icon: <FaLanguage />,
       ageGroup: "3-4 years",
-      skills: ["Word Formation", "Sentence Making", "Reading", "Writing"]
+      skills: ["Hindi Consonants","Hindi Vowels","Vocabulary","Word Formation","Sentences","Practice"]
     },
     {
       id: 7,
@@ -140,11 +140,11 @@ const EarlyLearningProgram = () => {
       image: Early_Learning_Program.P_N_Pyare_axar_3,
       category: "Language",
       description: "Advanced Hindi language skills",
-      pages: 52,
+      pages: 103,
       color: "#45B7D1",
       icon: <FaLanguage />,
       ageGroup: "3-4 years",
-      skills: ["Advanced Vocabulary", "Story Reading", "Creative Writing", "Grammar"]
+      skills: ["Hindi Consonants","Hindi Vowels","Vocabulary","Word Formation","Sentences","Practice"]
     },
     {
       id: 8,
@@ -168,11 +168,11 @@ const EarlyLearningProgram = () => {
       image: Early_Learning_Program.P_N_Steamety,
       category: "STEAM",
       description: "Introduction to science and creativity",
-      pages: 64,
+      pages: 114,
       color: "#FFEAA7",
       icon: <FaMicroscope />,
       ageGroup: "3-4 years",
-      skills: ["Science", "Creativity", "Problem Solving", "Experimentation"]
+      skills: ["Part A:EVA", "Part B:Creative Art & CRAFT", "Part C:STEM", "Part D:SET"]
     },
 
     // LKG Books
