@@ -459,7 +459,7 @@ import { blogService } from "../services/blogService.js";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import BookFreeDemo from '../components/BookFreeDemo.jsx';
-import { Search, Filter, Calendar, User, Tag, ChevronRight, X, Clock, Eye, ArrowRight, BookOpen } from 'lucide-react';
+import { Search, Filter, Calendar, User, Tag, ChevronRight, X, Clock, Eye, ArrowRight, BookOpen, RefreshCcw } from 'lucide-react';
 import { debounce } from "lodash";
 
 const Blog = () => {
@@ -499,8 +499,8 @@ const Blog = () => {
       setPage(res.data.page);
 
       // Extract unique types and tags
-      const uniqueTypes = [...new Set(res.data.data.map(blog => blog.type))];
-      const allTags = res.data.data.flatMap(blog => blog.tags || []);
+      const uniqueTypes = [...new Set(res?.data?.data?.map(blog => blog.type))];
+      const allTags = res?.data?.data?.flatMap(blog => blog.tags || []);
       const uniqueTags = [...new Set(allTags)];
       
       setTypes(uniqueTypes);
@@ -671,7 +671,7 @@ const Blog = () => {
                       >
                         All Categories
                       </button>
-                      {types.map((type) => (
+                      {types?.map((type) => (
                         <button
                           key={type}
                           onClick={() => setSelectedType(type)}
@@ -687,7 +687,7 @@ const Blog = () => {
                   <div>
                     <h3 className="text-sm font-semibold text-gray-900 mb-3">Popular Tags</h3>
                     <div className="flex flex-wrap gap-2">
-                      {tags.slice(0, 10).map((tag) => (
+                      {tags?.slice(0, 10)?.map((tag) => (
                         <button
                           key={tag}
                           onClick={() => setSelectedTag(tag)}
@@ -708,7 +708,7 @@ const Blog = () => {
           <div className="mb-12 lg:mb-16">
             {loading ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                {[...Array(6)].map((_, i) => (
+                {[...Array(6)]?.map((_, i) => (
                   <div key={i} className="bg-white rounded-2xl shadow-lg overflow-hidden animate-pulse">
                     <div className="h-48 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-shimmer"></div>
                     <div className="p-6">
@@ -722,27 +722,50 @@ const Blog = () => {
                   </div>
                 ))}
               </div>
-            ) : blogs.length === 0 ? (
-              <div className="text-center py-16 lg:py-24 bg-white rounded-2xl shadow-lg border border-gray-100" data-aos="fade-up">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-r from-gray-100 to-gray-200 flex items-center justify-center">
-                  <Search className="w-10 h-10 text-gray-400" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-3">No articles found</h3>
-                <p className="text-gray-600 max-w-md mx-auto mb-8">
-                  Try adjusting your search terms or filters to find what you're looking for.
-                </p>
-                <button
-                  onClick={clearFilters}
-                  className="inline-flex items-center gap-2 px-6 py-3.5 bg-gradient-to-r from-[#0b234a] to-[#E22213] text-white rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105"
-                >
-                  <X className="w-4 h-4" />
-                  Clear all filters
-                </button>
-              </div>
+            ) : !blogs || blogs.length === 0 ? (
+              <div className="relative overflow-hidden bg-white rounded-2xl border border-gray-100 shadow-lg py-20 px-6 text-center">
+
+      {/* Soft background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0b234a]/5 via-transparent to-[#E22213]/5"></div>
+
+      {/* Icon */}
+      <div className="relative z-10 flex justify-center mb-6">
+        <div className="w-20 h-20 rounded-full bg-gradient-to-r from-[#0b234a] to-[#E22213] flex items-center justify-center shadow-lg">
+          <Search className="w-10 h-10 text-white" />
+        </div>
+      </div>
+
+      {/* Title */}
+      <h2 className="relative z-10 text-3xl font-bold text-gray-900 mb-3">
+        No Blogs Found
+      </h2>
+
+      {/* Description */}
+      <p className="relative z-10 text-gray-600 max-w-md mx-auto mb-8 leading-relaxed">
+        We couldn’t find any articles matching your search or filter criteria.
+        Try clearing filters or explore all available blogs.
+      </p>
+
+      {/* Action */}
+      <div className="relative z-10 flex justify-center">
+        <button
+          onClick={clearFilters}
+          className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#0b234a] to-[#E22213] text-white font-semibold shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300"
+        >
+          <RefreshCcw className="w-4 h-4" />
+          Clear Filters
+        </button>
+      </div>
+
+      {/* Decorative blur circles */}
+      <div className="absolute -top-16 -left-16 w-40 h-40 bg-[#0b234a]/10 rounded-full blur-3xl"></div>
+      <div className="absolute -bottom-16 -right-16 w-40 h-40 bg-[#E22213]/10 rounded-full blur-3xl"></div>
+
+    </div>
             ) : (
               <>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                  {blogs.map((blog, index) => (
+                  {blogs?.map((blog, index) => (
                     <article
                       key={blog._id}
                       data-aos="fade-up"
