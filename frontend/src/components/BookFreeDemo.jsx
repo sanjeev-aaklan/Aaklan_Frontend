@@ -2,8 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
+
 
 const BookDemoForm = () => {
+
+  const navigate = useNavigate();
 
   const normalizePhoneNumber = (phone) => {
     if (!phone) return phone;
@@ -228,7 +232,7 @@ const BookDemoForm = () => {
       const { data } = response;
 
       if (data.success) {
-        toast.success('Demo request submitted successfully! We will contact you within 24 hours.');
+        toast.success('Demo request submitted successfully!');
 
         // Reset form
         setFormData({
@@ -245,6 +249,10 @@ const BookDemoForm = () => {
         setIsOtpVerified(false);
         setOtp('');
         setErrors({});
+
+        setTimeout(() => {
+    navigate("/");
+  }, 2000);
       } else {
         const errorMsg = data.message || 'Submission failed';
         toast.error(errorMsg);
@@ -636,6 +644,7 @@ const BookDemoForm = () => {
                     <option value="Online Coding & Robotics Classes" className="bg-gray-900">Dedicated Trainer</option>
                     <option value="VR/AR Lab" className="bg-gray-900">VR/AR Lab</option>
                     <option value="Coding, Robotics & AI Workshop in School" className="bg-gray-900">Coding, Robotics & AI Workshop in School</option>
+                    <option value="All" className="bg-gray-900">All</option>
                     <option value="Other" className="bg-gray-900">Other</option>
                   </select>
                   <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">

@@ -1,8 +1,6 @@
 import React from 'react'
 import Home from './pages/Home.jsx'
 import { Routes, Route ,Navigate } from 'react-router-dom'
-import Header from './components/Header.jsx'
-import Footer from './components/Footer.jsx'
 import Coding from './pages/Coding.jsx'
 import RoboticsAI from './pages/RoboticsAI.jsx'
 import VRARLab from './pages/VRARLab.jsx'
@@ -25,14 +23,21 @@ import ComputerAndCoding from './pages/ComputerAndCoding.jsx'
 import CreateTheFeature from './pages/CreateTheFeature.jsx'
 import KitDetailsPage from './pages/KitDetailsPage.jsx'
 import BlogDetail from './components/Blogs/BlogDetail.jsx'
-const App = () => {
+
+import Ads from "./pages/Ads.jsx";
+import MainLayout from "./pages/MainLayout.jsx";
+import AdsLayout from "./pages/AdsLayout.jsx";
+
+function App() {
   return (
-    <div className="w-full min-h-screen bg-white">
-      <ToastContainer />
+    <>
       <ScrollToTop />
-      <Header />
-      <main>
-        <Routes>
+      <ToastContainer />
+
+      <Routes>
+
+        {/* MAIN WEBSITE */}
+        <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/coding" element={<Coding />} />
           <Route path="/robotics-ai" element={<RoboticsAI />} />
@@ -40,37 +45,32 @@ const App = () => {
           <Route path="/lms" element={<LMS />} />
           <Route path="/books" element={<Books />} />
           <Route path="/book-demo" element={<BookDemoForm />} />
-
-
-
-          {/* footer link */}
           <Route path="/about" element={<AboutUs />} />
           <Route path="/terms" element={<TermsAndConditions />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/refund" element={<RefundPolicy />} />
           <Route path="/career" element={<Career />} />
           <Route path="/contact" element={<ContectUs />} />
-          <Route path="/blog" element={<Blog />} /> 
+          <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />
-
-
           <Route path="/books/elp" element={<EarlyLearningProgram />} />
           <Route path="/books/lte" element={<LittleTechExplorers />} />
           <Route path="/books/cac" element={<ComputerAndCoding />} />
           <Route path="/books/ctf" element={<CreateTheFeature />} />
-
-
-
-
           <Route path="/robotics-ai/kitDetails/:id" element={<KitDetailsPage />} />
           <Route path="/video-submition" element={<VideoUpload />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
 
-        </Routes>
-      </main>
-      <Footer />  
-    </div>
-  )
+        {/* ADS FUNNEL (NO HEADER / FOOTER) */}
+        <Route element={<AdsLayout />}>
+          <Route path="/demo" element={<Ads />} />
+        </Route>
+
+        <Route path="*" element={<Navigate to="/" replace />} />
+
+      </Routes>
+    </>
+  );
 }
 
-export default App
+export default App;
