@@ -40,7 +40,7 @@ export default function Header() {
   ];
 
   const handleLoginRedirect = () => {
-    window.location.href = "https://aaklanfoundation.in/";
+    window.location.href = "https://crm.aaklan.com/";
   };
 
 
