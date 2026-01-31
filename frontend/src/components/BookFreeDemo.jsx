@@ -125,7 +125,7 @@ const BookDemoForm = () => {
 
       if (data.success) {
         setIsOtpSent(true);
-        toast.success('OTP sent successfully! Check your email.');
+        toast.success('OTP sent successfully on WhatsApp.');
         setErrors({});
       } else {
         const errorMsg = data.message || 'Failed to send OTP';
