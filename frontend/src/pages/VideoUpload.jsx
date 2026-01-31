@@ -377,7 +377,7 @@ const VideoUpload = () => {
   };
 
   const uploadVideoToCloudinary = async (file, onProgress) => {
-    const cloudName = "da76nrkrh";
+    const cloudName = "dt0n3w2ev";
     const uploadPreset = "career_video_upload";
 
     const url = `https://api.cloudinary.com/v1_1/${cloudName}/video/upload`;
