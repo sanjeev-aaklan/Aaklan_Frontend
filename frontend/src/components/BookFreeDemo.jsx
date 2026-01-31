@@ -10,24 +10,22 @@ const BookDemoForm = () => {
   const navigate = useNavigate();
 
   const normalizePhoneNumber = (phone) => {
-    if (!phone) return phone;
+  if (!phone) return phone;
 
-    // Remove all non-digit characters
-    let cleaned = phone.replace(/\D/g, '');
+  let cleaned = phone.replace(/\D/g, '');
 
-    // If it's a 10-digit Indian number starting with 6-9
-    if (/^[6-9]\d{9}$/.test(cleaned)) {
-      return `+91${cleaned}`;
-    }
+  // 10 digit Indian number
+  if (/^[6-9]\d{9}$/.test(cleaned)) {
+    return `91${cleaned}`;
+  }
 
-    // If already in +91 format
-    if (/^\+91[6-9]\d{9}$/.test(cleaned)) {
-      return cleaned;
-    }
-
-    // For other formats, return as is (with + if present)
+  // already with country code
+  if (/^91[6-9]\d{9}$/.test(cleaned)) {
     return cleaned;
-  };
+  }
+
+  return cleaned;
+};
 
   // State for form fields
   const [formData, setFormData] = useState({
@@ -122,7 +120,7 @@ const BookDemoForm = () => {
         name: formData.name
       });
 
-
+      
       const { data } = response;
 
       if (data.success) {
