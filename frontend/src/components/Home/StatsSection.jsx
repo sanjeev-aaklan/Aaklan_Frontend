@@ -50,7 +50,7 @@ const StatsSection = () => {
       state: 5,
       students: 100000,
       retention: 98,
-      trainers: 200
+      trainers: 500
     };
 
     const duration = 1000; // 2 seconds
