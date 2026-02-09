@@ -88,7 +88,9 @@ const VideoUpload = () => {
   const uploadVideoToCloudinary = async (file, onProgress) => {
     const cloudName = "dt0n3w2ev";
     const uploadPreset = "career_video_upload";
-    const url = `${import.meta.env.Cloud_URI}/${cloudName}/video/upload`;
+    const url = `https://api.cloudinary.com/v1_1/${cloudName}/video/upload`;
+
+    
 
     const formData = new FormData();
     formData.append("file", file);
